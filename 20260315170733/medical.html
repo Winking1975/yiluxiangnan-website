@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>医疗就医 - 南洋通 | Medical Guide - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* ── Medical page extras ── */
+    .hospital-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      padding: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      border-left: 4px solid #e53935;
+      transition: box-shadow .2s;
+    }
+    .hospital-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.14); }
+    .hospital-icon {
+      width: 52px; height: 52px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .hospital-info { flex: 1; }
+    .hospital-info h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: #1a1a2e; }
+    .hospital-info .hosp-loc { font-size: 13px; color: #888; margin-bottom: 6px; }
+    .hospital-tags span {
+      display: inline-block; background: #fce4ec; color: #c62828;
+      border-radius: 20px; padding: 2px 10px; font-size: 12px; margin-right: 6px; margin-bottom: 4px;
+    }
+    .hospital-tags span.green { background: #e8f5e9; color: #2e7d32; }
+    .hospital-tags span.blue  { background: #e3f2fd; color: #1565c0; }
+    .hospital-rating { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13px; color: #666; }
+    .hospital-rating strong { color: #e53935; }
+
+    .med-type-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .med-tab {
+      padding: 9px 20px; border-radius: 30px; border: 2px solid #e0e0e0;
+      background: #fff; cursor: pointer; font-size: 14px; font-weight: 600;
+      color: #555; transition: all .2s;
+    }
+    .med-tab.active, .med-tab:hover { border-color: #e53935; color: #e53935; background: #fff5f5; }
+
+    .country-panel { display: none; }
+    .country-panel.active { display: block; }
+
+    .med-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 20px 0; }
+    .med-step {
+      background: #fff; border-radius: 12px; padding: 18px 14px;
+      text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      border-top: 3px solid #e53935;
+    }
+    .med-step .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #e53935; color: #fff; font-weight: 700; font-size: 16px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
+    }
+    .med-step .step-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .med-step .step-desc  { font-size: 12px; color: #777; line-height: 1.6; }
+
+    .phrase-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .phrase-table th { background: #ffebee; color: #c62828; padding: 10px 14px; text-align: left; font-weight: 700; }
+    .phrase-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+    .phrase-table tr:hover td { background: #fafafa; }
+
+    .insurance-notice {
+      background: linear-gradient(135deg, #fff3e0, #fff8e1);
+      border: 1px solid #ffcc02;
+      border-radius: 12px; padding: 18px 20px; margin-bottom: 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .insurance-notice i { color: #f57c00; font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+    .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .cost-table th { background: #ffebee; color: #c62828; padding: 9px 12px; text-align: left; }
+    .cost-table td { padding: 9px 12px; border-bottom: 1px solid #f0f0f0; }
+    .cost-table tr:nth-child(even) td { background: #fafafa; }
+    .cost-highlight { color: #e53935; font-weight: 700; }
+
+    .emergency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .emergency-card {
+      background: #fff; border-radius: 12px; padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08); text-align: center;
+    }
+    .emergency-card .e-icon { font-size: 28px; margin-bottom: 8px; }
+    .emergency-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .emergency-card .e-num { font-size: 24px; font-weight: 800; color: #e53935; }
+    .emergency-card p { font-size: 12px; color: #888; margin-top: 4px; }
+
+    .med-section-title {
+      font-size: 18px; font-weight: 700; margin: 28px 0 16px;
+      padding-left: 12px; border-left: 4px solid #e53935; color: #1a1a2e;
+    }
+
+    .tip-box {
+      background: #e8f5e9; border-radius: 10px; padding: 14px 16px;
+      margin: 12px 0; font-size: 13px; color: #2e7d32; line-height: 1.7;
+    }
+    .tip-box i { margin-right: 6px; }
+  </style>
+</head>
+<body>
+
+<!-- 顶部公告栏 -->
+<div class="top-bar">
+  <div class="container">
+    <span><i class="fas fa-bullhorn"></i> <span data-i18n="medical.topbar">🏥 新增：吉隆坡中文医院导诊服务上线，外籍人士看病全程中文陪同</span></span>
+    <div class="top-bar-right">
+      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <span class="divider">|</span>
+      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- 主导航 -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html">
+        <span class="logo-icon">🌴</span>
+        <span class="logo-text">南洋通</span>
+        <span class="logo-sub">NanYangTong</span>
+      </a>
+    </div>
+    <div class="search-bar">
+      <div class="search-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <select>
+          <option data-i18n="country.my">马来西亚</option>
+          <option data-i18n="country.id">印度尼西亚</option>
+        </select>
+      </div>
+      <input type="text" data-i18n-placeholder="medical.search.placeholder" placeholder="搜索医院、科室、常见病..."/>
+      <button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
+    </div>
+    <div class="header-actions">
+      <a href="#consult" class="btn-publish"><i class="fas fa-phone-alt"></i> <span data-i18n="medical.consult.btn">预约导诊</span></a>
+    </div>
+  </div>
+  <nav class="sub-nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+        <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+        <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+        <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+        <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+        <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+        <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+        <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+        <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+        <li class="active"><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- 页面 Hero -->
+<div class="page-hero" style="background: linear-gradient(135deg, #c62828 0%, #e53935 50%, #ff7043 100%);">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav.home">首页</a>
+      <span>›</span>
+      <span data-i18n="nav.medical">医疗就医</span>
+    </div>
+    <h1><i class="fas fa-hospital-alt"></i> <span data-i18n="medical.page.title">外国人就医指南</span></h1>
+    <p data-i18n="medical.page.sub">马来西亚 · 印尼 | 医院推荐 · 就医流程 · 费用参考 · 紧急求助</p>
+  </div>
+</div>
+
+<!-- 主内容 -->
+<div class="page-content">
+  <div class="container">
+
+    <!-- 国家切换 Tab -->
+    <div class="med-type-tabs" style="margin-top: 24px;">
+      <button class="med-tab active" onclick="switchCountry('my', this)" data-i18n="medical.tab.my">🇲🇾 马来西亚</button>
+      <button class="med-tab" onclick="switchCountry('id', this)" data-i18n="medical.tab.id">🇮🇩 印度尼西亚</button>
+      <button class="med-tab" onclick="switchCountry('tips', this)" data-i18n="medical.tab.tips">💬 就医实用短语</button>
+      <button class="med-tab" onclick="switchCountry('insurance', this)" data-i18n="medical.tab.insurance">🛡️ 医疗保险</button>
+    </div>
+
+    <div class="listings-layout">
+      <div class="listings-main">
+
+        <!-- ━━━━━━━━ 马来西亚面板 ━━━━━━━━ -->
+        <div id="med-my" class="country-panel active">
+
+          <div class="alert-box info" style="margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong data-i18n="medical.my.intro.title">马来西亚医疗体系概述：</strong>
+              <span data-i18n="medical.my.intro.desc">马来西亚分公立（Government Hospital）和私立（Private Hospital）两套体系。公立医院面向本国公民收费极低，但外国人需按全价支付，且等候时间长；<strong>强烈建议外国人选择私立医院</strong>，服务好、英文流利、等待时间短，部分私立医院有中文服务台。</span>
+            </div>
+          </div>
+
+          <!-- 就医流程 -->
+          <h3 class="med-section-title" data-i18n="medical.my.flow.title">📋 马来西亚就医流程</h3>
+          <div class="med-steps">
+            <div class="med-step">
+              <div class="step-num">1</div>
+              <div class="step-title" data-i18n="medical.step1.title">选择医院</div>
+              <div class="step-desc" data-i18n="medical.step1.desc">私立医院为首选，急症直接去A&E（急诊）</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">2</div>
+              <div class="step-title" data-i18n="medical.step2.title">挂号登记</div>
+              <div class="step-desc" data-i18n="medical.step2.desc">带护照到前台登记，填写基本信息</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">3</div>
+              <div class="step-title" data-i18n="medical.step3.title">候诊就诊</div>
+              <div class="step-desc" data-i18n="medical.step3.desc">等待叫号，医生问诊，简单英语即可沟通</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">4</div>
+              <div class="step-title" data-i18n="medical.step4.title">检查/取药</div>
+              <div class="step-desc" data-i18n="medical.step4.desc">化验、影像检查或直接在医院药房取药</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">5</div>
+              <div class="step-title" data-i18n="medical.step5.title">结算缴费</div>
+              <div class="step-desc" data-i18n="medical.step5.desc">现金/信用卡/电子钱包均可，要保留收据</div>
+            </div>
+          </div>
+
+          <!-- 推荐医院 - 马来西亚 -->
+          <h3 class="med-section-title" data-i18n="medical.my.hosp.title">🏥 推荐私立医院（马来西亚）</h3>
+
+          <!-- 吉隆坡 -->
+          <h4 style="font-size:15px;font-weight:700;margin:16px 0 10px;color:#e53935;">📍 吉隆坡 Kuala Lumpur</h4>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#ffebee;"><i class="fas fa-hospital" style="color:#e53935;"></i></div>
+            <div class="hospital-info">
+              <h4>Pantai Hospital Kuala Lumpur</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Bangsar, Kuala Lumpur &nbsp;|&nbsp; <i class="fas fa-phone"></i> +603-2296-0888</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 中文服务</span>
+                <span>综合医院</span>
+                <span>心脏·肿瘤</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating">
+                <strong>⭐ 4.8</strong>
+                <span data-i18n="medical.hosp.recommend">强烈推荐，华人首选，有普通话/粤语医护人员</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#fff3e0;"><i class="fas fa-hospital" style="color:#f57c00;"></i></div>
+            <div class="hospital-info">
+              <h4>Gleneagles Hospital Kuala Lumpur</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Ampang, Kuala Lumpur &nbsp;|&nbsp; <i class="fas fa-phone"></i> +603-4255-2288</div>
+              <div class="hospital-tags">
+                <span>综合医院</span>
+                <span>骨科·妇产</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating">
+                <strong>⭐ 4.7</strong>
+                <span data-i18n="medical.hosp.intl">国际化程度高，英文沟通无障碍</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#e8f5e9;"><i class="fas fa-hospital" style="color:#2e7d32;"></i></div>
+            <div class="hospital-info">
+              <h4>KPJ Ampang Puteri Specialist Hospital</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Ampang, Kuala Lumpur &nbsp;|&nbsp; <i class="fas fa-phone"></i> +603-4270-2500</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 中文服务</span>
+                <span>妇产·儿科</span>
+                <span>内科·外科</span>
+              </div>
+              <div class="hospital-rating">
+                <strong>⭐ 4.6</strong>
+                <span data-i18n="medical.hosp.cost">收费合理，华人社区口碑佳</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 槟城 -->
+          <h4 style="font-size:15px;font-weight:700;margin:20px 0 10px;color:#e53935;">📍 槟城 Penang</h4>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#ffebee;"><i class="fas fa-hospital" style="color:#e53935;"></i></div>
+            <div class="hospital-info">
+              <h4>Penang Adventist Hospital</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Georgetown, Penang &nbsp;|&nbsp; <i class="fas fa-phone"></i> +604-222-7200</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 中文服务</span>
+                <span>综合医院</span>
+                <span>眼科·口腔</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.8</strong> <span>槟城华人首选，中文医护充足</span></div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#e3f2fd;"><i class="fas fa-hospital" style="color:#1565c0;"></i></div>
+            <div class="hospital-info">
+              <h4>Gleneagles Hospital Penang</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Georgetown, Penang &nbsp;|&nbsp; <i class="fas fa-phone"></i> +604-222-9111</div>
+              <div class="hospital-tags">
+                <span>心脏科·肿瘤</span>
+                <span>神经外科</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.7</strong> <span>专科实力强，医疗旅游知名目的地</span></div>
+            </div>
+          </div>
+
+          <!-- 就医费用参考 -->
+          <h3 class="med-section-title" data-i18n="medical.my.cost.title">💰 马来西亚就医费用参考（私立医院）</h3>
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th data-i18n="medical.cost.type">就诊类型</th>
+                <th data-i18n="medical.cost.fee">参考费用</th>
+                <th data-i18n="medical.cost.note">备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>普通门诊（GP）</td><td class="cost-highlight">RM 50–120</td><td>含基本药物</td></tr>
+              <tr><td>专科门诊</td><td class="cost-highlight">RM 150–400</td><td>视科室而定</td></tr>
+              <tr><td>急诊（A&E）</td><td class="cost-highlight">RM 200–500</td><td>含基本处置</td></tr>
+              <tr><td>住院（普通房）</td><td class="cost-highlight">RM 300–600/天</td><td>不含手术/化验</td></tr>
+              <tr><td>血液常规检验</td><td class="cost-highlight">RM 80–200</td><td>约3小时出结果</td></tr>
+              <tr><td>X光</td><td class="cost-highlight">RM 80–150</td><td>当天出报告</td></tr>
+              <tr><td>胃肠镜</td><td class="cost-highlight">RM 800–1,500</td><td>需预约麻醉</td></tr>
+              <tr><td>分娩（顺产）</td><td class="cost-highlight">RM 3,000–6,000</td><td>私立医院</td></tr>
+            </tbody>
+          </table>
+
+          <div class="tip-box">
+            <i class="fas fa-lightbulb"></i>
+            <strong>省钱小贴士：</strong>普通感冒发烧可先到 <strong>Klinik（社区诊所）</strong> 就诊，费用约 RM 30–60，无需预约，全马遍布，比私立医院经济实惠很多。
+          </div>
+
+          <!-- 紧急号码 -->
+          <h3 class="med-section-title" data-i18n="medical.my.emergency.title">🚨 马来西亚紧急联系</h3>
+          <div class="emergency-grid">
+            <div class="emergency-card">
+              <div class="e-icon">🚑</div>
+              <h4 data-i18n="medical.emergency.ambulance">救护车 / 急救</h4>
+              <div class="e-num">999</div>
+              <p>全国通用，24小时</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">👮</div>
+              <h4 data-i18n="medical.emergency.police">警察</h4>
+              <div class="e-num">999</div>
+              <p>医疗+警察+火警统一号</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">🏥</div>
+              <h4 data-i18n="medical.emergency.hotline">南洋通中文协助</h4>
+              <div class="e-num" style="font-size:18px;">400-888-2026</div>
+              <p>中文导诊·翻译·陪同</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">🇨🇳</div>
+              <h4 data-i18n="medical.emergency.embassy">中国驻马大使馆</h4>
+              <div class="e-num" style="font-size:18px;">+603-2163-7200</div>
+              <p>领事紧急协助</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ━━━━━━━━ 印尼面板 ━━━━━━━━ -->
+        <div id="med-id" class="country-panel">
+
+          <div class="alert-box info" style="margin-bottom: 20px;">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong data-i18n="medical.id.intro.title">印尼医疗体系概述：</strong>
+              <span data-i18n="medical.id.intro.desc">印尼医疗体系分为 Puskesmas（社区卫生中心）、RS（公立医院）、RS Swasta（私立医院）。外国人建议直接选择大城市的私立医院或国际医院，服务质量和英文沟通均有保障。雅加达和巴厘岛有多家专门服务外籍人士的国际医院。</span>
+            </div>
+          </div>
+
+          <!-- 就医流程 -->
+          <h3 class="med-section-title" data-i18n="medical.id.flow.title">📋 印尼就医流程</h3>
+          <div class="med-steps">
+            <div class="med-step">
+              <div class="step-num">1</div>
+              <div class="step-title">选医院</div>
+              <div class="step-desc">外国人选国际医院或大型私立医院</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">2</div>
+              <div class="step-title">挂号</div>
+              <div class="step-desc">凭护照登记，部分医院支持APP预约</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">3</div>
+              <div class="step-title">就诊</div>
+              <div class="step-desc">国际医院均有英文医护，部分有中文翻译</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">4</div>
+              <div class="step-title">检查取药</div>
+              <div class="step-desc">院内药房取药，化验结果当日可得</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">5</div>
+              <div class="step-title">缴费</div>
+              <div class="step-desc">现金/刷卡，外籍人士需预缴押金</div>
+            </div>
+          </div>
+
+          <!-- 推荐医院 - 印尼 -->
+          <h3 class="med-section-title" data-i18n="medical.id.hosp.title">🏥 推荐医院（印尼）</h3>
+
+          <h4 style="font-size:15px;font-weight:700;margin:16px 0 10px;color:#e53935;">📍 雅加达 Jakarta</h4>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#ffebee;"><i class="fas fa-hospital" style="color:#e53935;"></i></div>
+            <div class="hospital-info">
+              <h4>Siloam Hospitals ASRI Jakarta</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Kuningan, Jakarta Selatan &nbsp;|&nbsp; <i class="fas fa-phone"></i> +6221-502-9999</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 英文/中文</span>
+                <span>国际标准</span>
+                <span>综合医院</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.8</strong> <span>雅加达外籍人士首选，服务国际化</span></div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#e3f2fd;"><i class="fas fa-hospital" style="color:#1565c0;"></i></div>
+            <div class="hospital-info">
+              <h4>MRCCC Siloam Semanggi</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Semanggi, Jakarta &nbsp;|&nbsp; <i class="fas fa-phone"></i> +6221-2996-9999</div>
+              <div class="hospital-tags">
+                <span>肿瘤专科</span>
+                <span>心脏科</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.7</strong> <span>东南亚顶级肿瘤医疗中心</span></div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#e8f5e9;"><i class="fas fa-hospital" style="color:#2e7d32;"></i></div>
+            <div class="hospital-info">
+              <h4>RS Pondok Indah – Puri Indah</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Jakarta Barat &nbsp;|&nbsp; <i class="fas fa-phone"></i> +6221-2569-5200</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 中文服务</span>
+                <span>华人聚居区</span>
+                <span>综合医院</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.7</strong> <span>西雅加达华人区首选，有中文医护</span></div>
+            </div>
+          </div>
+
+          <h4 style="font-size:15px;font-weight:700;margin:20px 0 10px;color:#e53935;">📍 巴厘岛 Bali</h4>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#ffebee;"><i class="fas fa-hospital" style="color:#e53935;"></i></div>
+            <div class="hospital-info">
+              <h4>BIMC Hospital Kuta</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Kuta, Bali &nbsp;|&nbsp; <i class="fas fa-phone"></i> +62361-761-263</div>
+              <div class="hospital-tags">
+                <span class="green">✅ 中文服务</span>
+                <span>国际医院</span>
+                <span>急救·外科</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.9</strong> <span>巴厘岛外籍人士最信赖的国际医院</span></div>
+            </div>
+          </div>
+
+          <div class="hospital-card">
+            <div class="hospital-icon" style="background:#fff3e0;"><i class="fas fa-hospital" style="color:#f57c00;"></i></div>
+            <div class="hospital-info">
+              <h4>Siloam Hospitals Denpasar</h4>
+              <div class="hosp-loc"><i class="fas fa-map-marker-alt"></i> Denpasar, Bali &nbsp;|&nbsp; <i class="fas fa-phone"></i> +62361-779-900</div>
+              <div class="hospital-tags">
+                <span>综合医院</span>
+                <span>ICU·外科</span>
+                <span class="blue">支持保险直付</span>
+              </div>
+              <div class="hospital-rating"><strong>⭐ 4.6</strong> <span>登巴萨最大综合私立医院</span></div>
+            </div>
+          </div>
+
+          <!-- 印尼费用表 -->
+          <h3 class="med-section-title" data-i18n="medical.id.cost.title">💰 印尼就医费用参考（私立/国际医院）</h3>
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th data-i18n="medical.cost.type">就诊类型</th>
+                <th data-i18n="medical.cost.fee">参考费用</th>
+                <th data-i18n="medical.cost.note">备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>普通门诊（GP）</td><td class="cost-highlight">IDR 300K–600K</td><td>约 RM 90–180</td></tr>
+              <tr><td>专科门诊</td><td class="cost-highlight">IDR 500K–1.5M</td><td>约 RM 150–450</td></tr>
+              <tr><td>急诊（UGD）</td><td class="cost-highlight">IDR 800K–2M</td><td>含基本处置</td></tr>
+              <tr><td>住院（标准房）</td><td class="cost-highlight">IDR 800K–2M/天</td><td>国际医院更贵</td></tr>
+              <tr><td>血液常规检验</td><td class="cost-highlight">IDR 200K–500K</td><td>半天出结果</td></tr>
+              <tr><td>X光</td><td class="cost-highlight">IDR 200K–400K</td><td>当天出报告</td></tr>
+              <tr><td>胃镜</td><td class="cost-highlight">IDR 1.5M–3M</td><td>需预约</td></tr>
+              <tr><td>分娩（顺产）</td><td class="cost-highlight">IDR 8M–20M</td><td>国际医院约 RM 2,400–6,000</td></tr>
+            </tbody>
+          </table>
+
+          <div class="tip-box">
+            <i class="fas fa-lightbulb"></i>
+            <strong>注意：</strong>印尼部分医院要求外国患者<strong>预缴押金（Deposit）</strong>，金额从 IDR 2,000,000 起不等，出院时多退少补，请提前准备现金或信用卡。
+          </div>
+
+          <!-- 印尼紧急号码 -->
+          <h3 class="med-section-title" data-i18n="medical.id.emergency.title">🚨 印尼紧急联系</h3>
+          <div class="emergency-grid">
+            <div class="emergency-card">
+              <div class="e-icon">🚑</div>
+              <h4>救护车 / 急救</h4>
+              <div class="e-num">118</div>
+              <p>全国急救统一号码</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">👮</div>
+              <h4>警察</h4>
+              <div class="e-num">110</div>
+              <p>报警求助</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">🏥</div>
+              <h4>南洋通中文协助</h4>
+              <div class="e-num" style="font-size:18px;">400-888-2026</div>
+              <p>中文导诊·翻译·陪同</p>
+            </div>
+            <div class="emergency-card">
+              <div class="e-icon">🇨🇳</div>
+              <h4>中国驻印尼大使馆</h4>
+              <div class="e-num" style="font-size:18px;">+6221-5761-000</div>
+              <p>领事紧急协助</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ━━━━━━━━ 实用短语面板 ━━━━━━━━ -->
+        <div id="med-tips" class="country-panel">
+          <div class="alert-box success" style="margin-bottom:20px;">
+            <i class="fas fa-comment-dots"></i>
+            <div>以下短语在马来西亚（英语/马来语）和印尼（印尼语）均实用，出示手机屏幕给医护人员看即可！</div>
+          </div>
+
+          <h3 class="med-section-title">🗣️ 挂号/问诊常用语</h3>
+          <table class="phrase-table">
+            <thead><tr><th>中文</th><th>英语</th><th>马来语 (MY)</th><th>印尼语 (ID)</th></tr></thead>
+            <tbody>
+              <tr><td>我要看病</td><td>I need to see a doctor</td><td>Saya nak jumpa doktor</td><td>Saya ingin berobat</td></tr>
+              <tr><td>我发烧了</td><td>I have a fever</td><td>Saya demam</td><td>Saya demam</td></tr>
+              <tr><td>我头痛</td><td>I have a headache</td><td>Kepala saya sakit</td><td>Kepala saya sakit</td></tr>
+              <tr><td>我肚子痛</td><td>I have a stomachache</td><td>Perut saya sakit</td><td>Perut saya sakit</td></tr>
+              <tr><td>我咳嗽</td><td>I have a cough</td><td>Saya batuk</td><td>Saya batuk</td></tr>
+              <tr><td>我拉肚子</td><td>I have diarrhea</td><td>Saya cirit-birit</td><td>Saya diare</td></tr>
+              <tr><td>我过敏</td><td>I have an allergy</td><td>Saya ada alahan</td><td>Saya alergi</td></tr>
+              <tr><td>我对…过敏</td><td>I am allergic to…</td><td>Saya alah kepada…</td><td>Saya alergi terhadap…</td></tr>
+              <tr><td>我需要救护车</td><td>I need an ambulance</td><td>Saya perlu ambulans</td><td>Saya perlu ambulans</td></tr>
+              <tr><td>这里很痛（指部位）</td><td>It hurts here</td><td>Sakit di sini</td><td>Sakitnya di sini</td></tr>
+              <tr><td>我有保险</td><td>I have insurance</td><td>Saya ada insurans</td><td>Saya punya asuransi</td></tr>
+              <tr><td>可以刷卡吗？</td><td>Can I pay by card?</td><td>Boleh bayar dengan kad?</td><td>Bisa bayar pakai kartu?</td></tr>
+              <tr><td>请给我收据</td><td>Please give me a receipt</td><td>Tolong bagi resit</td><td>Tolong beri kuitansi</td></tr>
+              <tr><td>有中文医生吗？</td><td>Is there a Chinese-speaking doctor?</td><td>Ada doktor yang boleh berbahasa Cina?</td><td>Ada dokter yang bisa berbahasa Mandarin?</td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="med-section-title" style="margin-top:28px;">💊 常见药物中英对照</h3>
+          <table class="phrase-table">
+            <thead><tr><th>药物</th><th>英文名</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td>退烧药</td><td>Paracetamol / Panadol</td><td>最常用，成人500mg–1g/次</td></tr>
+              <tr><td>止痛药</td><td>Ibuprofen / Brufen</td><td>消炎止痛，饭后服用</td></tr>
+              <tr><td>止泻药</td><td>Imodium / Loperamide</td><td>急性腹泻首选</td></tr>
+              <tr><td>抗生素</td><td>Amoxicillin / Augmentin</td><td>需医生处方</td></tr>
+              <tr><td>抗过敏药</td><td>Loratadine / Claritin</td><td>过敏鼻炎/皮疹常用</td></tr>
+              <tr><td>止咳糖浆</td><td>Piriton Cough Syrup</td><td>止咳祛痰</td></tr>
+              <tr><td>口服补液盐</td><td>ORS / Hydralyte</td><td>腹泻后补充电解质</td></tr>
+              <tr><td>创可贴/消毒</td><td>Plaster / Betadine</td><td>药房直接购买</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ━━━━━━━━ 医疗保险面板 ━━━━━━━━ -->
+        <div id="med-insurance" class="country-panel">
+          <div class="insurance-notice">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>⚠️ 来东南亚前，务必购买医疗保险！</strong><br/>
+              马来西亚私立医院一次住院费用轻松超过 <strong>RM 10,000</strong>，印尼国际医院更可能高达 <strong>IDR 30,000,000+</strong>。没有保险，一场大病可能让你损失数万元人民币。
+            </div>
+          </div>
+
+          <h3 class="med-section-title">🛡️ 保险选购建议</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px;">
+            <div class="info-card" style="border-top:3px solid #e53935;">
+              <div class="info-card-icon" style="background:#ffebee;color:#e53935;"><i class="fas fa-plane-departure"></i></div>
+              <h4>出行前：旅行险</h4>
+              <p style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                短期旅行/商务（1–30天）首选。覆盖医疗、航班延误、行李丢失。<br/>
+                <strong>推荐：</strong>支付宝/微信"出境游保险"约 <span style="color:#e53935;">¥20–80/天</span>
+              </p>
+            </div>
+            <div class="info-card" style="border-top:3px solid #e53935;">
+              <div class="info-card-icon" style="background:#ffebee;color:#e53935;"><i class="fas fa-calendar-alt"></i></div>
+              <h4>长期居住：年度医疗险</h4>
+              <p style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                居住超过3个月务必购买。<br/>
+                <strong>推荐：</strong>AIA、Great Eastern、Prudential 当地保险<br/>
+                年保费约 <span style="color:#e53935;">RM 1,200–3,500</span>（含住院手术）
+              </p>
+            </div>
+            <div class="info-card" style="border-top:3px solid #e53935;">
+              <div class="info-card-icon" style="background:#ffebee;color:#e53935;"><i class="fas fa-briefcase"></i></div>
+              <h4>工作签持有者</h4>
+              <p style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                马来西亚：雇主必须为员工缴 <strong>SOCSO（社险）</strong>，建议另加医疗险。<br/>
+                印尼：雇主须缴 <strong>BPJS Ketenagakerjaan</strong>，外籍人士另需私人医疗险。
+              </p>
+            </div>
+          </div>
+
+          <h3 class="med-section-title">📋 就医时保险报销流程</h3>
+          <div class="med-steps">
+            <div class="med-step">
+              <div class="step-num">1</div>
+              <div class="step-title">告知保险</div>
+              <div class="step-desc">入院登记时告知有保险，询问是否支持 Direct Billing（直付）</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">2</div>
+              <div class="step-title">提供卡号</div>
+              <div class="step-desc">出示保险卡或 App 保险凭证，医院直接向保险公司扣款</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">3</div>
+              <div class="step-title">自付超额</div>
+              <div class="step-desc">超出保额部分自行支付，注意保单免赔额条款</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">4</div>
+              <div class="step-title">保留收据</div>
+              <div class="step-desc">所有收据、诊断书妥善保存，事后报销凭证</div>
+            </div>
+            <div class="med-step">
+              <div class="step-num">5</div>
+              <div class="step-title">线上申请</div>
+              <div class="step-desc">登录保险 App 或网页提交理赔，一般5–10工作日到账</div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <i class="fas fa-info-circle"></i>
+            <strong>重要提示：</strong>出发前务必确认保单的「<strong>境外医疗保障范围</strong>」，部分国内保险的境外条款有地区限制。建议同时购买国内出境险 + 当地年度医疗险双重保障。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <div class="sidebar-card" style="border-top:3px solid #e53935;" id="consult">
+          <h3>🏥 <span data-i18n="medical.sidebar.consult">预约中文导诊</span></h3>
+          <p style="font-size:13px;color:#666;margin-bottom:14px;" data-i18n="medical.sidebar.consult.desc">我们提供全程中文陪同就医服务：预约医生、翻译病情、协助缴费，让你在异乡看病不再迷茫。</p>
+          <a href="#" class="btn-apply" style="background:#e53935;"><i class="fas fa-phone-alt"></i> <span data-i18n="medical.sidebar.consult.btn">立即预约导诊</span></a>
+          <div style="text-align:center;font-size:12px;color:#999;margin-top:10px;" data-i18n="medical.sidebar.fee">服务费：RM 150 / IDR 600,000</div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>🚑 <span data-i18n="medical.sidebar.emergency">紧急求助</span></h3>
+          <ul style="font-size:13px;color:#555;line-height:2.4;">
+            <li>🇲🇾 马来西亚急救：<strong style="color:#e53935;">999</strong></li>
+            <li>🇮🇩 印尼急救：<strong style="color:#e53935;">118</strong></li>
+            <li>🇨🇳 中国驻马大使馆：<strong>+603-2163-7200</strong></li>
+            <li>🇨🇳 中国驻印尼大使馆：<strong>+6221-5761-000</strong></li>
+            <li>南洋通中文热线：<strong style="color:#2d9b5c;">400-888-2026</strong></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>💡 <span data-i18n="medical.sidebar.tips">就医小贴士</span></h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;">
+            <li>✅ 随身携带护照（就医必备）</li>
+            <li>✅ 提前备好常用药（感冒药、止泻）</li>
+            <li>✅ 保险卡/凭证截图存手机</li>
+            <li>✅ 保留所有收据以备报销</li>
+            <li>✅ 轻症首选 Klinik 社区诊所</li>
+            <li>⚠️ 避免找无照"中国游医"</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>🔗 <span data-i18n="medical.sidebar.related">相关页面</span></h3>
+          <ul style="font-size:13px;line-height:2.2;">
+            <li><a href="safety.html" style="color:#e53935;"><i class="fas fa-shield-alt"></i> 防骗安全指南</a></li>
+            <li><a href="bank.html#insurance" style="color:#e53935;"><i class="fas fa-umbrella"></i> 保险推荐</a></li>
+            <li><a href="services.html" style="color:#e53935;"><i class="fas fa-language"></i> 中文翻译服务</a></li>
+            <li><a href="community.html" style="color:#e53935;"><i class="fas fa-users"></i> 华人互助社区</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script>
+function switchCountry(panel, btn) {
+  document.querySelectorAll('.country-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.med-tab').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('med-' + panel);
+  if (el) el.classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

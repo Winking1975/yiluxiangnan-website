@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>酒店住宿 - 南洋通 | Hotels - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .region-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
+    .region-card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.07); border-top:3px solid; }
+    .region-card h4 { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .region-card p { font-size:12px; color:#666; line-height:1.7; }
+    .region-badge { display:inline-block; font-size:11px; padding:2px 8px; border-radius:20px; margin-bottom:8px; }
+    .platform-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+    .hotel-platform-card { background:#fff; border-radius:10px; padding:16px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.07); border-top:3px solid; }
+    .hotel-platform-card .logo { font-size:28px; margin-bottom:8px; }
+    .hotel-platform-card .name { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .hotel-platform-card .desc { font-size:12px; color:#666; line-height:1.6; margin-bottom:10px; }
+    .share-card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.07); margin-bottom:14px; }
+    .share-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .share-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:#fff; flex-shrink:0; }
+    .share-platform-tag { font-size:11px; color:#999; background:#f5f5f5; padding:2px 8px; border-radius:10px; }
+    .share-content { font-size:13px; color:#444; line-height:1.9; }
+    .share-content .hl { color:#e74c3c; font-weight:600; }
+    .share-stats { display:flex; gap:16px; margin-top:10px; font-size:12px; color:#999; }
+    .area-tip { background:#fff8e1; border-radius:10px; padding:14px; border-left:4px solid #f9a825; margin-bottom:10px; font-size:13px; color:#555; line-height:1.8; }
+    @media(max-width:768px){
+      .region-grid,.platform-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">本周特惠：吉隆坡四星酒店低至RM 180/晚，含早餐！</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">南洋通</span><span class="logo-sub">NanYangTong</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索酒店、区域、景点附近..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="#" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布房源</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li class="active"><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#f57c00,#bf360c);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.hotel">酒店住宿</span></div>
+    <h1><i class="fas fa-hotel"></i> <span data-i18n="hotel.page.title">酒店 &amp; 住宿</span></h1>
+    <p data-i18n="hotel.page.sub">精选华人聚集区酒店 · 中文客服 · 含接送机 · 性价比推荐</p>
+  </div>
+</div>
+
+<!-- 搜索栏 -->
+<section style="background:#fff;padding:24px 0;border-bottom:1px solid #eee;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end;background:#fff8e1;border-radius:12px;padding:20px;">
+      <div>
+        <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="hotel.search.where">目的地/酒店名</label>
+        <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+          <i class="fas fa-map-marker-alt" style="color:#f57c00;margin-right:8px;"></i>吉隆坡 KLCC 区域
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="hotel.search.checkin">入住日期</label>
+        <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+          <i class="fas fa-calendar" style="color:#f9a825;margin-right:8px;"></i>2026-03-20
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="hotel.search.checkout">退房日期</label>
+        <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+          <i class="fas fa-calendar" style="color:#f9a825;margin-right:8px;"></i>2026-03-27
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="hotel.room.guests">房间/人数</label>
+        <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+          <i class="fas fa-bed" style="color:#9c27b0;margin-right:8px;"></i><span data-i18n="hotel.1room.2guest">1间 · 2位成人</span>
+        </div>
+      </div>
+      <button class="search-btn" style="border-radius:8px;padding:10px 24px;height:42px;"><i class="fas fa-search"></i> <span data-i18n="hotel.search2">搜索</span></button>
+    </div>
+  </div>
+</section>
+
+<div class="page-content">
+  <div class="container">
+    <div class="listings-layout">
+      <div class="listings-main">
+
+        <!-- 区域选择指南 -->
+        <h2 class="section-h2" style="margin-bottom:12px;"><i class="fas fa-map-marked-alt" style="color:#f57c00;"></i> <span data-i18n="hotel.kl.region.title">吉隆坡住宿区域选择指南</span></h2>
+        <div class="area-tip"><strong>💡 新手建议：</strong>首次来KL，推荐住在 <strong>武吉免登（Bukit Bintang）</strong> 或 <strong>KLCC 区域</strong>，交通方便，华人多，中餐丰富，Grab打车也容易叫到。</div>
+        <div class="region-grid">
+          <div class="region-card" style="border-color:#e74c3c;">
+            <span class="region-badge" style="background:#fff5f5;color:#c62828;">🔥 最热门</span>
+            <h4>KLCC / 武吉免登</h4>
+            <p>双子塔旁边，购物中心密集，美食选择多，Grab随叫随到。中档酒店RM 180–300/晚，高档RM 400+</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合旅游短住</span></div>
+          </div>
+          <div class="region-card" style="border-color:#1976d2;">
+            <span class="region-badge" style="background:#e3f2fd;color:#1565c0;">🏢 商务首选</span>
+            <h4>KL Sentral 交通枢纽</h4>
+            <p>地铁/机场快铁/轻轨三线交汇，交通极度便利。建筑新，酒店选择多，RM 200–350/晚</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合商务往来</span></div>
+          </div>
+          <div class="region-card" style="border-color:#2d9b5c;">
+            <span class="region-badge" style="background:#e8f5e9;color:#1b5e20;">🇨🇳 华人聚集</span>
+            <h4>Chow Kit 茨厂街附近</h4>
+            <p>KL唐人街，中餐馆遍地，菜市场齐全，语言无障碍。价格实惠，RM 80–150/晚，适合长住</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合长期居住</span></div>
+          </div>
+          <div class="region-card" style="border-color:#9c27b0;">
+            <span class="region-badge" style="background:#f3e5f5;color:#7b1fa2;">🏡 高档住宅</span>
+            <h4>Mont Kiara 孟沙</h4>
+            <p>吉隆坡最高档外籍人士聚居区，国际学校多，环境安静，日本人/韩国人/中国人多，RM 300–600</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合携家带口</span></div>
+          </div>
+          <div class="region-card" style="border-color:#f9a825;">
+            <span class="region-badge" style="background:#fff8e1;color:#f57f17;">🎓 学生圈</span>
+            <h4>Sunway / Subang</h4>
+            <p>大学城，泰莱/Sunway大学附近，学生多，餐厅丰富，价格实惠，适合留学生，RM 80–180</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合留学/实习</span></div>
+          </div>
+          <div class="region-card" style="border-color:#00838f;">
+            <span class="region-badge" style="background:#e0f7fa;color:#006064;">🛫 机场附近</span>
+            <h4>KLIA / KLIA2 机场区</h4>
+            <p>适合中转旅客，避免长途通勤。Tune Hotel KLIA2就在机场楼内，RM 100–200/晚</p>
+            <div style="margin-top:8px;font-size:12px;"><span style="color:#2d9b5c;">✅ 适合中转过夜</span></div>
+          </div>
+        </div>
+
+        <!-- 精选酒店 -->
+        <h2 class="section-h2" style="margin-bottom:14px;"><i class="fas fa-hotel"></i> 🇲🇾 <span data-i18n="hotel.kl.recommended">精选吉隆坡酒店推荐</span></h2>
+        <div class="section-header-row" style="margin-bottom:14px;">
+          <div class="sort-bar"><button class="sort-btn active" data-i18n="hotel.sort.recommended">综合推荐</button><button class="sort-btn" data-i18n="hotel.sort.price">价格低→高</button><button class="sort-btn" data-i18n="hotel.sort.rating">好评优先</button></div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#1976d2,#0d47a1);">
+            <span class="hotel-star">★★★★★</span>
+            <span class="hotel-tag">含早餐</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">吉隆坡希尔顿酒店 Hilton KL</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> KL Sentral · 距KLCC 3km</p>
+                <div class="hotel-tags"><span>免费WiFi</span><span>泳池</span><span>健身房</span><span>中文前台</span><span>接送机</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">RM 450</div>
+                <div style="font-size:12px;color:#999;">/晚·含税</div>
+                <a href="https://www.hilton.com" target="_blank" class="btn-sm" style="margin-top:8px;display:inline-block;">立即预订</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;line-height:1.6;">毗邻KL Sentral交通枢纽，地铁直达双子塔，设有中餐厅及中文服务，酒店接送机RM 80。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#2d9b5c;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">9.2 极好</span>
+              <span>1,240条评价</span>
+              <span style="color:#f57c00;font-weight:700;">今日剩余4间</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a);">
+            <span class="hotel-star">★★★★</span>
+            <span class="hotel-tag">华人推荐</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">Dorsett Kuala Lumpur</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Bukit Bintang · 武吉免登核心</p>
+                <div class="hotel-tags"><span>中文服务</span><span>近购物中心</span><span>免费WiFi</span><span>粤语员工</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">RM 220</div>
+                <div style="font-size:12px;color:#999;">/晚·含税</div>
+                <a href="https://www.dorsetthotels.com" target="_blank" class="btn-sm" style="margin-top:8px;display:inline-block;">立即预订</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;">香港品牌连锁酒店，中文/粤语服务一流，华人热门聚集区，步行5分钟到Pavilion购物中心，性价比极高。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#2d9b5c;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">8.8 很好</span>
+              <span>890条评价</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#9c27b0,#6a1b9a);">
+            <span class="hotel-star">★★★★</span>
+            <span class="hotel-tag">长住优选</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">G Residence KLCC</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> KLCC · 双子塔对面</p>
+                <div class="hotel-tags"><span>全套厨房</span><span>洗衣机</span><span>双子塔景</span><span>长住优惠</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">RM 180</div>
+                <div style="font-size:12px;color:#999;">/晚（月租更优惠）</div>
+                <a href="#" class="btn-sm" style="margin-top:8px;display:inline-block;">咨询月租</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;">服务式公寓酒店，带厨房可自己做饭，月租比日租省40%。适合来KL工作、留学、长住的华人。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#2d9b5c;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">8.6 很好</span>
+              <span>620条评价</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#f57c00,#e65100);">
+            <span class="hotel-star">★★★</span>
+            <span class="hotel-tag">经济之选</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">Tune Hotel KLIA2</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> KLIA2机场内 · 零距离</p>
+                <div class="hotel-tags"><span>机场直连</span><span>免费WiFi</span><span>24h前台</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">RM 120</div>
+                <div style="font-size:12px;color:#999;">/晚·含税</div>
+                <a href="https://www.tunehotels.com" target="_blank" class="btn-sm" style="margin-top:8px;display:inline-block;">立即预订</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;">中转旅客首选，位于KLIA2航站楼内，凌晨抵达或早班出发的理想选择。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#f9a825;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">8.1 好</span>
+              <span>3,210条评价</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 巴厘岛酒店 -->
+        <h2 class="section-h2" style="margin-top:32px;margin-bottom:14px;"><i class="fas fa-umbrella-beach" style="color:#2d9b5c;"></i> 🇮🇩 <span data-i18n="hotel.bali.title">巴厘岛精选酒店</span></h2>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#00838f,#004d40);">
+            <span class="hotel-star">★★★★★</span>
+            <span class="hotel-tag">无边泳池</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">The Layar Private Villas Seminyak</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> 巴厘岛水明漾 · 私人别墅</p>
+                <div class="hotel-tags"><span>私人泳池</span><span>管家服务</span><span>含早+晚餐</span><span>中文服务</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">IDR 2,800,000</div>
+                <div style="font-size:12px;color:#999;">/晚·约¥1,260</div>
+                <a href="https://www.booking.com" target="_blank" class="btn-sm" style="margin-top:8px;display:inline-block;">立即预订</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;">蜜月/度假最佳选择，私人泳池+专属管家，中文员工协助安排行程，性价比远超同类三亚/普吉岛。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#2d9b5c;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">9.5 完美</span>
+              <span>840条评价</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hotel-card">
+          <div class="hotel-img" style="background:linear-gradient(135deg,#f57c00,#bf360c);">
+            <span class="hotel-star">★★★★</span>
+            <span class="hotel-tag">🔥 性价比</span>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-top">
+              <div>
+                <h3 class="hotel-name">Kuta Beach Club Resort Bali</h3>
+                <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> 巴厘岛库塔海滩</p>
+                <div class="hotel-tags"><span>海景房</span><span>无边泳池</span><span>中文导游</span><span>含早</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:22px;font-weight:800;color:#e74c3c;">IDR 850,000</div>
+                <div style="font-size:12px;color:#999;">/晚·约¥380</div>
+                <a href="https://www.agoda.com" target="_blank" class="btn-sm" style="margin-top:8px;display:inline-block;">立即预订</a>
+              </div>
+            </div>
+            <div style="font-size:13px;color:#666;margin-top:8px;">巴厘岛性价比之王，海景无边泳池，中文服务，距库塔海滩仅200米。含早餐，早上可看日出。</div>
+            <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:13px;color:#666;">
+              <span style="background:#2d9b5c;color:#fff;padding:3px 10px;border-radius:6px;font-weight:700;">9.0 极好</span>
+              <span>2,105条评价</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 订房平台对比 -->
+        <h2 class="section-h2" style="margin-top:32px;margin-bottom:16px;"><i class="fas fa-mobile-alt" style="color:#9c27b0;"></i> <span data-i18n="hotel.platforms.title">推荐订房平台对比</span></h2>
+        <div class="platform-row">
+          <div class="hotel-platform-card" style="border-color:#003580;">
+            <div class="logo">🏨</div>
+            <div class="name" style="color:#003580;">Booking.com</div>
+            <div class="desc">全球最大酒店预订平台，价格透明，免费取消政策多，支持人民币付款</div>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">✅ 免费取消 ✅ 中文界面</div>
+            <a href="https://www.booking.com" target="_blank" style="color:#003580;font-weight:600;font-size:13px;">booking.com →</a>
+          </div>
+          <div class="hotel-platform-card" style="border-color:#e74c3c;">
+            <div class="logo">🏩</div>
+            <div class="name" style="color:#e74c3c;">Agoda</div>
+            <div class="desc">亚洲酒店专家，东南亚价格经常比Booking便宜，华人旅客最常用</div>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">✅ 亚洲最低价 ✅ 中文</div>
+            <a href="https://www.agoda.com" target="_blank" style="color:#e74c3c;font-weight:600;font-size:13px;">agoda.com →</a>
+          </div>
+          <div class="hotel-platform-card" style="border-color:#f9a825;">
+            <div class="logo">✈️</div>
+            <div class="name" style="color:#f9a825;">携程 Ctrip</div>
+            <div class="desc">国内用户最友好，支持支付宝/微信/信用卡，中文客服，可打包机票+酒店</div>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">✅ 支付宝 ✅ 中文客服</div>
+            <a href="https://hotels.ctrip.com" target="_blank" style="color:#f9a825;font-weight:600;font-size:13px;">携程酒店 →</a>
+          </div>
+        </div>
+
+        <!-- 网友经验 -->
+        <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-comments" style="color:#e91e63;"></i> <span data-i18n="hotel.share.title">网友住宿真实经验分享</span></h2>
+        <div id="hotel-community-container" style="margin-bottom:32px;"></div>
+
+      </div>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <div class="sidebar-card" style="border-top:3px solid #f57c00;">
+          <h3>🏨 <span data-i18n="hotel.sidebar.rules">订房须知</span></h3>
+          <ul style="font-size:13px;color:#555;line-height:2;">
+            <li>✅ 入住必须出示护照原件</li>
+            <li>✅ 部分酒店需信用卡预授权押金</li>
+            <li>✅ 提前确认取消政策（免费/收费）</li>
+            <li>✅ 长住7天以上可谈月租优惠</li>
+            <li>✅ 中文酒店提前发微信更顺畅</li>
+            <li>✅ 含税金价格注意6%服务税</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <h3>💰 <span data-i18n="hotel.sidebar.price">价格参考</span></h3>
+          <div style="font-size:13px;color:#555;line-height:2.2;">
+            <p><strong>经济型（★★★）</strong><br/>RM 80–150/晚 (≈¥130-250)</p>
+            <p><strong>舒适型（★★★★）</strong><br/>RM 200–350/晚 (≈¥330-580)</p>
+            <p><strong>豪华型（★★★★★）</strong><br/>RM 400–800+/晚 (≈¥660-1,330)</p>
+            <p style="font-size:12px;color:#999;margin-top:4px;">1 RM ≈ ¥1.65（参考汇率）</p>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>🚗 <span data-i18n="hotel.sidebar.transfer">机场接送服务</span></h3>
+          <p style="font-size:13px;color:#666;margin-bottom:14px;" data-i18n="hotel.sidebar.transfer">专业司机，中文沟通，全程举牌接机</p>
+          <div style="font-size:13px;color:#555;line-height:2;">
+            <p>KLIA → 市区：RM 70–100</p>
+            <p>KLIA2 → 市区：RM 70–100</p>
+            <p>24小时随时预约</p>
+          </div>
+          <a href="#" class="btn-apply" style="margin-top:12px;" data-i18n="hotel.sidebar.book.transfer">预约接送机</a>
+        </div>
+        <div class="sidebar-card">
+          <h3>📍 <span data-i18n="hotel.sidebar.bali.area">巴厘岛区域</span></h3>
+          <div style="font-size:13px;color:#555;line-height:2.2;">
+            <p><strong>库塔 Kuta</strong> — 热闹，适合背包客</p>
+            <p><strong>水明漾 Seminyak</strong> — 高档，适合度假</p>
+            <p><strong>乌布 Ubud</strong> — 文艺，适合静修</p>
+            <p><strong>努沙杜瓦 Nusa Dua</strong> — 安全，适合家庭</p>
+            <p><strong>金巴兰 Jimbaran</strong> — 海鲜，适合浪漫</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="flight.html" data-i18n="nav.flight">机票预订</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+<link rel="stylesheet" href="css/community.css">
+<script src="js/community.js"></script>
+<script>
+// hotel.html 社区帖子数据
+window.NYT_POSTS = [
+  {
+    id: 'hotel_1',
+    author: '吉隆坡生活2年',
+    avatarColor: 'linear-gradient(135deg,#2d9b5c,#1a6b3a)',
+    content: '来马来西亚工作的朋友注意！短住推荐武吉免登，长住强烈推荐孟沙。孟沙虽然贵一些，但环境特别好，到处都是国际超市（Cold Storage / Village Grocer），有专门卖中国食品的店，中文很通，很多中国人/台湾人/新加坡华人都住那里。\n\n订房的话，Agoda通常比Booking.com便宜10-20%，亚洲的酒店Agoda比较有优势。另外如果打算住超过7天，直接联系酒店谈月租，比网上便宜很多，我就这样谈下来了每月RM 3,500的服务公寓。',
+    category: '马来西亚住宿',
+    timestamp: new Date('2026-01-08').getTime(),
+    likes: 318
+  },
+  {
+    id: 'hotel_2',
+    author: '蜜月去巴厘岛',
+    avatarColor: 'linear-gradient(135deg,#e74c3c,#c62828)',
+    content: '巴厘岛蜜月真的超值！我们在Seminyak订了带私人泳池的别墅，一晚才¥800，比三亚同档次便宜60%！\n\n给大家几个巴厘岛住宿小贴士：\n1. 库塔（Kuta）热闹但乱，新婚/浪漫出行不推荐，推荐水明漾或乌布\n2. 订私人别墅一定要在Agoda或Booking上看真实评价，别被图片骗了\n3. 入住前确认有没有普通话服务，好的别墅都配中文管家\n4. 巴厘岛旺季（7-8月和12月）提前2-3个月订，淡季随时订也不贵',
+    category: '印尼住宿',
+    timestamp: new Date('2025-12-25').getTime(),
+    likes: 1240
+  },
+  {
+    id: 'hotel_3',
+    author: 'KL商务常旅客',
+    avatarColor: 'linear-gradient(135deg,#1976d2,#0d47a1)',
+    content: '在KL出差半年，总结几个实用经验：\n\nDorsett KL是我心中马来最适合华人的酒店——香港品牌，中文服务好，位置在武吉免登核心，步行就能去Pavilion和KLCC，价格RM 200左右，比希尔顿实惠很多。\n\n另外要注意：KL的酒店普遍不含早餐，不要被"含早"价格误导，先对比净价。附近随便一家华人早茶才RM 10-15，CP值更高。还有马来西亚酒店习惯收押金（credit card hold），通常是RM 200–500，退房时会退还，别担心。',
+    category: '马来西亚住宿',
+    timestamp: new Date('2025-11-10').getTime(),
+    likes: 523
+  },
+  {
+    id: 'hotel_4',
+    author: '背包客小王',
+    avatarColor: 'linear-gradient(135deg,#f9a825,#e65100)',
+    content: '在槟城住了5家青旅，分享一个宝藏：Lebuh Chulia街上的Old Town Heritage Hostel，老板是华人，会说中文，每晚只要RM 40，床位宽敞干净，还有免费早餐！\n\n⚠️ 注意：马来西亚青旅比较干净，但记得自备洗漱用品和拖鞋，很多地方不提供。另外住青旅最好带个旅行锁，晚上锁柜子防盗。',
+    category: '马来西亚住宿',
+    timestamp: new Date('2025-10-05').getTime(),
+    likes: 89
+  }
+];
+
+// 初始化社区模块
+document.addEventListener('DOMContentLoaded', function() {
+  CommunityApp.init('hotel-community-container', window.NYT_POSTS);
+});
+</script>
+</body>
+</html>

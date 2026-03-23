@@ -1,0 +1,282 @@
+/* ===== 子页面通用扩展样式 ===== */
+
+/* 筛选栏 */
+.filter-section {
+  background: #fff;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 108px;
+  z-index: 100;
+}
+.filter-bar { display: flex; flex-direction: column; gap: 12px; }
+.filter-tabs { display: flex; gap: 10px; }
+.filter-tab {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 20px; border: 1.5px solid var(--border);
+  border-radius: 50px; background: transparent;
+  cursor: pointer; font-size: 14px; font-weight: 600;
+  color: var(--text-light); transition: var(--transition);
+}
+.filter-tab.active { border-color: var(--primary); color: var(--primary); background: #f0faf5; }
+.filter-tab:hover:not(.active) { border-color: var(--primary); }
+.filter-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.filter-select {
+  padding: 8px 14px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: 13px; background: #fff;
+  cursor: pointer; outline: none; transition: var(--transition);
+}
+.filter-select:focus { border-color: var(--primary); }
+.btn-filter-search {
+  background: var(--primary); color: #fff;
+  padding: 8px 20px; border: none; border-radius: 8px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: var(--transition);
+}
+.btn-filter-search:hover { background: var(--primary-dark); }
+
+/* 布局：主内容+侧边栏 */
+.listings-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+.listings-main { min-width: 0; }
+
+/* 章节标题行 */
+.section-header-row {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 16px;
+}
+.section-h2 {
+  font-size: 20px; font-weight: 700; color: var(--text);
+}
+.section-h2 i { margin-right: 8px; }
+.count-badge {
+  font-size: 13px; color: var(--text-light);
+  font-weight: 400; margin-left: 8px;
+}
+.sort-bar { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-light); }
+.sort-btn {
+  padding: 4px 12px; border: 1px solid var(--border);
+  border-radius: 50px; background: transparent;
+  cursor: pointer; font-size: 12px; transition: var(--transition);
+}
+.sort-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* 房源卡片 */
+.listing-card {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); overflow: hidden;
+  display: flex; margin-bottom: 14px;
+  transition: var(--transition); cursor: pointer;
+}
+.listing-card:hover { border-color: var(--primary); box-shadow: var(--shadow-hover); }
+.listing-imgs { width: 160px; flex-shrink: 0; }
+.listing-img-main {
+  height: 100%; min-height: 120px;
+  position: relative; display: flex;
+  align-items: flex-start; padding: 10px;
+  gap: 6px; flex-direction: column;
+}
+.listing-label {
+  background: rgba(0,0,0,0.65); color: #fff;
+  font-size: 11px; padding: 3px 8px; border-radius: 4px;
+}
+.listing-badge {
+  background: var(--secondary); color: #333;
+  font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 600;
+}
+.listing-badge.cn-owner { background: #c8e6c9; color: #1b5e20; }
+.listing-body { padding: 14px; flex: 1; min-width: 0; }
+.listing-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.listing-title { font-size: 15px; font-weight: 700; flex: 1; margin-right: 10px; }
+.listing-price { font-size: 18px; font-weight: 800; color: var(--danger); white-space: nowrap; }
+.listing-tags { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--text-light); margin-bottom: 8px; }
+.listing-tags i { color: var(--primary); margin-right: 3px; }
+.listing-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 10px; }
+.listing-footer { display: flex; align-items: center; justify-content: space-between; }
+.listing-time { font-size: 12px; color: #bbb; }
+.listing-time i { margin-right: 4px; }
+
+/* 车辆卡片 */
+.car-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.car-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+.car-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.car-img {
+  height: 140px; display: flex; align-items: center;
+  justify-content: center; position: relative;
+}
+.car-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(255,255,255,0.9); color: var(--text);
+  font-size: 11px; padding: 3px 10px; border-radius: 50px; font-weight: 700;
+}
+.car-info { padding: 14px; }
+.car-info h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.car-info p { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+.car-info p i { color: var(--danger); margin-right: 4px; }
+.car-features { display: flex; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--text-light); margin-bottom: 12px; }
+.car-features i { color: var(--primary); margin-right: 3px; }
+.car-footer { display: flex; justify-content: space-between; align-items: center; }
+.car-price { font-size: 18px; font-weight: 800; color: var(--danger); }
+.car-price small { font-size: 12px; font-weight: 400; color: var(--text-light); }
+
+/* 机票卡片 */
+.flight-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 16px; border: 1.5px solid var(--border);
+  transition: var(--transition);
+}
+.flight-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+.flight-route { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.flight-city { text-align: center; }
+.flight-code { font-size: 22px; font-weight: 800; color: var(--text); }
+.flight-name { font-size: 12px; color: var(--text-light); }
+.flight-arrow { text-align: center; color: var(--text-light); font-size: 18px; flex: 1; }
+.flight-info { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-light); }
+
+/* 酒店卡片 */
+.hotel-card {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); overflow: hidden;
+  display: flex; margin-bottom: 16px;
+  transition: var(--transition);
+}
+.hotel-card:hover { border-color: var(--primary); box-shadow: var(--shadow-hover); }
+.hotel-img {
+  width: 200px; flex-shrink: 0;
+  position: relative; display: flex;
+  align-items: flex-start; flex-direction: column;
+  padding: 10px; gap: 6px;
+}
+.hotel-star { background: rgba(0,0,0,0.6); color: #ffd700; font-size: 11px; padding: 3px 8px; border-radius: 4px; }
+.hotel-tag { background: var(--secondary); color: #333; font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+.hotel-body { padding: 16px; flex: 1; }
+.hotel-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+.hotel-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.hotel-loc { font-size: 12px; color: var(--text-light); margin-bottom: 8px; }
+.hotel-loc i { color: var(--danger); margin-right: 4px; }
+.hotel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hotel-tags span { font-size: 11px; background: var(--bg-light); color: var(--text-light); padding: 2px 8px; border-radius: 50px; border: 1px solid var(--border); }
+
+/* 信息卡片 */
+.info-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.info-card h4 { font-size: 15px; font-weight: 700; }
+.info-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 12px;
+}
+
+/* 银行表格 */
+.bank-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+.bank-table th {
+  background: #fff8e1; padding: 10px 12px;
+  text-align: left; font-weight: 700;
+  border-bottom: 2px solid #ffe0b2;
+}
+.bank-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.bank-table tr:hover td { background: #fafafa; }
+
+/* 服务分类按钮 */
+.svc-cat-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border: 1.5px solid var(--border);
+  border-radius: 50px; background: var(--white);
+  cursor: pointer; font-size: 13px; font-weight: 600;
+  color: var(--text-light); transition: var(--transition);
+}
+.svc-cat-btn.active,
+.svc-cat-btn:hover {
+  border-color: var(--primary); color: var(--primary); background: #f0faf5;
+}
+.svc-cat-btn i { font-size: 14px; }
+
+/* 服务分类组 */
+.svc-group { margin-bottom: 36px; }
+.svc-group-title {
+  font-size: 20px; font-weight: 700; margin-bottom: 16px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--border);
+}
+
+/* 生活服务小卡片 */
+.life-svc-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 16px; text-align: center; border: 1px solid var(--border);
+  cursor: pointer; transition: var(--transition);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.life-svc-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow); }
+.life-svc-card i { font-size: 26px; color: var(--primary); }
+.life-svc-card span { font-size: 13px; font-weight: 700; }
+.life-svc-card small { font-size: 11px; color: var(--text-light); }
+
+/* 社区帖子 */
+.post-card {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 18px;
+  margin-bottom: 14px; transition: var(--transition);
+}
+.post-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+.post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.post-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 15px; font-weight: 800; flex-shrink: 0;
+}
+.post-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; }
+.post-author { font-weight: 700; color: var(--text); }
+.post-cat { padding: 2px 10px; border-radius: 50px; font-size: 11px; font-weight: 600; }
+.exp-cat { background: #e8f5e9; color: #2d9b5c; }
+.qa-cat { background: #e3f2fd; color: #1976d2; }
+.warn-cat { background: #ffebee; color: #c62828; }
+.event-cat { background: #f3e5f5; color: #9c27b0; }
+.post-time { color: var(--text-light); }
+.post-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.45; }
+.post-excerpt { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 12px; }
+.post-footer { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-light); flex-wrap: wrap; }
+.post-footer i { margin-right: 4px; }
+.post-tag {
+  padding: 2px 10px; border-radius: 50px; font-size: 11px;
+  font-weight: 700; background: #fff3e0; color: #f57c00;
+  border: 1px solid #ffe0b2;
+}
+.post-tag.hot { background: #ffebee; color: var(--danger); border-color: #ffcdd2; }
+.post-tag.qa-solved { background: #e8f5e9; color: #2d9b5c; border-color: #c8e6c9; }
+.post-tag.event-tag { background: #f3e5f5; color: #9c27b0; border-color: #e1bee7; }
+
+/* 快速统计数据块 */
+.quick-stat {
+  background: var(--white); border-radius: var(--radius);
+  padding: 20px; text-align: center; border: 1px solid var(--border);
+}
+
+/* 卡片区段 */
+.card-section {
+  background: var(--white); border-radius: var(--radius);
+  padding: 24px; box-shadow: var(--shadow); margin-bottom: 24px;
+}
+
+/* 响应式扩展 */
+@media (max-width: 900px) {
+  .listings-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .listing-card { flex-direction: column; }
+  .listing-imgs { width: 100%; height: 160px; }
+  .hotel-card { flex-direction: column; }
+  .hotel-img { width: 100%; height: 160px; }
+  .car-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .filter-row { flex-direction: column; }
+  .filter-select, .btn-filter-search { width: 100%; }
+  .section-header-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

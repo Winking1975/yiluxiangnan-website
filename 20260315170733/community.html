@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>华人社区 - 南洋通 | Community - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">社区新帖：《我在KL两年的真实经历》，获赞2,000+！</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">南洋通</span><span class="logo-sub">NanYangTong</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索帖子、攻略、问答..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="#" class="btn-publish"><i class="fas fa-pen"></i> <span data-i18n="community.post">发帖</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li class="active"><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#388e3c,#1b5e20);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.community">华人社区</span></div>
+    <h1><i class="fas fa-users"></i> <span data-i18n="community.page.title">华人社区</span></h1>
+    <p data-i18n="community.page.sub">分享经验 · 互帮互助 · 防骗预警 · 活动聚会</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <div class="listings-layout">
+      <div class="listings-main">
+
+        <!-- 板块分类 -->
+        <div class="visa-type-tabs" style="margin-bottom:20px;">
+          <button class="visa-type-tab active" onclick="switchCom('all',this)"><i class="fas fa-th"></i> <span data-i18n="services.filter.all">全部</span></button>
+          <button class="visa-type-tab" onclick="switchCom('exp',this)"><i class="fas fa-comment-dots"></i> <span data-i18n="community.tab.exp">经验分享</span></button>
+          <button class="visa-type-tab" onclick="switchCom('qa',this)"><i class="fas fa-question-circle"></i> <span data-i18n="community.tab.qa">问答互助</span></button>
+          <button class="visa-type-tab" onclick="switchCom('warn',this)"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="community.tab.safety">防骗预警</span></button>
+          <button class="visa-type-tab" onclick="switchCom('event',this)"><i class="fas fa-calendar-alt"></i> <span data-i18n="community.tab.event">活动聚会</span></button>
+        </div>
+
+        <!-- 帖子列表 -->
+        <div class="post-list">
+
+          <div class="post-card" data-cat="exp warn">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">李</div>
+              <div class="post-meta">
+                <span class="post-author">李先生_KL打工人</span>
+                <span class="post-cat warn-cat"><i class="fas fa-exclamation-triangle"></i> 防骗预警</span>
+                <span class="post-time">2小时前</span>
+              </div>
+            </div>
+            <h3 class="post-title">【紧急！】我差点被这个"高薪工作"骗去缅甸，全程记录！</h3>
+            <p class="post-excerpt">上个月有人加我微信，说在马来西亚一家公司做客服，月薪3万，包吃包住。我当时也心动了，但是仔细一查发现很多疑点……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 15,280</span>
+              <span><i class="fas fa-comment"></i> 342条回复</span>
+              <span><i class="fas fa-thumbs-up"></i> 2,180赞</span>
+              <span class="post-tag hot">🔥 热帖</span>
+            </div>
+          </div>
+
+          <div class="post-card" data-cat="exp">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a)">王</div>
+              <div class="post-meta">
+                <span class="post-author">王小华_槟城</span>
+                <span class="post-cat exp-cat"><i class="fas fa-star"></i> 经验分享</span>
+                <span class="post-time">1天前</span>
+              </div>
+            </div>
+            <h3 class="post-title">在马来西亚生活3年，我总结了20条实用经验，新人必看！</h3>
+            <p class="post-excerpt">从2022年来KL到现在，踩过无数坑，也积累了很多实用经验。今天全部分享出来，希望能帮到刚来的朋友……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 8,640</span>
+              <span><i class="fas fa-comment"></i> 218条回复</span>
+              <span><i class="fas fa-thumbs-up"></i> 1,560赞</span>
+              <span class="post-tag">精华</span>
+            </div>
+          </div>
+
+          <div class="post-card" data-cat="qa">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#1976d2,#0d47a1)">张</div>
+              <div class="post-meta">
+                <span class="post-author">张同学_留学</span>
+                <span class="post-cat qa-cat"><i class="fas fa-question-circle"></i> 问答互助</span>
+                <span class="post-time">3小时前</span>
+              </div>
+            </div>
+            <h3 class="post-title">请问在KL办Maybank的银行卡，需要什么材料？旅游签能办吗？</h3>
+            <p class="post-excerpt">我下个月要去KL，目前是旅游签，计划呆3个月，想提前了解一下能不能办银行卡……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 1,230</span>
+              <span><i class="fas fa-comment" style="color:#2d9b5c;"></i> 24条回复（已解决）</span>
+              <span class="post-tag qa-solved">✓ 已解决</span>
+            </div>
+          </div>
+
+          <div class="post-card" data-cat="exp">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#f9a825,#e65100)">陈</div>
+              <div class="post-meta">
+                <span class="post-author">陈阿姨_全职妈妈</span>
+                <span class="post-cat exp-cat"><i class="fas fa-star"></i> 经验分享</span>
+                <span class="post-time">2天前</span>
+              </div>
+            </div>
+            <h3 class="post-title">带孩子在KL生活一年，分享国际学校选择和子女教育经验</h3>
+            <p class="post-excerpt">先生在KL工作，我带着两个孩子过来陪读。孩子从国内直接进国际学校，其中有很多注意事项……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 5,880</span>
+              <span><i class="fas fa-comment"></i> 156条回复</span>
+              <span><i class="fas fa-thumbs-up"></i> 890赞</span>
+            </div>
+          </div>
+
+          <div class="post-card" data-cat="event">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#9c27b0,#6a1b9a)">活</div>
+              <div class="post-meta">
+                <span class="post-author">南洋通官方</span>
+                <span class="post-cat event-cat"><i class="fas fa-calendar-alt"></i> 活动聚会</span>
+                <span class="post-time">刚刚</span>
+              </div>
+            </div>
+            <h3 class="post-title">【报名】3月22日 吉隆坡华人交流晚宴，名额有限，速来！</h3>
+            <p class="post-excerpt">南洋通主办，每季度一次的华人交流聚会，本次主题"在马来西亚创业的那些事"，欢迎新老朋友参加……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 2,450</span>
+              <span><i class="fas fa-user-plus"></i> 已报名68人</span>
+              <span class="post-tag event-tag">📅 3月22日</span>
+            </div>
+          </div>
+
+          <div class="post-card" data-cat="warn">
+            <div class="post-header">
+              <div class="post-avatar" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">预</div>
+              <div class="post-meta">
+                <span class="post-author">南洋通安全中心</span>
+                <span class="post-cat warn-cat"><i class="fas fa-shield-alt"></i> 官方预警</span>
+                <span class="post-time">1天前</span>
+              </div>
+            </div>
+            <h3 class="post-title">⚠️【官方预警】近期出现假冒"南洋通客服"的诈骗账号，请注意识别！</h3>
+            <p class="post-excerpt">近日我们收到多名用户反馈，有人冒充南洋通客服，以"退款"为由索要银行卡信息。请注意：我们的官方联系方式只有……</p>
+            <div class="post-footer">
+              <span><i class="fas fa-eye"></i> 6,100</span>
+              <span><i class="fas fa-comment"></i> 88条回复</span>
+              <span class="post-tag hot" style="background:#e74c3c;">🚨 重要</span>
+            </div>
+          </div>
+        </div><!-- end post-list -->
+
+        <!-- 查看更多 -->
+        <div style="text-align:center;padding:20px 0 10px;">
+          <a href="#" class="btn-primary" style="display:inline-block;padding:13px 40px;font-size:15px;border-radius:50px;">
+            <i class="fas fa-th-list"></i> 查看全部帖子（26,000+）
+          </a>
+        </div>
+      </div>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <div class="sidebar-card" style="border-top:3px solid #388e3c;">
+          <h3>👤 <span data-i18n="topbar.register">加入社区</span></h3>
+          <p style="font-size:13px;color:#666;margin-bottom:14px;">注册账号，与10万+在马华人互动交流</p>
+          <a href="register.html" class="btn-apply" style="background:#388e3c;" data-i18n="topbar.register">免费注册</a>
+          <a href="login.html" class="btn-consult" style="margin-top:10px;" data-i18n="topbar.login">已有账号，登录</a>
+        </div>
+        <div class="sidebar-card">
+          <h3>📊 社区数据</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:center;font-size:13px;">
+            <div style="background:#f0faf5;border-radius:8px;padding:12px;"><div style="font-size:20px;font-weight:800;color:#2d9b5c;">108,000+</div><div style="color:#666;">注册用户</div></div>
+            <div style="background:#f0faf5;border-radius:8px;padding:12px;"><div style="font-size:20px;font-weight:800;color:#2d9b5c;">26,000+</div><div style="color:#666;">帖子数量</div></div>
+            <div style="background:#f0faf5;border-radius:8px;padding:12px;"><div style="font-size:20px;font-weight:800;color:#2d9b5c;">350,000+</div><div style="color:#666;">日活浏览</div></div>
+            <div style="background:#f0faf5;border-radius:8px;padding:12px;"><div style="font-size:20px;font-weight:800;color:#2d9b5c;">98%</div><div style="color:#666;">问题解决率</div></div>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>🏆 本周热心用户</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+            <div style="display:flex;align-items:center;gap:10px;"><div style="background:linear-gradient(135deg,#f9a825,#e65100);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">1</div><span>KL打工人李先生</span><span style="margin-left:auto;color:#f9a825;">⭐ 328</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><div style="background:linear-gradient(135deg,#9e9e9e,#616161);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">2</div><span>槟城王小华</span><span style="margin-left:auto;color:#666;">⭐ 256</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><div style="background:linear-gradient(135deg,#a1887f,#6d4c41);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">3</div><span>新山陈阿姨</span><span style="margin-left:auto;color:#666;">⭐ 198</span></div>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>💬 微信交流群</h3>
+          <p style="font-size:13px;color:#666;margin-bottom:12px;">扫码加入各城市华人交流群</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+            <div style="border:1px solid #eee;border-radius:8px;padding:8px;text-align:center;cursor:pointer;" onclick="showToastLocal('吉隆坡群二维码加载中...')"><div style="font-size:24px;margin-bottom:4px;">📱</div>吉隆坡群</div>
+            <div style="border:1px solid #eee;border-radius:8px;padding:8px;text-align:center;cursor:pointer;" onclick="showToastLocal('槟城群二维码加载中...')"><div style="font-size:24px;margin-bottom:4px;">📱</div>槟城群</div>
+            <div style="border:1px solid #eee;border-radius:8px;padding:8px;text-align:center;cursor:pointer;" onclick="showToastLocal('雅加达群二维码加载中...')"><div style="font-size:24px;margin-bottom:4px;">📱</div>雅加达群</div>
+            <div style="border:1px solid #eee;border-radius:8px;padding:8px;text-align:center;cursor:pointer;" onclick="showToastLocal('巴厘岛群二维码加载中...')"><div style="font-size:24px;margin-bottom:4px;">📱</div>巴厘岛群</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 马来西亚华人城市聚居地指南 -->
+    <div class="card-section" style="margin-top:40px;">
+      <div class="section-header-row">
+        <h2 class="section-h2"><i class="fas fa-city" style="color:#388e3c;"></i> 马来西亚华人主要聚居城市</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px;">
+        <div class="info-card" style="border-top:3px solid #388e3c;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🏙️</div>
+          <h4>吉隆坡 (KL)</h4>
+          <div style="font-size:12px;color:#666;line-height:1.8;margin-top:6px;">
+            <div>华人约占28%</div>
+            <div>华人区：茨厂街/Chow Kit</div>
+            <div>适合：工作/商业</div>
+            <div style="color:#2d9b5c;font-weight:700;margin-top:4px;">生活费 RM3,000–5,000/月</div>
+          </div>
+        </div>
+        <div class="info-card" style="border-top:3px solid #1976d2;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🌊</div>
+          <h4>槟城 (Penang)</h4>
+          <div style="font-size:12px;color:#666;line-height:1.8;margin-top:6px;">
+            <div>华人约占42%（最高）</div>
+            <div>华人区：乔治市/Georgetown</div>
+            <div>适合：留学/退休</div>
+            <div style="color:#1976d2;font-weight:700;margin-top:4px;">生活费 RM2,500–4,000/月</div>
+          </div>
+        </div>
+        <div class="info-card" style="border-top:3px solid #f57c00;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🌉</div>
+          <h4>新山 (JB)</h4>
+          <div style="font-size:12px;color:#666;line-height:1.8;margin-top:6px;">
+            <div>紧邻新加坡</div>
+            <div>华人区：中华城/Austin</div>
+            <div>适合：跨境工作者</div>
+            <div style="color:#f57c00;font-weight:700;margin-top:4px;">生活费 RM2,000–3,500/月</div>
+          </div>
+        </div>
+        <div class="info-card" style="border-top:3px solid #9c27b0;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🏖️</div>
+          <h4>亚庇 (Sabah)</h4>
+          <div style="font-size:12px;color:#666;line-height:1.8;margin-top:6px;">
+            <div>东马沙巴首府</div>
+            <div>生态旅游胜地</div>
+            <div>适合：自然爱好者</div>
+            <div style="color:#9c27b0;font-weight:700;margin-top:4px;">生活费 RM2,000–3,000/月</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 在马必备APP -->
+    <div class="card-section">
+      <div class="section-header-row">
+        <h2 class="section-h2"><i class="fas fa-mobile-alt" style="color:#388e3c;"></i> 新到马来西亚必装APP</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px;">
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🚗</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Grab</div>
+          <div style="font-size:11px;color:#666;">打车/外卖/支付<br/>东南亚必备</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🏦</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Maybank2u</div>
+          <div style="font-size:11px;color:#666;">马来西亚最大银行<br/>网银/转账</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🛒</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Shopee / Lazada</div>
+          <div style="font-size:11px;color:#666;">东南亚电商平台<br/>类似淘宝</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🗺️</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Waze / Google Maps</div>
+          <div style="font-size:11px;color:#666;">导航必备<br/>实时路况</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🏥</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">MyDoc / DoctorOnCall</div>
+          <div style="font-size:11px;color:#666;">在线问诊<br/>有中文医生</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">💱</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">BigPay / Touch'n Go</div>
+          <div style="font-size:11px;color:#666;">马来西亚电子钱包<br/>扫码支付</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">🏠</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">iProperty / Mudah</div>
+          <div style="font-size:11px;color:#666;">租房/买房<br/>类似58同城</div>
+        </div>
+        <div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:6px;">📰</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px;">星洲日报 / 中国报</div>
+          <div style="font-size:11px;color:#666;">马来西亚中文新闻<br/>了解本地资讯</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 华人节假日日历 -->
+    <div class="card-section">
+      <div class="section-header-row">
+        <h2 class="section-h2"><i class="fas fa-calendar-alt" style="color:#388e3c;"></i> 2026年马来西亚公共假日（华人节日高亮）</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px;">
+        <div style="background:#fff8e1;border-left:4px solid #f9a825;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#f57c00;">🧧 1月29–30日</div>
+          <div style="color:#555;margin-top:4px;">农历新年（蛇年）<br/><span style="font-size:11px;color:#999;">全国法定假日，华人最重要节日</span></div>
+        </div>
+        <div style="background:#e8f5e9;border-left:4px solid #2d9b5c;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#2d9b5c;">🌙 3月31日</div>
+          <div style="color:#555;margin-top:4px;">开斋节（Hari Raya Aidilfitri）<br/><span style="font-size:11px;color:#999;">马来族重要节日，全国放假</span></div>
+        </div>
+        <div style="background:#e3f2fd;border-left:4px solid #1976d2;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#1976d2;">🕌 6月7日</div>
+          <div style="color:#555;margin-top:4px;">哈芝节（Hari Raya Aidiladha）<br/><span style="font-size:11px;color:#999;">伊斯兰节日，全国放假</span></div>
+        </div>
+        <div style="background:#fce4ec;border-left:4px solid #e91e63;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#e91e63;">🪔 10月20日</div>
+          <div style="color:#555;margin-top:4px;">屠妖节（Deepavali）<br/><span style="font-size:11px;color:#999;">印度族节日，全国放假</span></div>
+        </div>
+        <div style="background:#f3e5f5;border-left:4px solid #9c27b0;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#9c27b0;">🇲🇾 8月31日</div>
+          <div style="color:#555;margin-top:4px;">国庆日（Hari Merdeka）<br/><span style="font-size:11px;color:#999;">马来西亚独立纪念日</span></div>
+        </div>
+        <div style="background:#e0f7fa;border-left:4px solid #00838f;border-radius:8px;padding:12px;font-size:13px;">
+          <div style="font-weight:700;color:#00838f;">🏮 10月3日</div>
+          <div style="color:#555;margin-top:4px;">中秋节（非法定假日）<br/><span style="font-size:11px;color:#999;">华人聚会，茨厂街灯笼节</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script>
+function switchCom(cat, btn) {
+  document.querySelectorAll('.visa-type-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.post-card').forEach(p => {
+    if (cat === 'all') { p.style.display = ''; return; }
+    const cats = p.dataset.cat || '';
+    p.style.display = cats.includes(cat) ? '' : 'none';
+  });
+}
+function showToastLocal(msg) {
+  let t = document.getElementById('nyt-toast');
+  if(!t){ t=document.createElement('div'); t.id='nyt-toast';
+    t.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(26,26,26,0.9);color:#fff;padding:12px 28px;border-radius:50px;font-size:14px;z-index:9999;opacity:0;transition:all .3s;';
+    document.body.appendChild(t); }
+  t.textContent=msg; t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)';
+  clearTimeout(t._t); t._t=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},2500);
+}
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

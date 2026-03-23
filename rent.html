@@ -1,0 +1,862 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>租房租车 - 南洋通 | Rent & Cars - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/lang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">吉隆坡KLCC区域新增200+房源，中文房东优先！</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">南洋通</span><span class="logo-sub">NanYangTong</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索房源、小区、区域..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布房源</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li class="active"><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#e91e63,#880e4f);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.rent">租房租车</span></div>
+    <h1><i class="fas fa-building"></i> 租房 &amp; 租车</h1>
+    <p>马来西亚·印尼 真实房源，中文房东优先，合同法律保障</p>
+  </div>
+</div>
+
+<!-- 搜索筛选 -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="switchTab('rent',this)"><i class="fas fa-home"></i> 租房</button>
+        <button class="filter-tab" id="carTabBtn" onclick="switchTab('car',this)"><i class="fas fa-car"></i> 租车</button>
+      </div>
+      <div class="filter-row" id="rentFilters">
+        <select class="filter-select"><option>不限城市</option><option>吉隆坡</option><option>槟城</option><option>新山</option><option>雅加达</option><option>巴厘岛</option></select>
+        <select class="filter-select"><option>租房类型</option><option>整租</option><option>合租(主卧)</option><option>合租(次卧)</option><option>服务公寓</option><option>豪华公寓</option></select>
+        <select class="filter-select"><option>价格范围</option><option>RM500以下</option><option>RM500-1000</option><option>RM1000-2000</option><option>RM2000-3500</option><option>RM3500以上</option></select>
+        <select class="filter-select"><option>房间数量</option><option>单间</option><option>1室1厅</option><option>2室1厅</option><option>3室2厅</option></select>
+        <button class="btn-filter-search"><i class="fas fa-search"></i> 搜索房源</button>
+      </div>
+      <div class="filter-row hidden" id="carFilters">
+        <select class="filter-select"><option>不限城市</option><option>吉隆坡</option><option>槟城</option><option>巴厘岛</option><option>雅加达</option></select>
+        <select class="filter-select"><option>车型</option><option>经济型轿车</option><option>SUV</option><option>商务MPV</option><option>豪华轿车</option></select>
+        <select class="filter-select"><option>租期</option><option>日租</option><option>周租</option><option>月租</option></select>
+        <button class="btn-filter-search"><i class="fas fa-search"></i> 搜索车源</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-content">
+  <div class="container">
+    <!-- 租房内容 -->
+    <div id="tabRent">
+      <div class="section-header-row">
+        <h2 class="section-h2"><i class="fas fa-home"></i> 热门房源 <span class="count-badge">共 1,258 套</span></h2>
+        <div class="sort-bar">
+          <span>排序：</span>
+          <button class="sort-btn active">最新发布</button>
+          <button class="sort-btn">价格低→高</button>
+          <button class="sort-btn">距离近→远</button>
+        </div>
+      </div>
+
+      <!-- 防骗提示 -->
+      <div class="alert-box warning" style="margin-bottom:20px;">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div><strong>租房防骗：</strong>遇到要求先付押金再看房、房东在国外无法见面、价格远低于市场的房源，请提高警惕！建议通过平台担保支付。</div>
+      </div>
+
+      <div class="listings-layout">
+        <div class="listings-main">
+          <!-- 房源卡片 -->
+          <div class="listing-card">
+            <div class="listing-imgs"><div class="listing-img-main" style="background:linear-gradient(135deg,#667eea,#764ba2)"><span class="listing-label">整租</span><span class="listing-badge cn-owner">中文房东</span></div></div>
+            <div class="listing-body">
+              <div class="listing-top">
+                <h3 class="listing-title">吉隆坡 KLCC 精装2房2卫 高楼层海景</h3>
+                <div class="listing-price">RM 3,500<small>/月</small></div>
+              </div>
+              <div class="listing-tags"><span><i class="fas fa-map-marker-alt"></i> Ampang, KL</span><span><i class="fas fa-bed"></i> 2室2卫</span><span><i class="fas fa-ruler-combined"></i> 100㎡</span><span><i class="fas fa-couch"></i> 含家具</span></div>
+              <p class="listing-desc">位于KLCC核心区，步行8分钟到双子塔，全新精装修，家具家电齐全，含水电网费，中文房东随时联系。</p>
+              <div class="listing-footer"><span class="listing-time"><i class="fas fa-clock"></i> 2小时前发布</span><a href="#" class="btn-sm">联系房东</a></div>
+            </div>
+          </div>
+
+          <div class="listing-card">
+            <div class="listing-imgs"><div class="listing-img-main" style="background:linear-gradient(135deg,#f093fb,#f5576c)"><span class="listing-label">合租·主卧</span><span class="listing-badge">独立卫浴</span></div></div>
+            <div class="listing-body">
+              <div class="listing-top">
+                <h3 class="listing-title">武吉免登 Bukit Bintang 合租主卧 含水电</h3>
+                <div class="listing-price">RM 1,200<small>/月</small></div>
+              </div>
+              <div class="listing-tags"><span><i class="fas fa-map-marker-alt"></i> Bukit Bintang, KL</span><span><i class="fas fa-bed"></i> 主卧</span><span><i class="fas fa-bath"></i> 独立卫浴</span><span><i class="fas fa-wifi"></i> 含WiFi</span></div>
+              <p class="listing-desc">华人聚集区，周边中餐馆多，LRT站步行5分钟，同住2位中国人，生活方便，适合刚来KL的朋友。</p>
+              <div class="listing-footer"><span class="listing-time"><i class="fas fa-clock"></i> 1天前发布</span><a href="#" class="btn-sm">联系房东</a></div>
+            </div>
+          </div>
+
+          <div class="listing-card">
+            <div class="listing-imgs"><div class="listing-img-main" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><span class="listing-label">服务公寓</span><span class="listing-badge cn-owner">中文房东</span></div></div>
+            <div class="listing-body">
+              <div class="listing-top">
+                <h3 class="listing-title">槟城 George Town 海景1卧服务公寓</h3>
+                <div class="listing-price">RM 2,200<small>/月</small></div>
+              </div>
+              <div class="listing-tags"><span><i class="fas fa-map-marker-alt"></i> George Town, Penang</span><span><i class="fas fa-bed"></i> 1室1厅</span><span><i class="fas fa-swimmer"></i> 泳池健身</span><span><i class="fas fa-car"></i> 停车位</span></div>
+              <p class="listing-desc">乔治市文化遗址旁，月租含泳池、健身房、保安，生活便利，中英文皆可沟通。</p>
+              <div class="listing-footer"><span class="listing-time"><i class="fas fa-clock"></i> 3天前发布</span><a href="#" class="btn-sm">联系房东</a></div>
+            </div>
+          </div>
+
+          <div class="listing-card">
+            <div class="listing-imgs"><div class="listing-img-main" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"><span class="listing-label">整租</span></div></div>
+            <div class="listing-body">
+              <div class="listing-top">
+                <h3 class="listing-title">新山 JB 毗邻新柔长堤 3房2卫</h3>
+                <div class="listing-price">RM 1,800<small>/月</small></div>
+              </div>
+              <div class="listing-tags"><span><i class="fas fa-map-marker-alt"></i> Johor Bahru</span><span><i class="fas fa-bed"></i> 3室2卫</span><span><i class="fas fa-ruler-combined"></i> 130㎡</span><span><i class="fas fa-train"></i> 近长堤</span></div>
+              <p class="listing-desc">距离新柔长堤仅3公里，可方便往返新加坡，适合在新加坡工作居住JB的华人。</p>
+              <div class="listing-footer"><span class="listing-time"><i class="fas fa-clock"></i> 5天前发布</span><a href="#" class="btn-sm">联系房东</a></div>
+            </div>
+          </div>
+
+          <div class="listing-card">
+            <div class="listing-imgs"><div class="listing-img-main" style="background:linear-gradient(135deg,#fa709a,#fee140)"><span class="listing-label">整租</span><span class="listing-badge">🇮🇩 印尼</span></div></div>
+            <div class="listing-body">
+              <div class="listing-top">
+                <h3 class="listing-title">雅加达 Sudirman CBD 精装1卧公寓</h3>
+                <div class="listing-price">IDR 8,500,000<small>/月</small></div>
+              </div>
+              <div class="listing-tags"><span><i class="fas fa-map-marker-alt"></i> Sudirman, Jakarta</span><span><i class="fas fa-bed"></i> 1室1厅</span><span><i class="fas fa-ruler-combined"></i> 55㎡</span><span><i class="fas fa-shield-alt"></i> 24h保安</span></div>
+              <p class="listing-desc">位于雅加达金融中心，附近多家中国企业，中文可沟通，含家具，交通方便。</p>
+              <div class="listing-footer"><span class="listing-time"><i class="fas fa-clock"></i> 2天前发布</span><a href="#" class="btn-sm">联系房东</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 侧边栏：租房指南 -->
+        <aside class="sidebar">
+          <div class="sidebar-card" style="border-top:3px solid #e91e63;">
+            <h3>📋 租房注意事项</h3>
+            <ul style="font-size:13px;color:#555;line-height:2;">
+              <li>✅ 签合同前务必看房</li>
+              <li>✅ 拍照记录房屋原状</li>
+              <li>✅ 押金通过平台担保支付</li>
+              <li>✅ 确认水电账单归属</li>
+              <li>✅ 了解提前退租条款</li>
+              <li>❌ 不接受仅微信/WhatsApp联系的房源</li>
+              <li>❌ 不要在未见面情况下转账</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card" style="border-top:3px solid #2196f3;">
+            <h3>🔗 正规租房平台</h3>
+            <p style="font-size:11px;color:#999;margin-bottom:8px;">🇲🇾 马来西亚</p>
+            <div style="display:grid;gap:7px;">
+              <a href="https://www.propertyguru.com.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#e3f2fd;border-radius:8px;text-decoration:none;color:#1565c0;font-size:12px;">
+                <span>🏠</span><strong>PropertyGuru</strong><span style="color:#64b5f6;margin-left:auto;font-size:10px;">propertyguru.com.my</span>
+              </a>
+              <a href="https://www.iproperty.com.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#e8f5e9;border-radius:8px;text-decoration:none;color:#1a6b3a;font-size:12px;">
+                <span>🏡</span><strong>iProperty</strong><span style="color:#66bb6a;margin-left:auto;font-size:10px;">iproperty.com.my</span>
+              </a>
+              <a href="https://www.mudah.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff3e0;border-radius:8px;text-decoration:none;color:#e65100;font-size:12px;">
+                <span>📱</span><strong>Mudah.my</strong><span style="color:#ffb74d;margin-left:auto;font-size:10px;">易货分类广告</span>
+              </a>
+            </div>
+            <p style="font-size:11px;color:#999;margin:10px 0 8px;">🇮🇩 印度尼西亚</p>
+            <div style="display:grid;gap:7px;">
+              <a href="https://www.rumah123.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fce4ec;border-radius:8px;text-decoration:none;color:#c2185b;font-size:12px;">
+                <span>🏠</span><strong>Rumah123</strong><span style="color:#f48fb1;margin-left:auto;font-size:10px;">rumah123.com</span>
+              </a>
+              <a href="https://www.99.co/id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#ede7f6;border-radius:8px;text-decoration:none;color:#4527a0;font-size:12px;">
+                <span>🏡</span><strong>99.co Indonesia</strong><span style="color:#9575cd;margin-left:auto;font-size:10px;">99.co/id</span>
+              </a>
+              <a href="https://www.olx.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:#e8f5e9;border-radius:8px;text-decoration:none;color:#2e7d32;font-size:12px;">
+                <span>📋</span><strong>OLX Indonesia</strong><span style="color:#66bb6a;margin-left:auto;font-size:10px;">olx.co.id</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>💡 各区租金参考</h3>
+            <table style="width:100%;font-size:12px;border-collapse:collapse;">
+              <tr style="background:#f0faf5;"><th style="padding:6px;text-align:left;">区域</th><th style="padding:6px;text-align:right;">参考价</th></tr>
+              <tr><td style="padding:6px;">KL KLCC核心</td><td style="padding:6px;text-align:right;color:#e74c3c;">RM2500+</td></tr>
+              <tr style="background:#f8f8f8;"><td style="padding:6px;">Mont Kiara</td><td style="padding:6px;text-align:right;color:#e74c3c;">RM2000+</td></tr>
+              <tr><td style="padding:6px;">Chow Kit/Imbi</td><td style="padding:6px;text-align:right;color:#2d9b5c;">RM800+</td></tr>
+              <tr style="background:#f8f8f8;"><td style="padding:6px;">槟城 George Town</td><td style="padding:6px;text-align:right;color:#f57c00;">RM1500+</td></tr>
+              <tr><td style="padding:6px;">新山 JB</td><td style="padding:6px;text-align:right;color:#2d9b5c;">RM1000+</td></tr>
+            </table>
+          </div>
+          <div class="sidebar-card">
+            <h3>🆘 遇到纠纷怎么办</h3>
+            <p style="font-size:13px;color:#666;line-height:1.7;">马来西亚有专门的房东租客仲裁庭，可免费投诉。联系我们的法律顾问获得中文协助。</p>
+            <a href="services.html" class="btn-consult" style="margin-top:10px;"><i class="fas fa-gavel"></i> 联系法律顾问</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 租车内容 -->
+    <div id="tabCar" class="hidden">
+
+      <!-- 驾照提示 -->
+      <div class="alert-box info" style="margin-bottom:24px;">
+        <i class="fas fa-info-circle"></i>
+        <div><strong>驾照提醒：</strong>中国驾照在马来西亚<strong>不能单独使用</strong>，须同时携带中国驾照原件 + 国际驾照（IDP）。印尼法律同样要求持有 IDP。建议出发前在国内车管所申请 IDP，费用约 ¥20，当天可办。</div>
+      </div>
+
+      <!-- 国家选项卡 -->
+      <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;">
+        <button class="filter-tab active" onclick="switchCarCountry('my',this)" id="carMyBtn">🇲🇾 马来西亚租车</button>
+        <button class="filter-tab" onclick="switchCarCountry('id',this)" id="carIdBtn">🇮🇩 印度尼西亚租车</button>
+      </div>
+
+      <!-- ===== 马来西亚租车 ===== -->
+      <div id="carMY">
+        <div class="listings-layout">
+          <div class="listings-main">
+
+            <!-- 马来西亚正规租车公司 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-building" style="color:#e91e63;"></i> 🇲🇾 马来西亚正规租车公司</h2>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:32px;">
+
+              <!-- Mayflower -->
+              <div class="sidebar-card" style="border-top:3px solid #1a6b3a;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#e8f5e9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🚗</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Mayflower Car Rental</h4>
+                    <span style="font-size:12px;color:#2d9b5c;font-weight:600;">⭐ 华人最推荐 · 成立1960年</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">马来西亚本土老牌租车公司，1960年创立，覆盖全马各大城市及机场。车辆保养好，中文客服可协助，外国人租车流程顺畅，支持机场直取。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：KL、槟城、新山、亚庇、古晋等</div>
+                  <div>💰 日租：RM 80–300（经济型到SUV）</div>
+                  <div>📋 需要：护照 + IDP + 信用卡押金</div>
+                </div>
+                <a href="https://mayflowercarrental.com" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#1a6b3a;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- GoCar -->
+              <div class="sidebar-card" style="border-top:3px solid #2196f3;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#e3f2fd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">📱</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">GoCar Malaysia</h4>
+                    <span style="font-size:12px;color:#2196f3;font-weight:600;">⭐ App扫码即走 · 外国人友好</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">马来西亚最大的共享租车平台，类似中国神州租车。用App按小时或按天租车，全程无需人工，停车场扫码取车，非常适合短途用车。外国人持护照+IDP可注册使用。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：吉隆坡、槟城、新山、芙蓉</div>
+                  <div>💰 日租：RM 60–180 / 时租：RM 10起</div>
+                  <div>📋 需要：护照 + IDP + 信用卡/电子钱包</div>
+                </div>
+                <a href="https://new.gocar.my" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#2196f3;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- R&R Rent A Car -->
+              <div class="sidebar-card" style="border-top:3px solid #ff9800;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#fff3e0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🏆</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">R&amp;R Rent A Car</h4>
+                    <span style="font-size:12px;color:#ff9800;font-weight:600;">⭐ 价格透明 · 旅游口碑佳</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">本地知名租车品牌，覆盖吉隆坡、柔佛、槟城及各大机场。价格透明无隐藏费用，中文客服支持，游客评价高。提供送车上门及机场接送服务。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：KL、新山JB、槟城、怡保</div>
+                  <div>💰 日租：RM 75–250</div>
+                  <div>📋 需要：护照 + IDP + 信用卡</div>
+                </div>
+                <a href="https://rnrrentacar.com" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#ff9800;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Hertz Malaysia -->
+              <div class="sidebar-card" style="border-top:3px solid #f44336;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#ffebee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌍</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Hertz Malaysia</h4>
+                    <span style="font-size:12px;color:#f44336;font-weight:600;">⭐ 国际品牌 · 保险齐全</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">全球知名租车品牌，在马来西亚各大机场均设有柜台。国际信用卡直接预订，英文服务专业，保险方案完善，适合初次来马的外国人。支持中国国际信用卡。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：KLIA1/KLIA2机场、KL市区</div>
+                  <div>💰 日租：RM 120–400</div>
+                  <div>📋 需要：护照 + IDP + Visa/Master信用卡</div>
+                </div>
+                <a href="https://www.hertz.com.my" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#f44336;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- 租租车 -->
+              <div class="sidebar-card" style="border-top:3px solid #9c27b0;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#f3e5f5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🇨🇳</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">租租车（zuzuche.com）</h4>
+                    <span style="font-size:12px;color:#9c27b0;font-weight:600;">⭐ 中文界面 · 国内预订</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">国内知名海外租车平台，支持在国内用人民币预订马来西亚、印尼的租车服务，中文客服，可协助办理IDP翻译认证件，合作多家当地知名车行。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：马来西亚、印尼、泰国等东南亚</div>
+                  <div>💰 日租：折合 ¥120起</div>
+                  <div>📋 特色：国内预订，中文全程服务</div>
+                </div>
+                <a href="https://www.zuzuche.com/guide/10084/" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#9c27b0;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Klook租车 -->
+              <div class="sidebar-card" style="border-top:3px solid #e91e63;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#fce4ec;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎟️</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Klook 租车（客路）</h4>
+                    <span style="font-size:12px;color:#e91e63;font-weight:600;">⭐ 含司机包车 · 中文支持</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">亚洲最大旅游平台，在马来西亚和印尼提供含司机包车、自驾租车、景点接送等服务。中文界面，微信/支付宝支付，适合不想自驾的游客，司机大多懂普通话。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：KL、槟城、巴厘岛、雅加达</div>
+                  <div>💰 包车：RM 200–500/天（含司机）</div>
+                  <div>📋 特色：无需驾照，支付宝/微信支付</div>
+                </div>
+                <a href="https://www.klook.com/zh-CN/city/55-kuala-lumpur-activities/?seo=car" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#e91e63;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+            </div>
+
+            <!-- 驾照须知 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-id-card" style="color:#e91e63;"></i> 中国驾照 × 马来西亚：驾照完全指南</h2>
+            <div style="background:#fff;border-radius:16px;border:1px solid #eee;overflow:hidden;margin-bottom:32px;">
+              <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                  <thead>
+                    <tr style="background:#1a6b3a;color:#fff;">
+                      <th style="padding:12px 16px;text-align:left;">方式</th>
+                      <th style="padding:12px 16px;">是否合法</th>
+                      <th style="padding:12px 16px;">费用</th>
+                      <th style="padding:12px 16px;">办理地点</th>
+                      <th style="padding:12px 16px;">推荐人群</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding:12px 16px;font-weight:600;">中国驾照 + IDP（国际驾照）</td>
+                      <td style="padding:12px 16px;text-align:center;color:#2d9b5c;font-weight:700;">✅ 合法</td>
+                      <td style="padding:12px 16px;text-align:center;">¥20（国内车管所）</td>
+                      <td style="padding:12px 16px;text-align:center;">国内公安局交管所</td>
+                      <td style="padding:12px 16px;">短期旅游/出差（≤3个月）</td>
+                    </tr>
+                    <tr style="background:#f8f8f8;">
+                      <td style="padding:12px 16px;font-weight:600;">中国驾照 + 驾照翻译认证件</td>
+                      <td style="padding:12px 16px;text-align:center;color:#2d9b5c;font-weight:700;">✅ 合法</td>
+                      <td style="padding:12px 16px;text-align:center;">¥0（租租车免费办）</td>
+                      <td style="padding:12px 16px;text-align:center;">租租车官网申请</td>
+                      <td style="padding:12px 16px;">租车推荐，更被车行接受</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:12px 16px;font-weight:600;">换领马来西亚本地驾照（JPJ）</td>
+                      <td style="padding:12px 16px;text-align:center;color:#2d9b5c;font-weight:700;">✅ 合法</td>
+                      <td style="padding:12px 16px;text-align:center;">RM 200–400</td>
+                      <td style="padding:12px 16px;text-align:center;">马来西亚JPJ驾照局</td>
+                      <td style="padding:12px 16px;">长期居住/工作（推荐）</td>
+                    </tr>
+                    <tr style="background:#ffebee;">
+                      <td style="padding:12px 16px;font-weight:600;">仅持中国驾照（无IDP）</td>
+                      <td style="padding:12px 16px;text-align:center;color:#e53935;font-weight:700;">❌ 违法</td>
+                      <td style="padding:12px 16px;text-align:center;">罚款 RM 300起</td>
+                      <td style="padding:12px 16px;text-align:center;">—</td>
+                      <td style="padding:12px 16px;color:#e53935;">切勿尝试，有被没收驾照风险</td>
+                    </tr>
+                    <tr style="background:#fff9c4;">
+                      <td style="padding:12px 16px;font-weight:600;">网购"国际驾照"（假证）</td>
+                      <td style="padding:12px 16px;text-align:center;color:#e53935;font-weight:700;">❌ 无效</td>
+                      <td style="padding:12px 16px;text-align:center;">被罚 RM 300+</td>
+                      <td style="padding:12px 16px;text-align:center;">—</td>
+                      <td style="padding:12px 16px;color:#e53935;">已有多名中国留学生被罚款</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 马来西亚驾车规则 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-road" style="color:#e91e63;"></i> 马来西亚驾车规则：新手必看</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px;">
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">⬅️</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">靠左行驶</h4>
+                <p style="font-size:12px;color:#666;margin:0;">马来西亚与中国相反，靠左行驶，方向盘在右侧。初次驾驶需适应，市区慢行。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">🛣️</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">高速收费站</h4>
+                <p style="font-size:12px;color:#666;margin:0;">马来西亚高速公路多为电子收费，租来的车通常已安装Touch'n Go卡，注意余额。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">🚦</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">右转须让行</h4>
+                <p style="font-size:12px;color:#666;margin:0;">左行制度下，右转等同于中国的左转，需注意让行对向来车，是常见的新手错误。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">📸</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">取车必拍照</h4>
+                <p style="font-size:12px;color:#666;margin:0;">取车前360°拍照记录车辆划痕，发邮件给车行留存，还车时有争议可维权。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">⛽</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">加油规则</h4>
+                <p style="font-size:12px;color:#666;margin:0;">RON95汽油约 RM2.05/L（本地补贴价），外籍人士加油时价格可能更高（约 RM3.47）。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;text-align:center;">
+                <div style="font-size:32px;margin-bottom:8px;">🅿️</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">停车注意</h4>
+                <p style="font-size:12px;color:#666;margin:0;">市区停车场多为刷卡或APP缴费。路边黄色单线可临停卸货，双黄线绝对禁停。</p>
+              </div>
+            </div>
+
+            <!-- 社区互动 - 马来西亚 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-comments" style="color:#e91e63;"></i> 网友真实经验分享 · 马来西亚</h2>
+            <div id="my-community-container" style="margin-bottom:32px;"></div>
+                  <div>
+                    <span style="font-weight:700;font-size:13px;">蚂蜂窝 · 西马环岛6日自驾记</span>
+                    <span style="font-size:11px;color:#999;margin-left:8px;">❤️ 892</span>
+                  </div>
+                  <span style="margin-left:auto;font-size:11px;background:#fff3e0;color:#ff9800;padding:2px 8px;border-radius:10px;">蚂蜂窝</span>
+                </div>
+                <p style="font-size:13px;color:#444;line-height:1.8;margin:0;">
+                  "环西马自驾从吉隆坡出发，走了槟城、太平、怡保、马六甲再回来，总里程约1200公里，6天费用：租车 RM 500（Perodua Myvi）+ 油费 RM 200 + 高速过路费约 RM 80。全程用 Waze 导航超好用，会自动绕开路况差的路段。强烈推荐有驾龄的朋友来大马自驾，比打的便宜太多！"
+                </p>
+              </div>
+
+            </div>
+
+          </div><!-- end listings-main -->
+
+          <!-- 侧边栏 -->
+          <aside class="sidebar">
+            <div class="sidebar-card" style="border-top:3px solid #1a6b3a;">
+              <h3>🚗 马来西亚租车费用参考</h3>
+              <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                <tr style="background:#e8f5e9;"><th style="padding:6px;text-align:left;">车型</th><th style="padding:6px;text-align:right;">日租价</th></tr>
+                <tr><td style="padding:6px;">Perodua Axia（经济）</td><td style="padding:6px;text-align:right;color:#2d9b5c;">RM 70–90</td></tr>
+                <tr style="background:#f8f8f8;"><td style="padding:6px;">Perodua Myvi（小型）</td><td style="padding:6px;text-align:right;color:#2d9b5c;">RM 80–110</td></tr>
+                <tr><td style="padding:6px;">Toyota Vios（中型）</td><td style="padding:6px;text-align:right;color:#f57c00;">RM 100–150</td></tr>
+                <tr style="background:#f8f8f8;"><td style="padding:6px;">Toyota Fortuner（SUV）</td><td style="padding:6px;text-align:right;color:#f57c00;">RM 180–250</td></tr>
+                <tr><td style="padding:6px;">Toyota Hiace（商务）</td><td style="padding:6px;text-align:right;color:#e74c3c;">RM 300–450</td></tr>
+              </table>
+            </div>
+            <div class="sidebar-card">
+              <h3>⚠️ 取车必备清单</h3>
+              <ul style="font-size:12px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+                <li>✅ 护照原件</li>
+                <li>✅ 中国驾照原件</li>
+                <li>✅ IDP国际驾照</li>
+                <li>✅ Visa/Master 信用卡（押金）</li>
+                <li>✅ 出行前拍车辆四周照片</li>
+                <li>✅ 确认保险类型（推荐全险）</li>
+                <li>✅ 确认Touch'n Go余额</li>
+                <li>❌ 不接受借记卡作为押金</li>
+              </ul>
+            </div>
+            <div class="sidebar-card" style="background:#e8f5e9;border:1px solid #a5d6a7;">
+              <h3>📱 马来西亚必备导航App</h3>
+              <div style="font-size:13px;color:#333;line-height:2;">
+                <div><strong>Waze</strong> — 最推荐，实时路况、速度摄像头提醒</div>
+                <div><strong>Google Maps</strong> — 备用，景点信息丰富</div>
+                <div><strong>Touch'n Go 官方App</strong> — 查余额/充值高速卡</div>
+              </div>
+            </div>
+          </aside>
+
+        </div><!-- end listings-layout -->
+      </div><!-- end carMY -->
+
+      <!-- ===== 印度尼西亚租车 ===== -->
+      <div id="carID" class="hidden">
+        <div class="listings-layout">
+          <div class="listings-main">
+
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-building" style="color:#e91e63;"></i> 🇮🇩 印度尼西亚正规租车公司</h2>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:32px;">
+
+              <!-- TRAC Astra -->
+              <div class="sidebar-card" style="border-top:3px solid #e53935;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#ffebee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🏆</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">TRAC Astra Rent A Car</h4>
+                    <span style="font-size:12px;color:#e53935;font-weight:600;">⭐ 印尼最大正规车行</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">印度尼西亚最大的正规租车公司，隶属Astra集团（印尼最大财团）。覆盖雅加达、泗水、巴厘岛等主要城市，提供自驾和含司机两种方案，保险齐全，是在印尼租车的首选。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：雅加达、泗水、巴厘岛、万隆、棉兰</div>
+                  <div>💰 日租：IDR 400,000–900,000（约¥180–400）</div>
+                  <div>📋 需要：护照 + IDP + 信用卡</div>
+                </div>
+                <a href="https://www.trac.astra.co.id/EN/" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#e53935;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Traveloka Car Rental -->
+              <div class="sidebar-card" style="border-top:3px solid #0195f7;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#e3f2fd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">📱</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Traveloka 租车</h4>
+                    <span style="font-size:12px;color:#0195f7;font-weight:600;">⭐ App操作 · 价格透明</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">东南亚最大旅游App，在印尼可通过Traveloka预订各大车行（含TRAC Astra、Blue Bird等），比价方便，中文界面支持，微信/支付宝可绑定支付，是外国人在印尼租车的最佳渠道之一。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：印尼全国各大城市</div>
+                  <div>💰 日租：IDR 100,000起（含司机，按12小时计）</div>
+                  <div>📋 特色：中文App，中文客服，微信支付</div>
+                </div>
+                <a href="https://www.traveloka.com/zh-my/car-rental" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#0195f7;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Blue Bird Group -->
+              <div class="sidebar-card" style="border-top:3px solid #1565c0;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#e8eaf6;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🐦</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Blue Bird Group</h4>
+                    <span style="font-size:12px;color:#1565c0;font-weight:600;">⭐ 包车+出租车 · 超安全</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">印度尼西亚最知名的蓝鸟出租车公司，同时提供包车服务。以安全正规著称，司机经过专业培训，计费透明。在雅加达和巴厘岛可预约专属司机按天包车，适合不想自驾的游客。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：雅加达、巴厘岛、泗水等主要城市</div>
+                  <div>💰 包车：IDR 500,000–800,000/天（含司机）</div>
+                  <div>📋 特色：无需驾照，按天/按行程包车</div>
+                </div>
+                <a href="https://www.bluebirdgroup.com" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#1565c0;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Klook 巴厘岛 -->
+              <div class="sidebar-card" style="border-top:3px solid #ff6d00;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#fff3e0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🏍️</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Klook 巴厘岛摩托车</h4>
+                    <span style="font-size:12px;color:#ff6d00;font-weight:600;">⭐ 含头盔雨衣 · 最方便</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">通过Klook预订巴厘岛摩托车，提供Honda Scoopy/Yamaha Mio等多款车型，附赠两顶安全帽+雨衣，中文客服，店家可送车上门。日租 IDR 80,000–120,000（约¥35–55），是巴厘岛最实惠的出行方式。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：库塔、水明漾、乌布、金巴兰</div>
+                  <div>💰 日租：IDR 80,000–120,000（约¥35–55）</div>
+                  <div>📋 需要：IDP或印尼驾照（建议有）</div>
+                </div>
+                <a href="https://www.klook.com/zh-CN/activity/11249-scooter-and-motorcycle-rental-bali/" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#ff6d00;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- 鞋程租车 -->
+              <div class="sidebar-card" style="border-top:3px solid #4caf50;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#e8f5e9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🇨🇳</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">鞋程租车（XieCheng）</h4>
+                    <span style="font-size:12px;color:#4caf50;font-weight:600;">⭐ 中国人在印尼首选</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">面向中国出境游客的租车平台，在印尼雅加达、巴厘岛有专属服务。全中文操作，国内预约，到达后直接取车。据多名知乎用户反馈，服务可靠，车况良好，不担心语言沟通问题。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：雅加达、巴厘岛</div>
+                  <div>💰 日租：折合约 ¥150起</div>
+                  <div>📋 特色：全中文，国内预订，不担心语言</div>
+                </div>
+                <a href="https://www.xiechengzuche.com" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#4caf50;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+              <!-- Bali Best Motorcycle -->
+              <div class="sidebar-card" style="border-top:3px solid #795548;padding:20px;">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:48px;height:48px;background:#efebe9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌴</div>
+                  <div>
+                    <h4 style="margin:0;font-size:15px;">Bali Best Motorcycle</h4>
+                    <span style="font-size:12px;color:#795548;font-weight:600;">⭐ 巴厘岛摩托车专家</span>
+                  </div>
+                </div>
+                <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">专注巴厘岛摩托车出租，提供Honda、Yamaha、Kawasaki等多款车型，中文网站，网上预约后可送车上门。附赠头盔，可购买保险。适合想深度探索乌布、北部山区等地的游客。</p>
+                <div style="font-size:12px;color:#666;margin-bottom:12px;">
+                  <div>📍 覆盖：巴厘岛全岛</div>
+                  <div>💰 日租：IDR 75,000–200,000（按车型）</div>
+                  <div>📋 网站：中文界面，可直接预订</div>
+                </div>
+                <a href="https://balibestmotorcycle.com/zh-hans/" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;background:#795548;color:#fff;border-radius:20px;font-size:12px;text-decoration:none;">🔗 访问官网</a>
+              </div>
+
+            </div>
+
+            <!-- 印尼驾车须知 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-exclamation-triangle" style="color:#ff9800;"></i> 印尼驾车：重要注意事项</h2>
+            <div class="alert-box" style="background:#fff8e1;border-left:4px solid #ff9800;margin-bottom:24px;">
+              <i class="fas fa-exclamation-triangle" style="color:#ff9800;font-size:20px;"></i>
+              <div style="font-size:13px;color:#555;line-height:1.8;">
+                <strong>印尼同样靠左行驶！</strong>雅加达路况复杂，堵车严重，摩托车众多。建议初次在印尼自驾的朋友在<strong>巴厘岛</strong>先练手，路况相对简单；雅加达城区建议雇佣含司机的包车服务，省心安全。
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px;">
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;">
+                <div style="font-size:28px;margin-bottom:6px;">🏍️</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">摩托车是王道</h4>
+                <p style="font-size:12px;color:#666;margin:0;">巴厘岛摩托车日租约 ¥35–55，比打车便宜5倍以上。当地人和游客普遍骑摩，是探索小路的最佳工具。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;">
+                <div style="font-size:28px;margin-bottom:6px;">👮</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">警察拦车问题</h4>
+                <p style="font-size:12px;color:#666;margin:0;">印尼路上偶有交警拦截外国人查驾照。建议务必携带 IDP 和原驾照，若无证被抓，罚款可达 IDR 250,000–1,000,000。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;">
+                <div style="font-size:28px;margin-bottom:6px;">⛽</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">加油站</h4>
+                <p style="font-size:12px;color:#666;margin:0;">印尼 Pertamina 国营加油站最可靠，Pertalite 汽油约 IDR 10,000/L（约¥4.5）。偏远地区可能只有袋装汽油，约贵1倍。</p>
+              </div>
+              <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid #eee;">
+                <div style="font-size:28px;margin-bottom:6px;">🗺️</div>
+                <h4 style="font-size:13px;margin:0 0 6px;">导航App</h4>
+                <p style="font-size:12px;color:#666;margin:0;">印尼推荐使用 Google Maps（较准确），或当地 Waze。巴厘岛部分山区地图有偏差，注意路况指示牌。</p>
+              </div>
+            </div>
+
+            <!-- 社区互动 - 印尼 -->
+            <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-comments" style="color:#e91e63;"></i> 网友真实经验分享 · 印尼</h2>
+            <div id="id-community-container" style="margin-bottom:24px;"></div>
+
+          </div><!-- end listings-main -->
+
+          <!-- 侧边栏 -->
+          <aside class="sidebar">
+            <div class="sidebar-card" style="border-top:3px solid #e53935;">
+              <h3>🛵 印尼租车费用参考</h3>
+              <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                <tr style="background:#ffebee;"><th style="padding:6px;text-align:left;">类型</th><th style="padding:6px;text-align:right;">日租价</th></tr>
+                <tr><td style="padding:6px;">踏板摩托车（自动）</td><td style="padding:6px;text-align:right;color:#2d9b5c;">IDR 80k–120k</td></tr>
+                <tr style="background:#f8f8f8;"><td style="padding:6px;">大型摩托车（手动）</td><td style="padding:6px;text-align:right;color:#f57c00;">IDR 150k–250k</td></tr>
+                <tr><td style="padding:6px;">小型汽车（自驾）</td><td style="padding:6px;text-align:right;color:#f57c00;">IDR 350k–600k</td></tr>
+                <tr style="background:#f8f8f8;"><td style="padding:6px;">SUV（自驾）</td><td style="padding:6px;text-align:right;color:#e74c3c;">IDR 600k–900k</td></tr>
+                <tr><td style="padding:6px;">含司机包车（8小时）</td><td style="padding:6px;text-align:right;color:#e74c3c;">IDR 500k–800k</td></tr>
+              </table>
+              <p style="font-size:11px;color:#999;margin:8px 0 0;">IDR 10,000 ≈ ¥4.5（仅供参考）</p>
+            </div>
+            <div class="sidebar-card" style="background:#fff8e1;border:1px solid #ffe082;">
+              <h3>⚠️ 印尼骑车安全提示</h3>
+              <ul style="font-size:12px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+                <li>✅ 全程佩戴头盔（警察抓到罚款）</li>
+                <li>✅ 携带 IDP 国际驾照</li>
+                <li>✅ 雨季备雨衣（午后经常下雨）</li>
+                <li>✅ 下山时注意刹车，不要超速</li>
+                <li>✅ 夜间尽量避免骑行（路灯少）</li>
+                <li>❌ 不要闯红灯（罚款+被勒索风险）</li>
+                <li>❌ 不要在神庙前停车占道</li>
+              </ul>
+            </div>
+            <div class="sidebar-card">
+              <h3>📱 印尼出行必备App</h3>
+              <div style="font-size:13px;color:#333;line-height:2.2;">
+                <div><strong>Gojek</strong> — 印尼版滴滴，摩托/汽车打车</div>
+                <div><strong>Grab</strong> — 东南亚通用打车App</div>
+                <div><strong>Google Maps</strong> — 印尼导航首选</div>
+                <div><strong>Traveloka</strong> — 预订含司机包车</div>
+              </div>
+            </div>
+          </aside>
+
+        </div><!-- end listings-layout -->
+      </div><!-- end carID -->
+
+    </div><!-- end tabCar -->
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (tab === 'rent') {
+    document.getElementById('tabRent').classList.remove('hidden');
+    document.getElementById('tabCar').classList.add('hidden');
+    document.getElementById('rentFilters').classList.remove('hidden');
+    document.getElementById('carFilters').classList.add('hidden');
+  } else {
+    document.getElementById('tabRent').classList.add('hidden');
+    document.getElementById('tabCar').classList.remove('hidden');
+    document.getElementById('rentFilters').classList.add('hidden');
+    document.getElementById('carFilters').classList.remove('hidden');
+  }
+}
+function switchCarCountry(country, btn) {
+  document.querySelectorAll('#tabCar .filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (country === 'my') {
+    document.getElementById('carMY').classList.remove('hidden');
+    document.getElementById('carID').classList.add('hidden');
+  } else {
+    document.getElementById('carMY').classList.add('hidden');
+    document.getElementById('carID').classList.remove('hidden');
+  }
+}
+document.querySelectorAll('.sort-btn').forEach(b => {
+  b.addEventListener('click', () => { document.querySelectorAll('.sort-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); });
+});
+if (location.hash === '#car') switchTab('car', document.getElementById('carTabBtn'));
+</script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+<link rel="stylesheet" href="css/community.css">
+<script src="js/community.js"></script>
+<script>
+// rent.html 社区帖子数据
+window.NYT_POSTS = [
+  // 马来西亚租房经验
+  {
+    id: 'rent_my_1',
+    author: '小雯_KL',
+    avatarColor: 'linear-gradient(135deg,#e91e63,#ff9800)',
+    content: '在KLCC租了1年2室公寓，月租RM2,200。房东是华人，沟通无障碍。\n\n💡 提醒：签合同前一定要检查空调和热水器状态，我搬进来发现空调漏水，折腾了半个月才修好。另外要求房东给每个房间单独配钥匙，安全第一。',
+    category: '马来西亚租房',
+    timestamp: new Date('2026-01-20').getTime(),
+    likes: 156
+  },
+  {
+    id: 'rent_my_2',
+    author: '张工程师槟城',
+    avatarColor: 'linear-gradient(135deg,#2d9b5c,#1a6b3a)',
+    content: '槟城租房比KL便宜很多！我租的3室排屋月租只要RM1,500，离公司开车15分钟。\n\n⚠️ 注意：槟城老城区很多老房子水电管道老化，签合同前一定要试用所有水龙头和插座。另外槟城停车位紧张，一定要确认有没有车位。',
+    category: '马来西亚租房',
+    timestamp: new Date('2025-12-05').getTime(),
+    likes: 89
+  },
+  // 马来西亚租车经验
+  {
+    id: 'car_my_1',
+    author: '糕糕在大马',
+    avatarColor: 'linear-gradient(135deg,#e91e63,#ff9800)',
+    content: '在马来西亚租车一定要选择自动挡，因为马来西亚靠左行驶，开手挡容易搞混！我第一次开手挡差点走反了... 推荐在 Mayflower 或 KLIA 机场的 Hertz 取车，机场取还车最方便。记得备好 IDP，我用中国驾照+IDP 顺利租到了，没有任何问题✅',
+    category: '马来西亚租车',
+    timestamp: new Date('2025-11-15').getTime(),
+    likes: 203
+  },
+  {
+    id: 'car_my_2',
+    author: '吉隆坡打工人',
+    avatarColor: 'linear-gradient(135deg,#000,#333)',
+    content: '来马来西亚4年，分享一个省钱技巧：用 GoCar App 按小时租车，偶尔购物去超市只需 RM 15-20，比打 Grab 便宜得多！长途自驾还是推荐 Mayflower，保险买全险，不用担心剐蹭。提醒大家：还车时一定要把车里的垃圾清干净，不然会被额外收清洁费 RM 50-100。',
+    category: '马来西亚租车',
+    timestamp: new Date('2025-10-08').getTime(),
+    likes: 127
+  },
+  // 印尼租车经验
+  {
+    id: 'car_id_1',
+    author: '巴厘岛万能小摩托',
+    avatarColor: 'linear-gradient(135deg,#e91e63,#ff9800)',
+    content: '巴厘岛路况出了名的差，摩托车是当地人最常用的交通工具。如果你想自由探索巴厘岛，租辆摩托绝对必备！🏍️ 日租约 IDR 80,000-120,000（¥35-55），押金大概 ¥200。必须戴头盔！不然警察抓到罚款很贵。建议在 Klook 提前预订，送车上门，省去麻烦。新手第一天先在 Seminyak 周边小路练练，别直接去山路！',
+    category: '印尼租车',
+    timestamp: new Date('2025-12-20').getTime(),
+    likes: 324
+  },
+  {
+    id: 'car_id_2',
+    author: '巴厘岛中文司机Z属',
+    avatarColor: 'linear-gradient(135deg,#000,#333)',
+    content: '给大家分享巴厘岛包车中文司机的价格：全天包车（8小时）约 IDR 500,000–600,000（约¥220–270），司机会说普通话，全程讲解，带你去网红打卡点。比自己租车骑摩托安全得多，适合带老人孩子出行。一定要提前1天在微信/抖音联系好司机，旺季非常抢手！景点门票不含在包车费里，提前查好各景点票价。',
+    category: '印尼租车',
+    timestamp: new Date('2025-09-25').getTime(),
+    likes: 189
+  },
+  {
+    id: 'car_id_3',
+    author: '印尼自由行小能手',
+    avatarColor: 'linear-gradient(135deg,#667eea,#764ba2)',
+    content: '在印尼租车，我是用鞋程平台预订的，感觉比其他平台服务和保障更靠谱。这次没带国际驾照，就用了那个白色翻译本（即驾照公证翻译件），运气不错一路上都没遇到警察查车。不过听说最近查得越来越严，建议大家还是正规办理 IDP，别抱侥幸心理。摩托车一天 IDR 80,000，押金 IDR 500,000，很划算！',
+    category: '印尼租车',
+    timestamp: new Date('2025-08-12').getTime(),
+    likes: 156
+  }
+];
+
+// 初始化社区模块
+document.addEventListener('DOMContentLoaded', function() {
+  // 马来西亚社区
+  const myPosts = window.NYT_POSTS.filter(p => 
+    p.category === '马来西亚租房' || p.category === '马来西亚租车'
+  );
+  CommunityApp.init('my-community-container', myPosts);
+  
+  // 印尼社区
+  const idPosts = window.NYT_POSTS.filter(p => p.category === '印尼租车');
+  CommunityApp.init('id-community-container', idPosts);
+});
+</script>
+</body>
+</html>

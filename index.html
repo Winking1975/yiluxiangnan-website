@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>南洋通 - 中国人在东南亚的生活指南</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/lang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- 顶部公告栏 -->
+<div class="top-bar">
+  <div class="container">
+    <span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">公告：马来西亚e-NTL签证新政策已更新，点击查看详情</span></span>
+    <div class="top-bar-right">
+      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <span class="divider">|</span>
+      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+      <span class="divider">|</span>
+      <a href="#"><i class="fas fa-mobile-alt"></i> <span data-i18n="topbar.mobile">手机版</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- 主导航 -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html">
+        <span class="logo-icon">🌴</span>
+        <span class="logo-text">南洋通</span>
+        <span class="logo-sub">NanYangTong</span>
+      </a>
+    </div>
+
+    <div class="search-bar">
+      <div class="search-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <select>
+          <option data-i18n="country.my">马来西亚</option>
+          <option data-i18n="country.id">印度尼西亚</option>
+          <option data-i18n="country.sg">新加坡</option>
+          <option data-i18n="country.th">泰国</option>
+        </select>
+      </div>
+      <input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索签证办理、租房、工作、留学..." />
+      <button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
+    </div>
+
+    <div class="header-actions">
+      <a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
+      <a href="login.html" class="btn-login" data-i18n="header.login">登录</a>
+    </div>
+  </div>
+
+  <!-- 二级导航 -->
+  <nav class="sub-nav">
+    <div class="container">
+      <ul>
+        <li class="active"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+        <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+        <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+        <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+        <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+        <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+        <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+        <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+        <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+        <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="banner-slides">
+    <div class="slide active" style="background: linear-gradient(135deg, #1a6b3a 0%, #2d9b5c 50%, #f7b731 100%);">
+      <div class="container">
+        <div class="slide-content">
+          <div class="slide-text">
+            <span class="tag" data-i18n="index.banner.tag">🇲🇾 马来西亚</span>
+            <h1 data-i18n="index.banner.h1">在马来西亚生活<br/>从这里开始</h1>
+            <p data-i18n="index.banner.p">签证·住房·工作·留学·银行·生活服务<br/>一站解决，专业靠谱</p>
+            <div class="slide-btns">
+              <a href="visa.html" class="btn-primary" data-i18n="index.banner.btn1">办理签证 →</a>
+              <a href="guide.html" class="btn-outline" data-i18n="index.banner.btn2">新手指南</a>
+            </div>
+          </div>
+          <div class="slide-image">
+            <div class="city-illustration my">
+              <div class="building b1"></div>
+              <div class="building b2"></div>
+              <div class="tower-kl"></div>
+              <div class="building b3"></div>
+              <div class="cloud c1"></div>
+              <div class="cloud c2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 快速入口 -->
+  <div class="quick-entry">
+    <div class="container">
+      <div class="quick-grid">
+        <a href="visa.html" class="quick-item">
+          <div class="quick-icon" style="background:#e8f5e9"><i class="fas fa-passport" style="color:#2d9b5c"></i></div>
+          <span data-i18n="quick.visa">签证办理</span>
+        </a>
+        <a href="flight.html" class="quick-item">
+          <div class="quick-icon" style="background:#e3f2fd"><i class="fas fa-plane" style="color:#1976d2"></i></div>
+          <span data-i18n="quick.flight">买机票</span>
+        </a>
+        <a href="hotel.html" class="quick-item">
+          <div class="quick-icon" style="background:#fff3e0"><i class="fas fa-hotel" style="color:#f57c00"></i></div>
+          <span data-i18n="quick.hotel">订酒店</span>
+        </a>
+        <a href="rent.html" class="quick-item">
+          <div class="quick-icon" style="background:#fce4ec"><i class="fas fa-home" style="color:#e91e63"></i></div>
+          <span data-i18n="quick.rent">租房子</span>
+        </a>
+        <a href="rent.html#car" class="quick-item">
+          <div class="quick-icon" style="background:#f3e5f5"><i class="fas fa-car" style="color:#9c27b0"></i></div>
+          <span data-i18n="quick.car">租汽车</span>
+        </a>
+        <a href="work.html" class="quick-item">
+          <div class="quick-icon" style="background:#e8eaf6"><i class="fas fa-briefcase" style="color:#3f51b5"></i></div>
+          <span data-i18n="quick.work">找工作</span>
+        </a>
+        <a href="study.html" class="quick-item">
+          <div class="quick-icon" style="background:#e0f7fa"><i class="fas fa-graduation-cap" style="color:#00838f"></i></div>
+          <span data-i18n="quick.study">留学申请</span>
+        </a>
+        <a href="bank.html" class="quick-item">
+          <div class="quick-icon" style="background:#fff8e1"><i class="fas fa-university" style="color:#f9a825"></i></div>
+          <span data-i18n="quick.bank">开银行卡</span>
+        </a>
+        <a href="services.html" class="quick-item">
+          <div class="quick-icon" style="background:#efebe9"><i class="fas fa-tools" style="color:#795548"></i></div>
+          <span data-i18n="quick.services">生活服务</span>
+        </a>
+        <a href="community.html" class="quick-item">
+          <div class="quick-icon" style="background:#e8f5e9"><i class="fas fa-users" style="color:#388e3c"></i></div>
+          <span data-i18n="quick.community">华人社区</span>
+        </a>
+        <a href="medical.html" class="quick-item">
+          <div class="quick-icon" style="background:#ffebee"><i class="fas fa-hospital" style="color:#e53935"></i></div>
+          <span data-i18n="quick.medical">就医指南</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 国家切换 Tab -->
+<section class="country-section">
+  <div class="container">
+    <div class="country-tabs">
+      <button class="country-tab active" data-country="my">
+        <span>🇲🇾</span> <span data-i18n="country.my">马来西亚</span>
+      </button>
+      <button class="country-tab" data-country="id">
+        <span>🇮🇩</span> <span data-i18n="country.id">印度尼西亚</span>
+      </button>
+      <button class="country-tab" data-country="sg">
+        <span>🇸🇬</span> <span data-i18n="country.sg">新加坡</span>
+      </button>
+      <button class="country-tab" data-country="th">
+        <span>🇹🇭</span> <span data-i18n="country.th">泰国</span>
+      </button>
+    </div>
+
+    <!-- 城市导航 MY -->
+    <div class="city-nav" id="cities-my">
+      <span class="city-label" data-i18n="city.label">热门城市：</span>
+      <a href="#" class="city-link active">吉隆坡 / Kuala Lumpur</a>
+      <a href="#" class="city-link">槟城 / Penang</a>
+      <a href="#" class="city-link">新山 / Johor Bahru</a>
+      <a href="#" class="city-link">马六甲 / Melaka</a>
+      <a href="#" class="city-link">亚庇 / Kota Kinabalu</a>
+      <a href="#" class="city-link">古晋 / Kuching</a>
+    </div>
+    <div class="city-nav hidden" id="cities-id">
+      <span class="city-label" data-i18n="city.label">热门城市：</span>
+      <a href="#" class="city-link active">雅加达 / Jakarta</a>
+      <a href="#" class="city-link">巴厘岛 / Bali</a>
+      <a href="#" class="city-link">泗水 / Surabaya</a>
+      <a href="#" class="city-link">万隆 / Bandung</a>
+      <a href="#" class="city-link">棉兰 / Medan</a>
+    </div>
+  </div>
+</section>
+
+<!-- 精选服务模块 -->
+<section class="featured-services">
+  <div class="container">
+    <div class="services-grid">
+
+      <!-- 签证专区 -->
+      <div class="service-card visa-card">
+        <div class="card-header">
+          <h2><i class="fas fa-passport"></i> <span data-i18n="home.featured.visa.title">签证办理中心</span></h2>
+          <a href="visa.html" class="view-all" data-i18n="home.featured.visa.all">全部 →</a>
+        </div>
+        <div class="visa-types">
+          <div class="visa-item">
+            <div class="visa-icon"><i class="fas fa-plane-departure"></i></div>
+            <div class="visa-info">
+              <h4 data-i18n="visa.tourist.name">旅游签证</h4>
+              <p data-i18n="visa.tourist.desc">免签/落地签/电子签<br/>最快1天出签</p>
+              <span class="price">¥299起</span>
+            </div>
+            <a href="visa.html#tourist" class="btn-sm" data-i18n="visa.tourist.btn">立即办理</a>
+          </div>
+          <div class="visa-item">
+            <div class="visa-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="visa-info">
+              <h4 data-i18n="visa.work.name">工作签证 (EP/DP)</h4>
+              <p data-i18n="visa.work.desc">Employment Pass<br/>专业人士首选</p>
+              <span class="price">¥1,500起</span>
+            </div>
+            <a href="visa.html#work" class="btn-sm" data-i18n="visa.work.btn">立即办理</a>
+          </div>
+          <div class="visa-item">
+            <div class="visa-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="visa-info">
+              <h4 data-i18n="visa.student.name">学生签证</h4>
+              <p data-i18n="visa.student.desc">Student Pass<br/>院校直接担保</p>
+              <span class="price">¥800起</span>
+            </div>
+            <a href="visa.html#student" class="btn-sm" data-i18n="visa.student.btn">立即办理</a>
+          </div>
+          <div class="visa-item">
+            <div class="visa-icon"><i class="fas fa-home"></i></div>
+            <div class="visa-info">
+              <h4 data-i18n="visa.mm2h.name">MM2H第二家园</h4>
+              <p data-i18n="visa.mm2h.desc">长期居留签证<br/>全家移居首选</p>
+              <span class="price">¥5,000起</span>
+            </div>
+            <a href="visa.html#mm2h" class="btn-sm" data-i18n="visa.mm2h.btn">立即办理</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 租房模块 -->
+      <div class="service-card rent-card">
+        <div class="card-header">
+          <h2><i class="fas fa-building"></i> <span data-i18n="home.featured.rent.title">热门房源</span></h2>
+          <a href="rent.html" class="view-all" data-i18n="home.featured.rent.more">更多房源 →</a>
+        </div>
+        <div class="rent-list">
+          <div class="rent-item">
+            <div class="rent-img" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+              <span class="rent-tag" data-i18n="rent.tag.whole">整租</span>
+            </div>
+            <div class="rent-info">
+              <h4>吉隆坡 KLCC 精装两房</h4>
+              <p><i class="fas fa-map-marker-alt"></i> Ampang | 2室2卫 | 100㎡</p>
+              <div class="rent-footer">
+                <span class="rent-price">RM 3,500/月</span>
+                <span class="rent-badge" data-i18n="rent.badge.agent">中介可联系</span>
+              </div>
+            </div>
+          </div>
+          <div class="rent-item">
+            <div class="rent-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+              <span class="rent-tag" data-i18n="rent.tag.share">合租</span>
+            </div>
+            <div class="rent-info">
+              <h4>吉隆坡 Bukit Bintang 主卧</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 武吉免登 | 独立卫浴 | 含水电</p>
+              <div class="rent-footer">
+                <span class="rent-price">RM 1,200/月</span>
+                <span class="rent-badge new" data-i18n="rent.badge.new">新上架</span>
+              </div>
+            </div>
+          </div>
+          <div class="rent-item">
+            <div class="rent-img" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">
+              <span class="rent-tag" data-i18n="rent.tag.serviced">服务公寓</span>
+            </div>
+            <div class="rent-info">
+              <h4>槟城 Georgetown 海景套房</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 乔治市 | 1卧1厅 | 含家具</p>
+              <div class="rent-footer">
+                <span class="rent-price">RM 2,200/月</span>
+                <span class="rent-badge" data-i18n="rent.badge.chinese">中文房东</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 服务分类大图区 -->
+<section class="service-categories">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="home.cats.title">全面服务，一站搞定</h2>
+      <p data-i18n="home.cats.sub">从落地第一天开始，我们帮你解决所有问题</p>
+    </div>
+    <div class="cat-grid">
+      <a href="visa.html" class="cat-card" style="--color:#2d9b5c">
+        <div class="cat-bg"></div>
+        <i class="fas fa-passport"></i>
+        <h3 data-i18n="cat.visa.title">签证服务</h3>
+        <p data-i18n="cat.visa.sub">旅游签·工签·学签·MM2H·永居</p>
+        <ul>
+          <li data-i18n="cat.visa.f1">✓ 中文全程跟进</li>
+          <li data-i18n="cat.visa.f2">✓ 最快1天出签</li>
+          <li data-i18n="cat.visa.f3">✓ 拒签退款保障</li>
+        </ul>
+      </a>
+      <a href="flight.html" class="cat-card" style="--color:#1976d2">
+        <div class="cat-bg"></div>
+        <i class="fas fa-plane"></i>
+        <h3 data-i18n="cat.flight.title">机票预订</h3>
+        <p data-i18n="cat.flight.sub">直飞·经停·特价机票推荐</p>
+        <ul>
+          <li data-i18n="cat.flight.f1">✓ 实时比价最低价</li>
+          <li data-i18n="cat.flight.f2">✓ 退改签协助</li>
+          <li data-i18n="cat.flight.f3">✓ 中文客服支持</li>
+        </ul>
+      </a>
+      <a href="hotel.html" class="cat-card" style="--color:#f57c00">
+        <div class="cat-bg"></div>
+        <i class="fas fa-hotel"></i>
+        <h3 data-i18n="cat.hotel.title">酒店住宿</h3>
+        <p data-i18n="cat.hotel.sub">短租·长租·服务公寓</p>
+        <ul>
+          <li data-i18n="cat.hotel.f1">✓ 精选华人聚集区</li>
+          <li data-i18n="cat.hotel.f2">✓ 接送机服务</li>
+          <li data-i18n="cat.hotel.f3">✓ 中文房东优先</li>
+        </ul>
+      </a>
+      <a href="rent.html" class="cat-card" style="--color:#e91e63">
+        <div class="cat-bg"></div>
+        <i class="fas fa-home"></i>
+        <h3 data-i18n="cat.rent.title">租房租车</h3>
+        <p data-i18n="cat.rent.sub">整租·合租·公寓·别墅·汽车租赁</p>
+        <ul>
+          <li data-i18n="cat.rent.f1">✓ 免中介费选项</li>
+          <li data-i18n="cat.rent.f2">✓ 合同法律把关</li>
+          <li data-i18n="cat.rent.f3">✓ 押金安全保障</li>
+        </ul>
+      </a>
+      <a href="work.html" class="cat-card" style="--color:#3f51b5">
+        <div class="cat-bg"></div>
+        <i class="fas fa-briefcase"></i>
+        <h3 data-i18n="cat.work.title">工作就业</h3>
+        <p data-i18n="cat.work.sub">工签办理·求职招聘·创业指南</p>
+        <ul>
+          <li data-i18n="cat.work.f1">✓ EP/DP/VP全程代办</li>
+          <li data-i18n="cat.work.f2">✓ 正规企业招聘</li>
+          <li data-i18n="cat.work.f3">✓ 防骗预警提示</li>
+        </ul>
+      </a>
+      <a href="study.html" class="cat-card" style="--color:#00838f">
+        <div class="cat-bg"></div>
+        <i class="fas fa-graduation-cap"></i>
+        <h3 data-i18n="cat.study.title">留学教育</h3>
+        <p data-i18n="cat.study.sub">院校推荐·申请代办·学签·住宿</p>
+        <ul>
+          <li data-i18n="cat.study.f1">✓ 官方认证院校</li>
+          <li data-i18n="cat.study.f2">✓ 奖学金申请</li>
+          <li data-i18n="cat.study.f3">✓ 学生公寓匹配</li>
+        </ul>
+      </a>
+      <a href="bank.html" class="cat-card" style="--color:#f9a825">
+        <div class="cat-bg"></div>
+        <i class="fas fa-university"></i>
+        <h3 data-i18n="cat.bank.title">金融银行</h3>
+        <p data-i18n="cat.bank.sub">开户·汇款·保险·理财·税务</p>
+        <ul>
+          <li data-i18n="cat.bank.f1">✓ 银行开户陪同</li>
+          <li data-i18n="cat.bank.f2">✓ 人民币换汇</li>
+          <li data-i18n="cat.bank.f3">✓ 当地保险推荐</li>
+        </ul>
+      </a>
+      <a href="services.html" class="cat-card" style="--color:#795548">
+        <div class="cat-bg"></div>
+        <i class="fas fa-concierge-bell"></i>
+        <h3 data-i18n="cat.services.title">生活服务</h3>
+        <p data-i18n="cat.services.sub">翻译·律师·医疗·搬家·快递</p>
+        <ul>
+          <li data-i18n="cat.services.f1">✓ 中文医院导诊</li>
+          <li data-i18n="cat.services.f2">✓ 中英马来翻译</li>
+          <li data-i18n="cat.services.f3">✓ 合法律师推荐</li>
+        </ul>
+      </a>
+      <a href="medical.html" class="cat-card" style="--color:#e53935">
+        <div class="cat-bg"></div>
+        <i class="fas fa-hospital-alt"></i>
+        <h3 data-i18n="cat.medical.title">医疗就医</h3>
+        <p data-i18n="cat.medical.sub">医院推荐·就医流程·费用参考·急救</p>
+        <ul>
+          <li data-i18n="cat.medical.f1">✓ 马来西亚私立医院指南</li>
+          <li data-i18n="cat.medical.f2">✓ 印尼国际医院推荐</li>
+          <li data-i18n="cat.medical.f3">✓ 中文全程陪同就医</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 防骗指南横幅 -->
+<section class="safety-banner">
+  <div class="container">
+    <div class="safety-content">
+      <div class="safety-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="safety-text">
+        <h3 data-i18n="home.safety.title">⚠️ 防骗预警中心</h3>
+        <p data-i18n="home.safety.desc">在东南亚生活，防骗是头等大事。我们整理了最新诈骗手段，帮你保护财产安全</p>
+      </div>
+      <div class="safety-items">
+        <span class="safety-tag"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="home.safety.t1">假工签中介</span></span>
+        <span class="safety-tag"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="home.safety.t2">租房押金骗局</span></span>
+        <span class="safety-tag"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="home.safety.t3">杀猪盘防范</span></span>
+        <span class="safety-tag"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="home.safety.t4">假冒政府部门</span></span>
+      </div>
+      <a href="safety.html" class="btn-safety" data-i18n="home.safety.btn">查看防骗指南 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 热门攻略 -->
+<section class="guides-section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="home.guides.title">热门攻略</h2>
+      <p data-i18n="home.guides.sub">真实经验分享，让你少走弯路</p>
+      <a href="guides.html" class="view-all-link" data-i18n="home.guides.all">查看全部 →</a>
+    </div>
+    <div class="guides-grid">
+      <article class="guide-card featured">
+        <div class="guide-img" style="background:linear-gradient(135deg,#1a6b3a,#2d9b5c)">
+          <span class="guide-cat visa">签证</span>
+          <div class="guide-img-text">
+            <i class="fas fa-passport" style="font-size:48px;opacity:0.3"></i>
+          </div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag">🔥 热门</span>
+          <h3>2026年马来西亚签证全攻略：旅游·工签·MM2H详解</h3>
+          <p>最新政策更新，手把手教你选择最合适的签证类型，准备材料，预约面签...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 12,580次阅读</span>
+            <span><i class="fas fa-clock"></i> 2026-03-10</span>
+          </div>
+        </div>
+      </article>
+      <article class="guide-card">
+        <div class="guide-img" style="background:linear-gradient(135deg,#3f51b5,#1a237e)">
+          <div class="guide-img-text"><i class="fas fa-briefcase" style="font-size:36px;opacity:0.3"></i></div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag">工作</span>
+          <h3>初到吉隆坡如何找工作？EP工签全流程解析</h3>
+          <p>从求职到拿到工作证，详细记录整个流程和注意事项...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 8,320次</span>
+            <span><i class="fas fa-clock"></i> 2026-03-08</span>
+          </div>
+        </div>
+      </article>
+      <article class="guide-card">
+        <div class="guide-img" style="background:linear-gradient(135deg,#f57c00,#e64a19)">
+          <div class="guide-img-text"><i class="fas fa-home" style="font-size:36px;opacity:0.3"></i></div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag">租房</span>
+          <h3>吉隆坡租房完全指南：区域选择、看房避坑、合同签订</h3>
+          <p>作为在KL生活3年的老华侨，分享最真实的租房经验...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 7,150次</span>
+            <span><i class="fas fa-clock"></i> 2026-03-05</span>
+          </div>
+        </div>
+      </article>
+      <article class="guide-card">
+        <div class="guide-img" style="background:linear-gradient(135deg,#00838f,#006064)">
+          <div class="guide-img-text"><i class="fas fa-graduation-cap" style="font-size:36px;opacity:0.3"></i></div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag">留学</span>
+          <h3>马来西亚留学：TOP10大学排名及申请要求汇总</h3>
+          <p>马来亚大学、理科大学、博特拉大学等知名院校详细介绍...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 6,890次</span>
+            <span><i class="fas fa-clock"></i> 2026-03-01</span>
+          </div>
+        </div>
+      </article>
+      <article class="guide-card">
+        <div class="guide-img" style="background:linear-gradient(135deg,#9c27b0,#6a1b9a)">
+          <div class="guide-img-text"><i class="fas fa-university" style="font-size:36px;opacity:0.3"></i></div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag">银行</span>
+          <h3>马来西亚开银行卡全攻略：Maybank、CIMB、RHB对比</h3>
+          <p>所需材料、开户流程、手续费对比，一文搞清楚...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 5,440次</span>
+            <span><i class="fas fa-clock"></i> 2026-02-28</span>
+          </div>
+        </div>
+      </article>
+      <article class="guide-card">
+        <div class="guide-img" style="background:linear-gradient(135deg,#e91e63,#880e4f)">
+          <div class="guide-img-text"><i class="fas fa-shield-alt" style="font-size:36px;opacity:0.3"></i></div>
+        </div>
+        <div class="guide-content">
+          <span class="guide-tag safety">防骗</span>
+          <h3>【紧急预警】近期东南亚最新诈骗手段盘点，请务必转发</h3>
+          <p>收集了50+真实受骗案例，总结10大常见诈骗模式...</p>
+          <div class="guide-meta">
+            <span><i class="fas fa-eye"></i> 15,200次</span>
+            <span><i class="fas fa-clock"></i> 2026-03-12</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 认证服务商 -->
+<section class="providers-section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="home.providers.title">认证本地服务商</h2>
+      <p data-i18n="home.providers.sub">严格审核，只推荐真实可靠的本地华人服务机构</p>
+    </div>
+    <div class="provider-tabs">
+      <button class="prov-tab active" data-i18n="prov.tab.visa">签证代办</button>
+      <button class="prov-tab" data-i18n="prov.tab.realty">房产中介</button>
+      <button class="prov-tab" data-i18n="prov.tab.study">留学顾问</button>
+      <button class="prov-tab" data-i18n="prov.tab.bank">银行开户</button>
+      <button class="prov-tab" data-i18n="prov.tab.legal">律师翻译</button>
+    </div>
+    <div class="providers-grid">
+      <div class="provider-card">
+        <div class="prov-badge certified"><i class="fas fa-check-circle"></i> <span data-i18n="prov.badge.certified">官方认证</span></div>
+        <div class="prov-avatar" style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a)">KL</div>
+        <h4>KL中华签证服务中心</h4>
+        <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 · Chow Kit</p>
+        <div class="prov-tags">
+          <span>旅游签</span><span>工作签</span><span>MM2H</span>
+        </div>
+        <div class="prov-stats">
+          <span><i class="fas fa-star"></i> 4.9</span>
+          <span><i class="fas fa-users"></i> 3,280+</span>
+          <span><i class="fas fa-clock"></i> 10yr</span>
+        </div>
+        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+      </div>
+      <div class="provider-card">
+        <div class="prov-badge certified"><i class="fas fa-check-circle"></i> <span data-i18n="prov.badge.certified">官方认证</span></div>
+        <div class="prov-avatar" style="background:linear-gradient(135deg,#1976d2,#0d47a1)">华</div>
+        <h4>华海房产中介（马来西亚）</h4>
+        <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 · KLCC</p>
+        <div class="prov-tags">
+          <span>整租</span><span>合租</span><span>豪华公寓</span>
+        </div>
+        <div class="prov-stats">
+          <span><i class="fas fa-star"></i> 4.8</span>
+          <span><i class="fas fa-users"></i> 1,950+</span>
+          <span><i class="fas fa-clock"></i> 8yr</span>
+        </div>
+        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+      </div>
+      <div class="provider-card">
+        <div class="prov-badge certified"><i class="fas fa-check-circle"></i> <span data-i18n="prov.badge.certified">官方认证</span></div>
+        <div class="prov-avatar" style="background:linear-gradient(135deg,#f9a825,#e65100)">UM</div>
+        <h4>UM留学咨询（吉隆坡）</h4>
+        <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 · Damansara</p>
+        <div class="prov-tags">
+          <span>大学申请</span><span>学签</span><span>奖学金</span>
+        </div>
+        <div class="prov-stats">
+          <span><i class="fas fa-star"></i> 4.9</span>
+          <span><i class="fas fa-users"></i> 2,100+</span>
+          <span><i class="fas fa-clock"></i> 12yr</span>
+        </div>
+        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+      </div>
+      <div class="provider-card">
+        <div class="prov-badge partner"><i class="fas fa-handshake"></i> <span data-i18n="prov.badge.partner">合作机构</span></div>
+        <div class="prov-avatar" style="background:linear-gradient(135deg,#00838f,#004d40)">JK</div>
+        <h4>雅加达中文法律事务所</h4>
+        <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 · 雅加达</p>
+        <div class="prov-tags">
+          <span>签证</span><span>劳工法</span><span>公证翻译</span>
+        </div>
+        <div class="prov-stats">
+          <span><i class="fas fa-star"></i> 4.7</span>
+          <span><i class="fas fa-users"></i> 880+</span>
+          <span><i class="fas fa-clock"></i> 6yr</span>
+        </div>
+        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+      </div>
+    </div>
+    <div class="provider-join">
+      <p><span data-i18n="prov.join.text">您是本地服务商？</span><a href="join.html" data-i18n="prov.join.link">申请入驻 →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 数据统计 -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" data-target="50000">0</div>
+        <div class="stat-label" data-i18n="stats.users">注册用户</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="1200">0</div>
+        <div class="stat-label" data-i18n="stats.providers">认证服务商</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="98">0</div>
+        <div class="stat-label" data-i18n="stats.satisfaction">用户满意度%</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="15000">0</div>
+        <div class="stat-label" data-i18n="stats.cases">成功案例</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 下载APP -->
+<section class="app-section">
+  <div class="container">
+    <div class="app-content">
+      <div class="app-text">
+        <h2 data-i18n="app.title">📱 下载南洋通 APP</h2>
+        <p data-i18n="app.sub">随时随地查询攻略，一键联系服务商<br/>海外生活，从未如此简单</p>
+        <div class="app-features">
+          <span data-i18n="app.f1"><i class="fas fa-check"></i> 离线查看攻略</span>
+          <span data-i18n="app.f2"><i class="fas fa-check"></i> 实时消息推送</span>
+          <span data-i18n="app.f3"><i class="fas fa-check"></i> 中文客服</span>
+        </div>
+        <div class="app-btns">
+          <a href="#" class="app-btn ios"><i class="fab fa-apple"></i> App Store</a>
+          <a href="#" class="app-btn android"><i class="fab fa-google-play"></i> Google Play</a>
+          <a href="#" class="app-btn wechat"><i class="fab fa-weixin"></i> 微信小程序</a>
+        </div>
+      </div>
+      <div class="app-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="app-preview">
+              <div class="preview-header">南洋通</div>
+              <div class="preview-item"><i class="fas fa-passport"></i> 签证状态查询</div>
+              <div class="preview-item"><i class="fas fa-home"></i> 附近房源推荐</div>
+              <div class="preview-item active"><i class="fas fa-bell"></i> 3条新消息</div>
+              <div class="preview-item"><i class="fas fa-shield-alt"></i> 防骗预警推送</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 合作伙伴 -->
+<section class="partners-section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="partners.title">合作伙伴</h2>
+    </div>
+    <div class="partners-logos">
+      <div class="partner-logo">🏦 Maybank</div>
+      <div class="partner-logo">✈️ AirAsia</div>
+      <div class="partner-logo">🏨 Airbnb</div>
+      <div class="partner-logo">🏫 Universiti Malaya</div>
+      <div class="partner-logo">🚗 MyCar</div>
+      <div class="partner-logo">🏦 CIMB Bank</div>
+      <div class="partner-logo">✈️ Batik Air</div>
+      <div class="partner-logo">🏛️ Chinese Embassy</div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-weixin"></i></a>
+          <a href="#"><i class="fab fa-weibo"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="hotline">
+          <i class="fas fa-headset"></i>
+          <div>
+            <small data-i18n="footer.hotline">7×24小时服务热线</small>
+            <strong>400-888-2026</strong>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+          <li><a href="visa.html#pr" data-i18n="footer.visa.pr">永久居留</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+          <li><a href="services.html" data-i18n="footer.life.services">生活服务</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="guide-my.html" data-i18n="footer.guide.my">马来西亚新手指南</a></li>
+          <li><a href="guide-id.html" data-i18n="footer.guide.id">印尼新手指南</a></li>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="law.html" data-i18n="footer.guide.law">法律常识</a></li>
+          <li><a href="culture.html" data-i18n="footer.guide.culture">文化礼仪</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.about.title">关于我们</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="footer.about.us">公司介绍</a></li>
+          <li><a href="join.html" data-i18n="footer.about.join">服务商入驻</a></li>
+          <li><a href="contact.html" data-i18n="footer.about.contact">联系我们</a></li>
+          <li><a href="privacy.html" data-i18n="footer.about.privacy">隐私政策</a></li>
+          <li><a href="terms.html" data-i18n="footer.about.terms">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 南洋通 NanYangTong · All Rights Reserved · 致力于为中国人提供东南亚生活服务</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/lang.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/user.css"/>
+  <link rel="stylesheet" href="css/inquiry.css"/>
 </head>
 <body>
 
@@ -790,8 +791,8 @@
         <div class="sidebar-card" style="border-top:3px solid #2d9b5c;">
           <h3>💬 <span data-i18n="visa.consult">免费咨询</span></h3>
           <p style="font-size:13px;color:#666;margin-bottom:16px;">不确定办哪种签证？查看以下详细指南自行判断</p>
-          <a href="#" class="btn-apply" style="background:#07c160;"><i class="fab fa-weixin"></i> 微信咨询（免费）</a>
-          <a href="#" class="btn-consult" onclick="alert('请关注微信公众号「一路向南阳光灿烂」联系我们')"><i class="fab fa-weixin"></i> <span>微信咨询</span></a>
+          <a href="#" class="btn-apply" style="background:#07c160;" onclick="InquiryApp.open({id:'visa_consult',name:'签证咨询服务中心',category:'签证服务'});return false;"><i class="fab fa-weixin"></i> 微信咨询（免费）</a>
+          <a href="#" class="btn-consult" onclick="InquiryApp.open({id:'visa_consult',name:'签证咨询服务中心',category:'签证服务'});return false;"><i class="fab fa-weixin"></i> <span>微信咨询</span></a>
           <div style="text-align:center;font-size:12px;color:#999;margin-top:12px;"><span data-i18n="footer.hotline">7×24小时在线</span> · 平均响应3分钟</div>
         </div>
 
@@ -963,5 +964,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="js/main.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/inquiry.js"></script>
 </body>
 </html>

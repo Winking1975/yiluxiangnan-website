@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/lang.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/user.css"/>
+  <link rel="stylesheet" href="css/inquiry.css"/>
 </head>
 <body>
 <div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">本地优质服务商入驻中，欢迎认证机构联系我们！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
@@ -16,7 +17,10 @@
   <div class="container">
     <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
     <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索翻译、律师、医院、搬家..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
-    <div class="header-actions"><a href="join.html" class="btn-publish"><i class="fas fa-store"></i> <span data-i18n="prov.join.link">商家入驻</span></a></div>
+    <div class="header-actions">
+      <a href="#" onclick="InquiryApp.showMyInquiries();return false;" class="btn-publish" style="background:#1976d2;"><i class="fas fa-clipboard-list"></i> <span data-i18n="services.my.inquiries">我的咨询</span></a>
+      <a href="join.html" class="btn-publish"><i class="fas fa-store"></i> <span data-i18n="prov.join.link">商家入驻</span></a>
+    </div>
   </div>
   <nav class="sub-nav"><div class="container"><ul>
     <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
@@ -71,7 +75,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 Chow Kit</p>
           <div class="prov-tags"><span>中马翻译</span><span>公证认证</span><span>急件加急</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> --</span><span>3,100+客户</span></div>
-          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+          <a href="#" class="btn-contact" data-i18n="services.contact" onclick="InquiryApp.open({id:'kl_translate',name:'KL中马翻译中心',category:'翻译公证'});return false;">立即联系</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge" style="background:#666;"><span>待认证</span></div>
@@ -80,7 +84,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 槟城 George Town</p>
           <div class="prov-tags"><span>学历认证</span><span>驾照翻译</span><span>合同翻译</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>1,560+客户</span></div>
-          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+          <a href="#" class="btn-contact" data-i18n="services.contact" onclick="InquiryApp.open({id:'penang_translate',name:'槟城华人公证翻译所',category:'翻译公证'});return false;">立即联系</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge partner"><i class="fas fa-handshake"></i> <span data-i18n="prov.badge.partner">合作机构</span></div>
@@ -89,7 +93,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达</p>
           <div class="prov-tags"><span>中印翻译</span><span>合同公证</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>890+客户</span></div>
-          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+          <a href="#" class="btn-contact" data-i18n="services.contact" onclick="InquiryApp.open({id:'jkt_translate',name:'雅加达华语翻译服务',category:'翻译公证'});return false;">立即联系</a>
         </div>
       </div>
     </div>
@@ -105,7 +109,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 KLCC</p>
           <div class="prov-tags"><span>劳工纠纷</span><span>租房合同</span><span>移民法</span><span>公司注册</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> --</span><span>2,200+咨询</span><span>15年经验</span></div>
-          <a href="#" class="btn-contact">免费初咨</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'kl_lawyer',name:'KL华人律师事务所',category:'法律律师'});return false;">免费初咨</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge" style="background:#999;"><i class="fas fa-info-circle"></i> 信息仅供参考</div>
@@ -114,7 +118,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 新山 Johor Bahru</p>
           <div class="prov-tags"><span>出入境法</span><span>房产纠纷</span><span>签证上诉</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>1,100+咨询</span></div>
-          <a href="#" class="btn-contact">立即联系</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'jb_lawyer',name:'新山边境法律咨询',category:'法律律师'});return false;">立即联系</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作机构</div>
@@ -123,7 +127,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达</p>
           <div class="prov-tags"><span>劳工法</span><span>投资法</span><span>公证</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>680+咨询</span></div>
-          <a href="#" class="btn-contact">立即联系</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'jkt_lawyer',name:'雅加达中文法律顾问',category:'法律律师'});return false;">立即联系</a>
         </div>
       </div>
     </div>
@@ -163,7 +167,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 全市</p>
           <div class="prov-tags"><span>预约挂号</span><span>陪诊翻译</span><span>取药协助</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> --</span><span>4,500+服务</span></div>
-          <a href="#" class="btn-contact">预约服务</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'medical_guide',name:'中文医疗陪诊服务',category:'医疗导诊'});return false;">预约服务</a>
         </div>
       </div>
     </div>
@@ -179,7 +183,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 全马服务</p>
           <div class="prov-tags"><span>本地搬家</span><span>国际运输</span><span>行李托运</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>2,100+订单</span></div>
-          <a href="#" class="btn-contact">获取报价</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'kl_moving',name:'KL中国搬家服务',category:'搬家物流'});return false;">获取报价</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作机构</div>
@@ -188,7 +192,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 全马 → 中国</p>
           <div class="prov-tags"><span>快递寄件</span><span>代购转运</span><span>行李打包</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>6,800+包裹</span></div>
-          <a href="#" class="btn-contact">立即下单</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'cn_my_parcel',name:'中马跨境寄件服务',category:'搬家物流'});return false;">立即下单</a>
         </div>
       </div>
     </div>
@@ -229,7 +233,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 Imbi</p>
           <div class="prov-tags"><span>川菜</span><span>火锅</span><span>外卖配送</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> --</span><span>月售3,500+</span></div>
-          <a href="#" class="btn-contact">点餐/外卖</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'old_chengdu',name:'老成都川菜馆（KL）',category:'中餐外卖'});return false;">点餐/外卖</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 认证商家</div>
@@ -238,7 +242,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 槟城 Gurney</p>
           <div class="prov-tags"><span>粤菜</span><span>早茶</span><span>家宴预订</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>月售1,800+</span></div>
-          <a href="#" class="btn-contact">预订/外卖</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'shunde_cantonese',name:'顺德粤菜楼（槟城）',category:'中餐外卖'});return false;">预订/外卖</a>
         </div>
         <div class="provider-card">
           <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作商家</div>
@@ -247,7 +251,7 @@
           <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达 CBD</p>
           <div class="prov-tags"><span>湘菜</span><span>外卖</span></div>
           <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>月售900+</span></div>
-          <a href="#" class="btn-contact">点餐/外卖</a>
+          <a href="#" class="btn-contact" onclick="InquiryApp.open({id:'jkt_xiangcai',name:'湘西土匪鱼（雅加达）',category:'中餐外卖'});return false;">点餐/外卖</a>
         </div>
       </div>
     </div>
@@ -256,14 +260,14 @@
     <div class="svc-group" data-cat="life">
       <h2 class="svc-group-title"><i class="fas fa-tools" style="color:#795548;"></i> 生活服务</h2>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-        <div class="life-svc-card"><i class="fas fa-broom"></i><span>家政保洁</span><small>RM 80起/次</small></div>
-        <div class="life-svc-card"><i class="fas fa-wrench"></i><span>水电维修</span><small>RM 100起</small></div>
-        <div class="life-svc-card"><i class="fas fa-sim-card"></i><span>手机卡办理</span><small>Maxis/Celcom</small></div>
-        <div class="life-svc-card"><i class="fas fa-car"></i><span>接送机服务</span><small>RM 60起</small></div>
-        <div class="life-svc-card"><i class="fas fa-cut"></i><span>中文美发</span><small>全市推荐</small></div>
-        <div class="life-svc-card"><i class="fas fa-shopping-bag"></i><span>代购代办</span><small>按需定价</small></div>
-        <div class="life-svc-card"><i class="fas fa-dog"></i><span>宠物寄养</span><small>RM 50/天</small></div>
-        <div class="life-svc-card"><i class="fas fa-baby"></i><span>保姆月嫂</span><small>RM 2500/月</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_cleaning',name:'家政保洁服务',category:'生活服务'});return false;"><i class="fas fa-broom"></i><span>家政保洁</span><small>RM 80起/次</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_repair',name:'水电维修服务',category:'生活服务'});return false;"><i class="fas fa-wrench"></i><span>水电维修</span><small>RM 100起</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_sim',name:'手机卡办理服务',category:'生活服务'});return false;"><i class="fas fa-sim-card"></i><span>手机卡办理</span><small>Maxis/Celcom</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_airport',name:'接送机服务',category:'生活服务'});return false;"><i class="fas fa-car"></i><span>接送机服务</span><small>RM 60起</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_haircut',name:'中文美发服务',category:'生活服务'});return false;"><i class="fas fa-cut"></i><span>中文美发</span><small>全市推荐</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_shopping',name:'代购代办服务',category:'生活服务'});return false;"><i class="fas fa-shopping-bag"></i><span>代购代办</span><small>按需定价</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_pet',name:'宠物寄养服务',category:'生活服务'});return false;"><i class="fas fa-dog"></i><span>宠物寄养</span><small>RM 50/天</small></div>
+        <div class="life-svc-card" onclick="InquiryApp.open({id:'life_nanny',name:'保姆月嫂服务',category:'生活服务'});return false;"><i class="fas fa-baby"></i><span>保姆月嫂</span><small>RM 2500/月</small></div>
       </div>
     </div>
 
@@ -275,6 +279,12 @@
         <span>✅ 免费入驻</span><span>✅ 严格审核</span><span>✅ 中文推广</span><span>✅ 流量保障</span>
       </div>
       <a href="join.html" class="btn-primary" style="display:inline-block;padding:14px 40px;font-size:16px;"><span data-i18n="prov.join.link">立即申请入驻 →</span></a>
+    </div>
+    <!-- 运营管理入口（仅管理员可见） -->
+    <div style="text-align:center;margin-top:16px;">
+      <a href="#" onclick="InquiryApp.showAdminPanel();return false;" style="font-size:12px;color:#bbb;text-decoration:none;">
+        <i class="fas fa-cog"></i> 线索管理面板
+      </a>
     </div>
   </div>
 </div>
@@ -334,5 +344,6 @@ function filterService(cat, btn) {
 </script>
 <script src="js/main.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/inquiry.js"></script>
 </body>
 </html>

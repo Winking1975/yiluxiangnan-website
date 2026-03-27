@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/lang.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/user.css"/>
+  <link rel="stylesheet" href="css/inquiry.css"/>
 </head>
 <body>
 
@@ -562,7 +563,7 @@
           <span><i class="fas fa-users"></i> --</span>
           <span><i class="fas fa-clock"></i> --</span>
         </div>
-        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+        <a href="#" onclick="InquiryApp.open({id:'index_visa',name:'KL中华签证服务中心',category:'签证服务'});return false;" class="btn-contact" data-i18n="prov.contact">立即联系</a>
       </div>
       <div class="provider-card">
         <div class="prov-badge" style="background:#666;"><span>待认证</span></div>
@@ -577,7 +578,7 @@
           <span><i class="fas fa-users"></i> 1,950+</span>
           <span><i class="fas fa-clock"></i> 8yr</span>
         </div>
-        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+        <a href="#" onclick="InquiryApp.open({id:'index_rent',name:'华海房产中介（马来西亚）',category:'租房中介'});return false;" class="btn-contact" data-i18n="prov.contact">立即联系</a>
       </div>
       <div class="provider-card">
         <div class="prov-badge" style="background:#666;"><span>待认证</span></div>
@@ -592,7 +593,7 @@
           <span><i class="fas fa-users"></i> 2,100+</span>
           <span><i class="fas fa-clock"></i> 12yr</span>
         </div>
-        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+        <a href="#" onclick="InquiryApp.open({id:'index_study',name:'UM留学咨询（吉隆坡）',category:'留学咨询'});return false;" class="btn-contact" data-i18n="prov.contact">立即联系</a>
       </div>
       <div class="provider-card">
         <div class="prov-badge partner"><i class="fas fa-handshake"></i> <span data-i18n="prov.badge.partner">合作机构</span></div>
@@ -607,7 +608,7 @@
           <span><i class="fas fa-users"></i> 880+</span>
           <span><i class="fas fa-clock"></i> 6yr</span>
         </div>
-        <a href="services.html" class="btn-contact" data-i18n="prov.contact">立即联系</a>
+        <a href="#" onclick="InquiryApp.open({id:'index_lawyer',name:'雅加达中文法律事务所',category:'法律顾问'});return false;" class="btn-contact" data-i18n="prov.contact">立即联系</a>
       </div>
     </div>
     <div class="provider-join">
@@ -763,5 +764,5 @@
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
   <script src="js/user.js"></script>
-</body>
+  <script src="js/inquiry.js"></script>
 </html>

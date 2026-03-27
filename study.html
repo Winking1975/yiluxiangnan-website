@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/lang.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/user.css"/>
+  <link rel="stylesheet" href="css/inquiry.css"/>
 </head>
 <body>
 <div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">2026年马来西亚顶尖大学申请截止日期汇总，抓紧时间！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
@@ -230,7 +231,7 @@
           <h3>🎓 <span data-i18n="study.apply">申请咨询</span></h3>
           <p style="font-size:13px;color:#666;margin-bottom:14px;">填写成绩和意向，顾问1小时内给出专属方案</p>
           <a href="#" class="btn-apply" style="background:#00838f;"><i class="fas fa-paper-plane"></i> <span data-i18n="study.apply">免费评估</span></a>
-          <a href="#" class="btn-consult" style="margin-top:10px;"><i class="fab fa-weixin"></i> <span data-i18n="visa.consult">微信咨询</span></a>
+          <a href="#" class="btn-consult" style="margin-top:10px;" onclick="InquiryApp.open({id:'study_consult',name:'留学申请咨询',category:'留学教育'});return false;"><i class="fab fa-weixin"></i> <span data-i18n="visa.consult">微信咨询</span></a>
         </div>
         <div class="sidebar-card">
           <h3>📚 <span data-i18n="study.req">申请要求速查</span></h3>
@@ -359,5 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
   <script src="js/user.js"></script>
+  <script src="js/inquiry.js"></script>
 </body>
 </html>

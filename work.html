@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/lang.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/user.css"/>
+  <link rel="stylesheet" href="css/inquiry.css"/>
 </head>
 <body>
 <div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">🚨 防骗提醒：拒绝任何以"高薪"为诱饵的非正规工作邀请，谨防诈骗！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
@@ -192,7 +193,7 @@
           <h3>🛡️ 工签办理指南</h3>
           <p style="font-size:13px;color:#666;margin-bottom:14px;">找工作或办工签？查看以下指南和正规求职平台</p>
           <a href="visa.html#work" class="btn-apply"><i class="fas fa-passport"></i> 立即办理工签</a>
-          <a href="#" class="btn-consult" style="margin-top:10px;"><i class="fab fa-weixin"></i> 免费咨询</a>
+          <a href="#" class="btn-consult" style="margin-top:10px;" onclick="InquiryApp.open({id:'work_consult',name:'工签办理咨询',category:'工作就业'});return false;"><i class="fab fa-weixin"></i> 免费咨询</a>
         </div>
 
         <div class="sidebar-card" style="border-top:3px solid #2196f3;">
@@ -437,5 +438,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="js/main.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/inquiry.js"></script>
 </body>
 </html>

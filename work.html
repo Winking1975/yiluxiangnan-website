@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="css/pages.css"/>
   <link rel="stylesheet" href="css/lang.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
-<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">🚨 防骗提醒：拒绝任何以"高薪"为诱饵的非正规工作邀请，谨防诈骗！</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">🚨 防骗提醒：拒绝任何以"高薪"为诱饵的非正规工作邀请，谨防诈骗！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
 <header class="main-header">
   <div class="container">
     <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
     <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索职位、公司、技能..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
-    <div class="header-actions"><a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布职位</span></a></div>
+    <div class="header-actions"><a href="#" class="btn-publish" onclick="showToast('发布功能即将上线，请关注微信公众号「一路向南阳光灿烂」');return false;"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布职位</span></a></div>
   </div>
   <nav class="sub-nav"><div class="container"><ul>
     <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
@@ -435,5 +436,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="css/pages.css"/>
   <link rel="stylesheet" href="css/lang.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
-<div class="top-bar" style="background:#c62828;"><div class="container"><span><i class="fas fa-exclamation-triangle"></i> <span data-i18n="safety.topbar.notice">安全提示：已在东南亚被骗？立即拨打110报警或联系中国驻当地使馆！</span></span><div class="top-bar-right"><a href="login.html" style="color:#ffcdd2;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html" style="color:#ffcdd2;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<div class="top-bar" style="background:#c62828;"><div class="container"><span><i class="fas fa-exclamation-triangle"></i> <span data-i18n="safety.topbar.notice">安全提示：已在东南亚被骗？立即拨打110报警或联系中国驻当地使馆！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;" style="color:#ffcdd2;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;" style="color:#ffcdd2;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
 <header class="main-header">
   <div class="container">
     <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
@@ -274,5 +275,6 @@
 </footer>
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

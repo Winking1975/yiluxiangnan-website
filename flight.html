@@ -35,9 +35,10 @@
       .flight-platform-grid { grid-template-columns:1fr; }
     }
   </style>
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
-<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">中国→东南亚机票攻略，查看最新航班和价格信息</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">中国→东南亚机票攻略，查看最新航班和价格信息</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
 <header class="main-header">
   <div class="container">
     <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
@@ -527,5 +528,6 @@ document.addEventListener('DOMContentLoaded', function() {
   CommunityApp.init('flight-community-container', window.NYT_POSTS);
 });
 </script>
+  <script src="js/user.js"></script>
 </body>
 </html>

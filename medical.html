@@ -105,6 +105,7 @@
     }
     .tip-box i { margin-right: 6px; }
   </style>
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
 
@@ -113,9 +114,9 @@
   <div class="container">
     <span><i class="fas fa-bullhorn"></i> <span data-i18n="medical.topbar">🏥 新增：吉隆坡中文医院导诊服务上线，外籍人士看病全程中文陪同</span></span>
     <div class="top-bar-right">
-      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
       <span class="divider">|</span>
-      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+      <a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
     </div>
   </div>
 </div>
@@ -775,5 +776,6 @@ function switchCountry(panel, btn) {
 }
 </script>
 <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

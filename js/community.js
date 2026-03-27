@@ -1,6 +1,7 @@
 /**
- * 南洋通社区模块 - 经验分享、点赞、评论
+ * 一路向南社区模块 - 经验分享、点赞、评论
  * 纯前端实现，数据存储在 localStorage
+ * 接入用户系统：发帖/评论/点赞需登录
  */
 
 (function() {
@@ -97,13 +98,18 @@
       const likeCount = CommunityData.getLikeCount(post.id, post.likes || 0);
       const comments = CommunityData.getComments(post.id);
       const timeStr = this.formatTime(post.timestamp);
+      const user = typeof UserData !== 'undefined' ? UserData.getCurrent() : null;
+
+      // 显示作者头像 — 如果是用户自己发的帖子，显示登录态头像
+      const authorName = post.author || '匿名用户';
+      const avatarColor = post.avatarColor || '#999';
 
       return `
         <div class="community-post" data-post-id="${post.id}">
           <div class="post-header">
-            <div class="post-avatar" style="background: ${post.avatarColor || '#2d9b5c'}">${post.author.charAt(0)}</div>
+            <div class="post-avatar" style="background: ${avatarColor}">${authorName.charAt(0)}</div>
             <div class="post-meta">
-              <div class="post-author">${post.author}</div>
+              <div class="post-author">${this.escapeHtml(authorName)}</div>
               <div class="post-time">${timeStr} · ${post.category || '经验分享'}</div>
             </div>
           </div>
@@ -130,7 +136,8 @@
               ${this.renderComments(comments)}
             </div>
             <div class="comment-input-area">
-              <input type="text" class="comment-input" placeholder="写下你的评论..." 
+              <input type="text" class="comment-input" placeholder="${user ? '写下你的评论...' : '登录后即可评论'}" 
+                     ${user ? '' : 'readonly onclick="UserApp.showLogin()"' }
                      onkeypress="if(event.key==='Enter')CommunityApp.submitComment('${post.id}',this)">
               <button class="comment-submit" onclick="CommunityApp.submitComment('${post.id}',this.previousElementSibling)">
                 发送
@@ -154,9 +161,9 @@
       
       return comments.map(c => `
         <div class="comment-item">
-          <div class="comment-avatar">${c.author.charAt(0)}</div>
+          <div class="comment-avatar" style="background:${c.avatarColor || '#999'}">${(c.author || '?').charAt(0)}</div>
           <div class="comment-body">
-            <div class="comment-author">${c.author}</div>
+            <div class="comment-author">${this.escapeHtml(c.author || '匿名用户')}</div>
             <div class="comment-text">${this.escapeHtml(c.content)}</div>
             <div class="comment-time">${this.formatTime(c.timestamp)}</div>
           </div>
@@ -219,11 +226,12 @@
 
     // 添加发帖表单
     addPostForm() {
-      const formHtml = `
+      const user = typeof UserData !== 'undefined' ? UserData.getCurrent() : null;
+      const formHtml = user ? `
         <div class="community-post-form">
           <div class="post-form-header">
-            <i class="fas fa-pen-fancy"></i>
-            <span>分享你的经验</span>
+            <div class="post-avatar" style="background:${user.avatarColor};width:32px;height:32px;font-size:14px;">${user.nickname.charAt(0)}</div>
+            <span>分享你的经验，${this.escapeHtml(user.nickname)}</span>
           </div>
           <textarea class="post-form-textarea" placeholder="分享你的入境经验、签证心得、或者任何有用的信息..." maxlength="500"></textarea>
           <div class="post-form-footer">
@@ -233,6 +241,16 @@
             </button>
           </div>
         </div>
+      ` : `
+        <div class="community-post-form" style="text-align:center;padding:24px;">
+          <div class="post-form-header" style="justify-content:center;">
+            <i class="fas fa-lock" style="color:#bbb;"></i>
+            <span style="color:#999;">登录后即可发帖分享</span>
+          </div>
+          <button class="post-form-submit" style="margin:12px auto 0;" onclick="UserApp.showLogin()">
+            <i class="fas fa-sign-in-alt"></i> 登录 / 注册
+          </button>
+        </div>
       `;
       
       // 在容器前插入表单
@@ -240,33 +258,50 @@
       formDiv.innerHTML = formHtml;
       this.container.parentNode.insertBefore(formDiv.firstElementChild, this.container);
       
-      // 绑定字数统计
-      const textarea = document.querySelector('.post-form-textarea');
-      const charCount = document.querySelector('.char-count');
-      textarea.addEventListener('input', () => {
-        charCount.textContent = `${textarea.value.length}/500`;
-      });
+      // 绑定字数统计（仅登录用户）
+      const textarea = this.container.parentNode.querySelector('.post-form-textarea');
+      const charCount = this.container.parentNode.querySelector('.char-count');
+      if (textarea && charCount) {
+        textarea.addEventListener('input', () => {
+          charCount.textContent = `${textarea.value.length}/500`;
+        });
+      }
     },
 
     // 提交帖子
     submitPost() {
+      // 检查登录状态
+      if (typeof UserApp !== 'undefined') {
+        UserApp.requireLogin(() => { this._doSubmitPost(); });
+      } else {
+        this._doSubmitPost();
+      }
+    },
+
+    _doSubmitPost() {
       const textarea = document.querySelector('.post-form-textarea');
+      if (!textarea) return;
       const content = textarea.value.trim();
       
       if (!content) {
-        alert('请输入内容后再发布');
+        this.showToast('请输入内容后再发布');
         return;
       }
       
+      const user = typeof UserData !== 'undefined' ? UserData.getCurrent() : null;
+      const author = user ? user.nickname : '匿名用户';
+      const avatarColor = user ? user.avatarColor : this.getRandomColor();
+
       const post = CommunityData.addPost({
-        author: '匿名用户', // 后续可接入登录系统
-        avatarColor: this.getRandomColor(),
+        author: author,
+        avatarColor: avatarColor,
         content: content,
         category: '经验分享'
       });
       
       textarea.value = '';
-      document.querySelector('.char-count').textContent = '0/500';
+      const charCount = document.querySelector('.char-count');
+      if (charCount) charCount.textContent = '0/500';
       
       // 重新渲染
       this.renderAllPosts();
@@ -277,8 +312,18 @@
 
     // 切换点赞
     toggleLike(postId) {
+      // 检查登录状态
+      if (typeof UserApp !== 'undefined') {
+        UserApp.requireLogin(() => { this._doToggleLike(postId); });
+        return;
+      }
+      this._doToggleLike(postId);
+    },
+
+    _doToggleLike(postId) {
       const newState = CommunityData.toggleLike(postId);
       const postEl = document.querySelector(`[data-post-id="${postId}"]`);
+      if (!postEl) return;
       const likeBtn = postEl.querySelector('.like-btn');
       const likeCount = postEl.querySelector('.like-count');
       
@@ -293,6 +338,7 @@
     // 切换评论区显示
     toggleComments(postId) {
       const commentsEl = document.getElementById(`comments-${postId}`);
+      if (!commentsEl) return;
       const isVisible = commentsEl.style.display !== 'none';
       commentsEl.style.display = isVisible ? 'none' : 'block';
       
@@ -301,16 +347,43 @@
         const comments = CommunityData.getComments(postId);
         const listEl = commentsEl.querySelector('.comments-list');
         listEl.innerHTML = CommunityUI.renderComments(comments);
+
+        // 更新评论输入框状态
+        const input = commentsEl.querySelector('.comment-input');
+        const user = typeof UserData !== 'undefined' ? UserData.getCurrent() : null;
+        if (user) {
+          input.placeholder = '写下你的评论...';
+          input.readOnly = false;
+          input.onclick = null;
+        } else {
+          input.placeholder = '登录后即可评论';
+          input.readOnly = true;
+          input.onclick = () => { if (typeof UserApp !== 'undefined') UserApp.showLogin(); };
+        }
       }
     },
 
     // 提交评论
     submitComment(postId, inputEl) {
+      // 检查登录状态
+      if (typeof UserApp !== 'undefined') {
+        UserApp.requireLogin(() => { this._doSubmitComment(postId, inputEl); });
+        return;
+      }
+      this._doSubmitComment(postId, inputEl);
+    },
+
+    _doSubmitComment(postId, inputEl) {
       const content = inputEl.value.trim();
       if (!content) return;
       
+      const user = typeof UserData !== 'undefined' ? UserData.getCurrent() : null;
+      const author = user ? user.nickname : '匿名用户';
+      const avatarColor = user ? user.avatarColor : '#999';
+
       CommunityData.addComment(postId, {
-        author: '匿名用户',
+        author: author,
+        avatarColor: avatarColor,
         content: content
       });
       
@@ -319,12 +392,14 @@
       // 刷新评论列表
       const comments = CommunityData.getComments(postId);
       const listEl = document.querySelector(`#comments-${postId} .comments-list`);
-      listEl.innerHTML = CommunityUI.renderComments(comments);
+      if (listEl) listEl.innerHTML = CommunityUI.renderComments(comments);
       
       // 更新评论数
       const postEl = document.querySelector(`[data-post-id="${postId}"]`);
-      const countEl = postEl.querySelector('.comment-count');
-      countEl.textContent = parseInt(countEl.textContent) + 1;
+      if (postEl) {
+        const countEl = postEl.querySelector('.comment-count');
+        countEl.textContent = parseInt(countEl.textContent) + 1;
+      }
     },
 
     // 分享帖子
@@ -356,6 +431,13 @@
     getRandomColor() {
       const colors = ['#2d9b5c', '#1976d2', '#e91e63', '#f57c00', '#9c27b0', '#00bcd4', '#795548'];
       return colors[Math.floor(Math.random() * colors.length)];
+    },
+
+    // HTML转义
+    escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
   };
 

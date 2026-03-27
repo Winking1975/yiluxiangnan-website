@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/lang.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
 
@@ -15,9 +16,9 @@
   <div class="container">
     <span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">马来西亚e-NTL电子签更新，国人30天免签入境！</span></span>
     <div class="top-bar-right">
-      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
       <span class="divider">|</span>
-      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+      <a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
     </div>
   </div>
 </div>
@@ -36,7 +37,7 @@
       <button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
     </div>
     <div class="header-actions">
-      <a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
+      <a href="#" class="btn-publish" onclick="showToast('发布功能即将上线，请关注微信公众号「一路向南阳光灿烂」');return false;"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
     </div>
   </div>
   <nav class="sub-nav">
@@ -961,5 +962,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

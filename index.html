@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/lang.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/user.css"/>
 </head>
 <body>
 
@@ -16,9 +17,9 @@
   <div class="container">
     <span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">公告：马来西亚e-NTL签证新政策已更新，点击查看详情</span></span>
     <div class="top-bar-right">
-      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
       <span class="divider">|</span>
-      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+      <a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
       <span class="divider">|</span>
       <a href="#"><i class="fas fa-mobile-alt"></i> <span data-i18n="topbar.mobile">手机版</span></a>
     </div>
@@ -51,8 +52,8 @@
     </div>
 
     <div class="header-actions">
-      <a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
-      <a href="login.html" class="btn-login" data-i18n="header.login">登录</a>
+      <a href="#" class="btn-publish" onclick="showToast('发布功能即将上线，请关注微信公众号「一路向南阳光灿烂」');return false;"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
+      <a href="#" class="btn-login" data-i18n="header.login" onclick="UserApp.showLogin();return false;">登录</a>
     </div>
   </div>
 
@@ -88,7 +89,7 @@
             <p data-i18n="index.banner.p">签证·住房·工作·留学·银行·生活服务<br/>一站解决，专业靠谱</p>
             <div class="slide-btns">
               <a href="visa.html" class="btn-primary" data-i18n="index.banner.btn1">办理签证 →</a>
-              <a href="guide.html" class="btn-outline" data-i18n="index.banner.btn2">新手指南</a>
+              <a href="safety.html" class="btn-outline" data-i18n="index.banner.btn2">安全指南</a>
             </div>
           </div>
           <div class="slide-image">
@@ -371,7 +372,7 @@
         <h3 data-i18n="cat.study.title">留学教育</h3>
         <p data-i18n="cat.study.sub">院校推荐·申请代办·学签·住宿</p>
         <ul>
-          <li data-i18n="cat.study.f1">✓ 官方认证院校</li>
+          <li data-i18n="cat.study.f1">✓ 知名院校推荐</li>
           <li data-i18n="cat.study.f2">✓ 奖学金申请</li>
           <li data-i18n="cat.study.f3">✓ 学生公寓匹配</li>
         </ul>
@@ -439,7 +440,7 @@
     <div class="section-title">
       <h2 data-i18n="home.guides.title">热门攻略</h2>
       <p data-i18n="home.guides.sub">真实经验分享，让你少走弯路</p>
-      <a href="guides.html" class="view-all-link" data-i18n="home.guides.all">查看全部 →</a>
+      <a href="community.html" class="view-all-link" data-i18n="home.guides.all">查看全部 →</a>
     </div>
     <div class="guides-grid">
       <article class="guide-card featured">
@@ -615,80 +616,78 @@
   </div>
 </section>
 
-<!-- 数据统计 -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-num" data-target="50000">0</div>
-        <div class="stat-label" data-i18n="stats.users">注册用户</div>
+<!-- 关注我们 -->
+<section class="stats-section" style="background:linear-gradient(135deg,#1a6b3a 0%,#2d9b5c 50%,#1a6b3a 100%);padding:48px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:#fff;font-size:28px;margin-bottom:12px;">🌴 关注「一路向南」，开启东南亚新生活</h2>
+    <p style="color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:32px;">签证攻略 · 租房指南 · 工作招聘 · 留学申请 · 生活服务<br/>一站式华人海外生活信息平台</p>
+    <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:20px 28px;color:#fff;text-align:center;min-width:180px;">
+        <i class="fab fa-weixin" style="font-size:32px;margin-bottom:8px;"></i>
+        <div style="font-weight:700;font-size:15px;">微信公众号</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">一路向南阳光灿烂</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="1200">0</div>
-        <div class="stat-label" data-i18n="stats.providers">认证服务商</div>
+      <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:20px 28px;color:#fff;text-align:center;min-width:180px;">
+        <i class="fas fa-globe" style="font-size:32px;margin-bottom:8px;"></i>
+        <div style="font-weight:700;font-size:15px;">官方网站</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">yiluxiangnan.com.cn</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="98">0</div>
-        <div class="stat-label" data-i18n="stats.satisfaction">用户满意度%</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="15000">0</div>
-        <div class="stat-label" data-i18n="stats.cases">成功案例</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 下载APP -->
-<section class="app-section">
-  <div class="container">
-    <div class="app-content">
-      <div class="app-text">
-        <h2 data-i18n="app.title">📱 下载一路向南 APP</h2>
-        <p data-i18n="app.sub">随时随地查询攻略，一键联系服务商<br/>海外生活，从未如此简单</p>
-        <div class="app-features">
-          <span data-i18n="app.f1"><i class="fas fa-check"></i> 离线查看攻略</span>
-          <span data-i18n="app.f2"><i class="fas fa-check"></i> 实时消息推送</span>
-          <span data-i18n="app.f3"><i class="fas fa-check"></i> 中文客服</span>
-        </div>
-        <div class="app-btns">
-          <a href="#" class="app-btn ios"><i class="fab fa-apple"></i> App Store</a>
-          <a href="#" class="app-btn android"><i class="fab fa-google-play"></i> Google Play</a>
-          <a href="#" class="app-btn wechat"><i class="fab fa-weixin"></i> 微信小程序</a>
-        </div>
-      </div>
-      <div class="app-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="app-preview">
-              <div class="preview-header">一路向南</div>
-              <div class="preview-item"><i class="fas fa-passport"></i> 签证状态查询</div>
-              <div class="preview-item"><i class="fas fa-home"></i> 附近房源推荐</div>
-              <div class="preview-item active"><i class="fas fa-bell"></i> 3条新消息</div>
-              <div class="preview-item"><i class="fas fa-shield-alt"></i> 防骗预警推送</div>
-            </div>
-          </div>
-        </div>
+      <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:20px 28px;color:#fff;text-align:center;min-width:180px;">
+        <i class="fas fa-users" style="font-size:32px;margin-bottom:8px;"></i>
+        <div style="font-weight:700;font-size:15px;">华人社区</div>
+        <div style="font-size:13px;opacity:0.85;margin-top:4px;">经验分享·互助交流</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 合作伙伴 -->
+<!-- 平台特色 -->
+<section class="app-section" style="padding:48px 0;background:#f8f9fa;">
+  <div class="container">
+    <div class="section-title">
+      <h2>✨ 为什么选择一路向南？</h2>
+      <p>专注服务中国人海外生活，信息真实、更新及时</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:24px;">
+      <div style="background:#fff;border-radius:12px;padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <i class="fas fa-shield-alt" style="font-size:36px;color:#2d9b5c;margin-bottom:12px;"></i>
+        <h3 style="font-size:17px;margin-bottom:8px;">防骗安全体系</h3>
+        <p style="font-size:14px;color:#666;">实时更新诈骗手段，防骗指南覆盖签证、租房、工作等场景</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <i class="fas fa-language" style="font-size:36px;color:#1976d2;margin-bottom:12px;"></i>
+        <h3 style="font-size:17px;margin-bottom:8px;">全中文服务</h3>
+        <p style="font-size:14px;color:#666;">所有内容中文呈现，降低语言障碍，让海外生活更轻松</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <i class="fas fa-hand-holding-heart" style="font-size:36px;color:#e91e63;margin-bottom:12px;"></i>
+        <h3 style="font-size:17px;margin-bottom:8px;">真实经验分享</h3>
+        <p style="font-size:14px;color:#666;">华人社区真实经历，避免踩坑，少走弯路</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+        <i class="fas fa-concierge-bell" style="font-size:36px;color:#f57c00;margin-bottom:12px;"></i>
+        <h3 style="font-size:17px;margin-bottom:8px;">服务商对接</h3>
+        <p style="font-size:14px;color:#666;">汇聚本地优质服务商资源，签证、租房、留学一站解决</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 服务覆盖范围 -->
 <section class="partners-section">
   <div class="container">
     <div class="section-title">
-      <h2 data-i18n="partners.title">合作伙伴</h2>
+      <h2>🌍 服务覆盖范围</h2>
     </div>
     <div class="partners-logos">
-      <div class="partner-logo">🏦 Maybank</div>
-      <div class="partner-logo">✈️ AirAsia</div>
-      <div class="partner-logo">🏨 Airbnb</div>
-      <div class="partner-logo">🏫 Universiti Malaya</div>
-      <div class="partner-logo">🚗 MyCar</div>
-      <div class="partner-logo">🏦 CIMB Bank</div>
-      <div class="partner-logo">✈️ Batik Air</div>
-      <div class="partner-logo">🏛️ Chinese Embassy</div>
+      <div class="partner-logo" style="font-size:15px;">🇲🇾 马来西亚</div>
+      <div class="partner-logo" style="font-size:15px;">🇮🇩 印度尼西亚</div>
+      <div class="partner-logo" style="font-size:15px;">💼 签证服务</div>
+      <div class="partner-logo" style="font-size:15px;">🏠 租房服务</div>
+      <div class="partner-logo" style="font-size:15px;">💼 工作就业</div>
+      <div class="partner-logo" style="font-size:15px;">🎓 留学教育</div>
+      <div class="partner-logo" style="font-size:15px;">🏦 金融银行</div>
+      <div class="partner-logo" style="font-size:15px;">🏥 医疗就医</div>
     </div>
   </div>
 </section>
@@ -721,7 +720,7 @@
           <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
           <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
           <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
-          <li><a href="visa.html#pr" data-i18n="footer.visa.pr">永久居留</a></li>
+          <li><a href="visa.html#de" data-i18n="footer.visa.pr">永居/家属签</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -737,11 +736,11 @@
       <div class="footer-col">
         <h4 data-i18n="footer.guide.title">攻略指南</h4>
         <ul>
-          <li><a href="guide-my.html" data-i18n="footer.guide.my">马来西亚新手指南</a></li>
-          <li><a href="guide-id.html" data-i18n="footer.guide.id">印尼新手指南</a></li>
+          <li><a href="safety.html" data-i18n="footer.guide.my">安全防骗指南</a></li>
+          <li><a href="community.html" data-i18n="footer.guide.id">华人社区</a></li>
           <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
-          <li><a href="law.html" data-i18n="footer.guide.law">法律常识</a></li>
-          <li><a href="culture.html" data-i18n="footer.guide.culture">文化礼仪</a></li>
+          <li><a href="medical.html" data-i18n="footer.guide.law">医疗就医</a></li>
+          <li><a href="services.html" data-i18n="footer.guide.culture">本地服务</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -763,5 +762,6 @@
 
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
+  <script src="js/user.js"></script>
 </body>
 </html>

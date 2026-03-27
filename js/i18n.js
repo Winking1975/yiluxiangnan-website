@@ -23,6 +23,44 @@ window.NYT_I18N = {
   'topbar.notice':   { zh:'公告：马来西亚e-NTL签证新政策已更新，点击查看详情', en:'Notice: Malaysia e-NTL visa new policy updated. Click for details.', ms:'Notis: Dasar visa e-NTL Malaysia baharu dikemaskini. Klik untuk maklumat lanjut.', id:'Pengumuman: Kebijakan visa e-NTL Malaysia diperbarui. Klik untuk detail.' },
   'topbar.login':    { zh:'登录', en:'Login', ms:'Log Masuk', id:'Masuk' },
   'topbar.register': { zh:'注册', en:'Register', ms:'Daftar', id:'Daftar' },
+  'topbar.logout':   { zh:'退出', en:'Logout', ms:'Log Keluar', id:'Keluar' },
+  'user.login.title':      { zh:'欢迎回来', en:'Welcome Back', ms:'Selamat Kembali', id:'Selamat Datang Kembali' },
+  'user.login.subtitle':   { zh:'登录一路向南，加入华人社区', en:'Sign in to join the Chinese community', ms:'Log masuk untuk menyertai komuniti Cina', id:'Masuk untuk bergabung dengan komunitas Tionghoa' },
+  'user.login.username':   { zh:'用户名', en:'Username', ms:'Nama Pengguna', id:'Nama Pengguna' },
+  'user.login.password':   { zh:'密码', en:'Password', ms:'Kata Laluan', id:'Kata Sandi' },
+  'user.login.btn':        { zh:'登录', en:'Sign In', ms:'Log Masuk', id:'Masuk' },
+  'user.login.noaccount':  { zh:'还没有账号？', en:'No account yet?', ms:'Tiada akaun lagi?', id:'Belum punya akun?' },
+  'user.login.goregister': { zh:'立即注册', en:'Register now', ms:'Daftar sekarang', id:'Daftar sekarang' },
+  'user.login.tip':        { zh:'新用户请先注册，数据保存在本地浏览器中', en:'Please register first. Data is stored locally in your browser.', ms:'Sila daftar terlebih dahulu. Data disimpan secara tempatan dalam pelayar anda.', id:'Silakan daftar terlebih dahulu. Data disimpan secara lokal di browser Anda.' },
+  'user.register.title':       { zh:'加入一路向南', en:'Join Us', ms:'Sertai Kami', id:'Bergabunglah' },
+  'user.register.subtitle':    { zh:'注册账号，开始分享你的南洋生活', en:'Register and start sharing your Southeast Asia life', ms:'Daftar akaun dan mula berkongsi kehidupan Asia Tenggara anda', id:'Daftar akun dan mulai berbagi kehidupan Asia Tenggara Anda' },
+  'user.register.nickname':    { zh:'昵称', en:'Nickname', ms:'Nama Samaran', id:'Nama Panggilan' },
+  'user.register.btn':         { zh:'注册', en:'Register', ms:'Daftar', id:'Daftar' },
+  'user.register.hasaccount':  { zh:'已有账号？', en:'Already have an account?', ms:'Sudah ada akaun?', id:'Sudah punya akun?' },
+  'user.register.gologin':     { zh:'立即登录', en:'Sign in now', ms:'Log masuk sekarang', id:'Masuk sekarang' },
+  'user.register.tip':         { zh:'账号数据保存在本地浏览器，更换设备需重新注册', en:'Account data is stored locally. You will need to re-register on a new device.', ms:'Data akaun disimpan secara tempatan. Anda perlu mendaftar semula pada peranti baharu.', id:'Data akun disimpan secara lokal. Anda perlu mendaftar ulang di perangkat baru.' },
+  'user.profile.edit':         { zh:'编辑资料', en:'Edit Profile', ms:'Sunting Profil', id:'Sunting Profil' },
+  'user.profile.save':         { zh:'保存修改', en:'Save Changes', ms:'Simpan Perubahan', id:'Simpan Perubahan' },
+  'user.profile.bio':          { zh:'个人简介', en:'Bio', ms:'Bio', id:'Bio' },
+  'user.profile.changepwd':    { zh:'修改密码', en:'Change Password', ms:'Tukar Kata Laluan', id:'Ubah Kata Sandi' },
+  'user.profile.logout':       { zh:'退出登录', en:'Sign Out', ms:'Log Keluar', id:'Keluar' },
+  'user.error.username.min':   { zh:'用户名至少3个字符', en:'Username must be at least 3 characters', ms:'Nama pengguna sekurang-kurangnya 3 aksara', id:'Nama pengguna minimal 3 karakter' },
+  'user.error.username.max':   { zh:'用户名最多20个字符', en:'Username must be at most 20 characters', ms:'Nama pengguna maksimum 20 aksara', id:'Nama pengguna maksimal 20 karakter' },
+  'user.error.username.format': { zh:'用户名只能包含字母、数字和下划线', en:'Username can only contain letters, numbers, and underscores', ms:'Nama pengguna hanya boleh mengandungi huruf, nombor dan garis bawah', id:'Nama pengguna hanya boleh berisi huruf, angka, dan garis bawah' },
+  'user.error.username.taken': { zh:'该用户名已被注册', en:'This username is already taken', ms:'Nama pengguna ini telah didaftarkan', id:'Nama pengguna ini sudah terdaftar' },
+  'user.error.password.min':   { zh:'密码至少6个字符', en:'Password must be at least 6 characters', ms:'Kata laluan sekurang-kurangnya 6 aksara', id:'Kata sandi minimal 6 karakter' },
+  'user.error.nickname.empty': { zh:'请输入昵称', en:'Please enter a nickname', ms:'Sila masukkan nama samaran', id:'Silakan masukkan nama panggilan' },
+  'user.error.nickname.max':   { zh:'昵称最多15个字符', en:'Nickname must be at most 15 characters', ms:'Nama samaran maksimum 15 aksara', id:'Nama panggilan maksimal 15 karakter' },
+  'user.error.nickname.taken': { zh:'该昵称已被使用', en:'This nickname is already taken', ms:'Nama samaran ini telah digunakan', id:'Nama panggilan ini sudah digunakan' },
+  'user.error.password.mismatch': { zh:'两次密码输入不一致', en:'Passwords do not match', ms:'Kata laluan tidak sepadan', id:'Kata sandi tidak cocok' },
+  'user.error.login.notfound': { zh:'用户名不存在', en:'Username not found', ms:'Nama pengguna tidak dijumpai', id:'Nama pengguna tidak ditemukan' },
+  'user.error.login.wrongpwd': { zh:'密码错误', en:'Incorrect password', ms:'Kata laluan salah', id:'Kata sandi salah' },
+  'user.error.oldpwd':         { zh:'原密码错误', en:'Old password is incorrect', ms:'Kata laluan lama salah', id:'Kata sandi lama salah' },
+  'user.success.register':     { zh:'注册成功！', en:'Registration successful!', ms:'Pendaftaran berjaya!', id:'Pendaftaran berhasil!' },
+  'user.success.login':        { zh:'登录成功！', en:'Login successful!', ms:'Log masuk berjaya!', id:'Login berhasil!' },
+  'user.success.logout':       { zh:'已退出登录', en:'You have been signed out', ms:'Anda telah log keluar', id:'Anda telah keluar' },
+  'user.success.profile':      { zh:'资料已更新', en:'Profile updated', ms:'Profil dikemaskini', id:'Profil diperbarui' },
+  'user.success.password':     { zh:'密码已修改', en:'Password changed', ms:'Kata laluan ditukar', id:'Kata sandi diubah' },
   'topbar.mobile':   { zh:'手机版', en:'Mobile', ms:'Versi Mudah Alih', id:'Versi Mobile' },
 
   'header.publish':  { zh:'发布信息', en:'Post Info', ms:'Hantar Maklumat', id:'Pasang Iklan' },
@@ -713,6 +751,14 @@ window.NYT_I18N = {
     init();
   }
 
+  // Get translation for a key (used by other modules like user.js)
+  function t(key) {
+    const entry = window.NYT_I18N && window.NYT_I18N[key];
+    if (!entry) return '';
+    const lang = getLang();
+    return entry[lang] || entry.zh || '';
+  }
+
   // Expose API globally
-  window.NYT_Lang = { setLang, getLang, applyLang };
+  window.NYT_Lang = { setLang, getLang, applyLang, t };
 })();

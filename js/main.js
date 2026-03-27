@@ -83,7 +83,7 @@ document.querySelectorAll('.btn-contact, .btn-apply, .btn-consult').forEach(btn 
   btn.addEventListener('click', e => {
     if (btn.href === '#' || !btn.href) {
       e.preventDefault();
-      showToast('功能即将上线，请拨打 400-888-2026 联系我们');
+      showToast('功能即将上线，请关注微信公众号「一路向南阳光灿烂」');
     }
   });
 });

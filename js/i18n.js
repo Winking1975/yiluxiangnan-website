@@ -665,6 +665,10 @@ window.NYT_I18N = {
   }
 
   function injectLangSwitcher() {
+    // 防重复：如果已存在则先移除
+    const existing = document.querySelector('.lang-switcher');
+    if (existing) existing.remove();
+
     // Build the switcher HTML
     const switcher = document.createElement('div');
     switcher.className = 'lang-switcher';
@@ -783,5 +787,5 @@ window.NYT_I18N = {
   }
 
   // Expose API globally
-  window.NYT_Lang = { setLang, getLang, applyLang, t };
+  window.NYT_Lang = { setLang, getLang, applyLang, t, injectLangSwitcher };
 })();

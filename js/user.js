@@ -644,6 +644,10 @@
       // 重新应用 i18n
       if (window.NYT_Lang) {
         const lang = window.NYT_Lang.getLang();
+        // 重新注入语言切换器（innerHTML 覆盖会把它删掉）
+        if (window.NYT_Lang.injectLangSwitcher) {
+          window.NYT_Lang.injectLangSwitcher();
+        }
         if (lang !== 'zh') {
           window.NYT_Lang.applyLang(lang);
         }

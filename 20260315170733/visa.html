@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>签证办理 - 南洋通 | Visa Services - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/lang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">马来西亚e-NTL电子签更新，国人30天免签入境！</span></span>
+    <div class="top-bar-right">
+      <a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a>
+      <span class="divider">|</span>
+      <a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">南洋通</span><span class="logo-sub">NanYangTong</span></a></div>
+    <div class="search-bar">
+      <div class="search-location"><i class="fas fa-map-marker-alt"></i>
+        <select>
+          <option data-i18n="country.my">马来西亚</option>
+          <option data-i18n="country.id">印度尼西亚</option>
+        </select>
+      </div>
+      <input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索签证类型..." />
+      <button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
+    </div>
+    <div class="header-actions">
+      <a href="publish.html" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="header.publish">发布信息</span></a>
+    </div>
+  </div>
+  <nav class="sub-nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+        <li class="active"><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+        <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+        <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+        <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+        <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+        <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+        <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+        <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+        <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- 页面Hero -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.visa">签证办理</span></div>
+    <h1><i class="fas fa-passport"></i> <span data-i18n="visa.page.title">签证办理中心</span></h1>
+    <p data-i18n="visa.page.sub">马来西亚 · 印度尼西亚 全类型签证，专业代办，拒签退款</p>
+  </div>
+</div>
+
+<!-- 签证概览卡片 -->
+<section style="background:#fff;padding:24px 0;border-bottom:1px solid #eee;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div class="quick-stat">
+        <div style="font-size:32px;font-weight:900;color:#2d9b5c;">30天</div>
+        <div style="font-size:13px;color:#666;">中国护照免签时长</div>
+        <div style="font-size:11px;color:#2d9b5c;">🇲🇾 马来西亚</div>
+      </div>
+      <div class="quick-stat">
+        <div style="font-size:32px;font-weight:900;color:#1976d2;">1天</div>
+        <div style="font-size:13px;color:#666;">电子签最快出签</div>
+        <div style="font-size:11px;color:#f57c00;">加急通道可选</div>
+      </div>
+      <div class="quick-stat">
+        <div style="font-size:32px;font-weight:900;color:#e91e63;">99%</div>
+        <div style="font-size:13px;color:#666;">出签成功率</div>
+        <div style="font-size:11px;color:#2d9b5c;">专业团队保障</div>
+      </div>
+      <div class="quick-stat">
+        <div style="font-size:32px;font-weight:900;color:#f57c00;">100%</div>
+        <div style="font-size:13px;color:#666;">拒签全额退款</div>
+        <div style="font-size:11px;color:#2d9b5c;">保障承诺</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-content">
+  <div class="container">
+    <div class="content-layout">
+      <!-- 主内容 -->
+      <div class="main-content">
+        <!-- 签证类型Tab -->
+        <div class="visa-type-tabs" id="visaTabs">
+          <button class="visa-type-tab active" data-target="tourist" onclick="switchVisa('tourist',this)">
+            <i class="fas fa-plane-departure"></i> <span data-i18n="visa.tourist.name">旅游签证</span>
+          </button>
+          <button class="visa-type-tab" data-target="work" onclick="switchVisa('work',this)">
+            <i class="fas fa-briefcase"></i> <span data-i18n="visa.work.name">工作签证(EP)</span>
+          </button>
+          <button class="visa-type-tab" data-target="student" onclick="switchVisa('student',this)">
+            <i class="fas fa-graduation-cap"></i> <span data-i18n="visa.student.name">学生签证</span>
+          </button>
+          <button class="visa-type-tab" data-target="mm2h" onclick="switchVisa('mm2h',this)">
+            <i class="fas fa-home"></i> <span data-i18n="visa.mm2h.name">MM2H第二家园</span>
+          </button>
+          <button class="visa-type-tab" data-target="de" onclick="switchVisa('de',this)">
+            <i class="fas fa-laptop"></i> <span>DE Rantau</span>
+          </button>
+          <button class="visa-type-tab" data-target="id" onclick="switchVisa('id',this)">
+            <i class="fas fa-globe-asia"></i> 🇮🇩 <span>Indonesia Visa</span>
+          </button>
+        </div>
+
+        <!-- 旅游签证内容 -->
+        <div id="tab-tourist" class="visa-tab-content">
+          <div class="alert-box info" style="margin-bottom:16px;">
+            <i class="fas fa-info-circle"></i>
+            <div><strong>最新政策：</strong>中国公民持普通护照赴马来西亚旅游，可享受30天免签入境！无需提前申请任何签证。</div>
+          </div>
+          
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon"><i class="fas fa-plane-departure"></i></div>
+              <div class="visa-detail-title">
+                <h2>马来西亚旅游签证</h2>
+                <p style="color:#666;margin-bottom:10px;">适合旅游、短期商务、探亲访友</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">✓ 30天免签</span>
+                  <span class="visa-badge badge-blue">可延签</span>
+                  <span class="visa-badge badge-orange">需提前准备</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="label">停留时间</div>
+                <div class="value highlight">30天</div>
+                <div style="font-size:11px;color:#999;">可延签30天</div>
+              </div>
+              <div class="info-item">
+                <div class="label">入境次数</div>
+                <div class="value">单次</div>
+              </div>
+              <div class="info-item">
+                <div class="label">护照有效期</div>
+                <div class="value">6个月以上</div>
+              </div>
+            </div>
+            
+            <div class="requirements-section">
+              <h3>入境必备材料</h3>
+              <ul class="req-list">
+                <li><i class="fas fa-check-circle"></i> 护照（有效期6个月以上，至少2页空白页）</li>
+                <li><i class="fas fa-check-circle"></i> 返程/离境机票证明</li>
+                <li><i class="fas fa-check-circle"></i> 酒店预订证明或邀请函</li>
+                <li><i class="fas fa-check-circle"></i> 足够的在马资金（建议每天RM200以上）</li>
+                <li><i class="fas fa-check-circle"></i> 照片（近期白底证件照，备用）</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 申请步骤 -->
+          <div class="steps-section">
+            <h3>📋 申请流程</h3>
+            <div class="steps-flow">
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-title">准备材料</div>
+                <div class="step-desc">护照+机票+酒店</div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-title">购买机票</div>
+                <div class="step-desc">选择直飞/经停</div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-title">预订住宿</div>
+                <div class="step-desc">酒店/民宿</div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-title">出发入境</div>
+                <div class="step-desc">到海关自动盖章</div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">5</div>
+                <div class="step-title">愉快旅行</div>
+                <div class="step-desc">享受30天假期</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-box warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div><strong>注意事项：</strong>免签不代表可以工作！在马期间从事任何有偿工作属非法行为，需申请正规工作签证。</div>
+          </div>
+        </div>
+
+        <!-- 工作签证内容 -->
+        <div id="tab-work" class="visa-tab-content hidden">
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="visa-detail-title">
+                <h2>马来西亚工作签证 (Employment Pass)</h2>
+                <p style="color:#666;margin-bottom:10px;">在马来西亚合法工作的唯一途径，由雇主担保申请</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">✓ 合法工作</span>
+                  <span class="visa-badge badge-blue">最长5年</span>
+                  <span class="visa-badge badge-orange">雇主担保</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-grid">
+              <div class="info-item"><div class="label">EP Category I</div><div class="value highlight">月薪≥RM10,000</div><div style="font-size:11px;color:#999;">有效期5年</div></div>
+              <div class="info-item"><div class="label">EP Category II</div><div class="value">RM5,000-9,999</div><div style="font-size:11px;color:#999;">有效期2年</div></div>
+              <div class="info-item"><div class="label">EP Category III</div><div class="value">RM3,000-4,999</div><div style="font-size:11px;color:#999;">有效期1年</div></div>
+            </div>
+            <div class="requirements-section">
+              <h3>申请材料清单</h3>
+              <ul class="req-list">
+                <li><i class="fas fa-check-circle"></i> 护照正本（有效期18个月以上）</li>
+                <li><i class="fas fa-check-circle"></i> 学历证书及成绩单（需公证认证）</li>
+                <li><i class="fas fa-check-circle"></i> 雇主担保信及劳动合同</li>
+                <li><i class="fas fa-check-circle"></i> 雇主公司营业执照（经ESD系统注册）</li>
+                <li><i class="fas fa-check-circle"></i> 个人简历</li>
+                <li><i class="fas fa-check-circle"></i> 无犯罪记录证明</li>
+                <li><i class="fas fa-check-circle"></i> 4×5cm白底照片 × 4张</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="steps-section">
+            <h3>📋 工签申请流程（约4-8周）</h3>
+            <div class="steps-flow">
+              <div class="step-item"><div class="step-num">1</div><div class="step-title">获得Offer</div><div class="step-desc">签劳动合同</div></div>
+              <div class="step-item"><div class="step-num">2</div><div class="step-title">雇主申请</div><div class="step-desc">ESD系统递交</div></div>
+              <div class="step-item"><div class="step-num">3</div><div class="step-title">等待审批</div><div class="step-desc">3-4周审核</div></div>
+              <div class="step-item"><div class="step-num">4</div><div class="step-title">获批通知</div><div class="step-desc">收到IM.12表格</div></div>
+              <div class="step-item"><div class="step-num">5</div><div class="step-title">入境盖章</div><div class="step-desc">移民局贴签</div></div>
+            </div>
+          </div>
+
+          <div class="alert-box danger">
+            <i class="fas fa-shield-alt"></i>
+            <div><strong>防骗提醒：</strong>声称"不需要雇主就能办工签"的中介99%是骗子！合法工签必须由持牌雇主申请，请务必通过正规渠道。</div>
+          </div>
+        </div>
+
+        <!-- 学生签 -->
+        <div id="tab-student" class="visa-tab-content hidden">
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="visa-detail-title">
+                <h2>马来西亚学生签证 (Student Pass)</h2>
+                <p style="color:#666;margin-bottom:10px;">就读马来西亚认可高等院校，由学校担保申请</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">✓ 学校担保</span>
+                  <span class="visa-badge badge-blue">随课程延续</span>
+                </div>
+              </div>
+            </div>
+            <div class="requirements-section">
+              <h3>申请材料</h3>
+              <ul class="req-list">
+                <li><i class="fas fa-check-circle"></i> 护照（有效期18个月以上）</li>
+                <li><i class="fas fa-check-circle"></i> 大学录取通知书（Offer Letter）</li>
+                <li><i class="fas fa-check-circle"></i> 高中/本科成绩单及毕业证（公证）</li>
+                <li><i class="fas fa-check-circle"></i> 语言成绩证明（IELTS/托福/TOEFL等）</li>
+                <li><i class="fas fa-check-circle"></i> 体检报告（黄热病疫苗证明）</li>
+                <li><i class="fas fa-check-circle"></i> 缴费收据</li>
+                <li><i class="fas fa-check-circle"></i> 照片 × 4张</li>
+              </ul>
+            </div>
+          </div>
+          <div class="alert-box success">
+            <i class="fas fa-lightbulb"></i>
+            <div><strong>小贴士：</strong>学生签证一般由学校统一代办，建议联系学校国际学生办公室（ISO），避免通过非官方中介。</div>
+          </div>
+        </div>
+
+        <!-- MM2H -->
+        <div id="tab-mm2h" class="visa-tab-content hidden">
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon"><i class="fas fa-home"></i></div>
+              <div class="visa-detail-title">
+                <h2>MM2H第二家园计划</h2>
+                <p style="color:#666;margin-bottom:10px;">马来西亚长期居留签证，全家移居的最佳选择</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">✓ 最长20年</span>
+                  <span class="visa-badge badge-blue">全家受益</span>
+                  <span class="visa-badge badge-orange">金融证明</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-grid">
+              <div class="info-item"><div class="label">年龄要求</div><div class="value">无限制</div></div>
+              <div class="info-item"><div class="label">存款要求</div><div class="value highlight">RM150万</div><div style="font-size:11px;color:#999;">固定存款</div></div>
+              <div class="info-item"><div class="label">有效期</div><div class="value">最长20年</div></div>
+            </div>
+            <div class="requirements-section">
+              <h3>申请条件</h3>
+              <ul class="req-list">
+                <li><i class="fas fa-check-circle"></i> 海外收入不低于RM40,000/月</li>
+                <li><i class="fas fa-check-circle"></i> 马来西亚银行固定存款RM150万</li>
+                <li><i class="fas fa-check-circle"></i> 购置马来西亚房产（价值RM200万以上）</li>
+                <li><i class="fas fa-check-circle"></i> 购买马来西亚医疗保险</li>
+                <li><i class="fas fa-check-circle"></i> 无犯罪记录</li>
+              </ul>
+            </div>
+          </div>
+          <div class="alert-box info">
+            <i class="fas fa-info-circle"></i>
+            <div><strong>2024年新政：</strong>MM2H已重新开放，条件已更新，申请周期约3-6个月。建议通过认证顾问申请，避免因材料问题被拒。</div>
+          </div>
+        </div>
+
+        <!-- 数字游民签 -->
+        <div id="tab-de" class="visa-tab-content hidden">
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon"><i class="fas fa-laptop"></i></div>
+              <div class="visa-detail-title">
+                <h2>DE Rantau 数字游民签证</h2>
+                <p style="color:#666;margin-bottom:10px;">全球首批数字游民专属签证之一，适合远程工作者</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">✓ 12个月</span>
+                  <span class="visa-badge badge-blue">可续签</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-grid">
+              <div class="info-item"><div class="label">有效期</div><div class="value highlight">12个月</div></div>
+              <div class="info-item"><div class="label">月薪要求</div><div class="value">USD 24,000/年</div></div>
+              <div class="info-item"><div class="label">配偶子女</div><div class="value">可随行</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 印尼签证 -->
+        <div id="tab-id" class="visa-tab-content hidden">
+          <div class="visa-detail-card">
+            <div class="visa-detail-header">
+              <div class="visa-detail-icon">🇮🇩</div>
+              <div class="visa-detail-title">
+                <h2>印度尼西亚签证</h2>
+                <p style="color:#666;margin-bottom:10px;">中国护照入境印尼，多种签证类型可选</p>
+                <div class="visa-badges">
+                  <span class="visa-badge badge-green">VOA落地签</span>
+                  <span class="visa-badge badge-blue">e-VOA电子签</span>
+                  <span class="visa-badge badge-orange">B211A商务签</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-grid">
+              <div class="info-item"><div class="label">免签</div><div class="value highlight">不免签</div></div>
+              <div class="info-item"><div class="label">落地签 VOA</div><div class="value">30天</div><div style="font-size:11px;color:#999;">可延签一次+30天</div></div>
+              <div class="info-item"><div class="label">电子签 e-VOA</div><div class="value">30天</div><div style="font-size:11px;color:#999;">提前申请</div></div>
+            </div>
+            <div class="requirements-section">
+              <h3>落地签 VOA 材料（最简单）</h3>
+              <ul class="req-list">
+                <li><i class="fas fa-check-circle"></i> 护照（有效期6个月以上，至少1页空白页）</li>
+                <li><i class="fas fa-check-circle"></i> 往返机票或离境机票</li>
+                <li><i class="fas fa-check-circle"></i> 现金50万印尼盾/35美元（落地签证费，2024年涨价后）</li>
+                <li><i class="fas fa-check-circle"></i> 酒店预订或住宿地址（移民官可能会问）</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 印尼签证类型对比 -->
+          <div style="background:#fff;border-radius:12px;padding:24px;margin-top:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <h3 style="font-size:16px;margin-bottom:16px;">🇮🇩 印尼签证类型对比</h3>
+            <table style="width:100%;font-size:13px;border-collapse:collapse;">
+              <thead>
+                <tr style="background:#f5f5f5;">
+                  <th style="padding:10px;text-align:left;border:1px solid #ddd;">签证类型</th>
+                  <th style="padding:10px;text-align:center;border:1px solid #ddd;">停留期</th>
+                  <th style="padding:10px;text-align:center;border:1px solid #ddd;">费用</th>
+                  <th style="padding:10px;text-align:center;border:1px solid #ddd;">可否延期</th>
+                  <th style="padding:10px;text-align:left;border:1px solid #ddd;">适合人群</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:10px;border:1px solid #ddd;"><strong>VOA落地签</strong></td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">30天</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">50万IDR</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;color:#2d9b5c;">✓ 可延1次</td>
+                  <td style="padding:10px;border:1px solid #ddd;">短期旅游、商务考察</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:10px;border:1px solid #ddd;"><strong>e-VOA电子签</strong></td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">30天</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">50万IDR+手续费</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;color:#2d9b5c;">✓ 可延1次</td>
+                  <td style="padding:10px;border:1px solid #ddd;">想提前办好，避免排队</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border:1px solid #ddd;"><strong>B211A商务签</strong></td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">60天</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">约¥1,200</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;color:#2d9b5c;">✓ 可延2次</td>
+                  <td style="padding:10px;border:1px solid #ddd;">长期商务、远程工作</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:10px;border:1px solid #ddd;"><strong>C1旅游签</strong></td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">30天</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;">约¥800</td>
+                  <td style="padding:10px;text-align:center;border:1px solid #ddd;color:#c62828;">✗ 不可延</td>
+                  <td style="padding:10px;border:1px solid #ddd;">纯旅游，不延期</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-box info" style="margin-top:16px;">
+            <i class="fas fa-info-circle"></i>
+            <div><strong>2024年更新：</strong>印尼落地签费用已从35万印尼盾涨至50万印尼盾（约¥230）。巴厘岛机场支持刷卡支付，但建议备现金以防系统故障。</div>
+          </div>
+        </div>
+
+        <!-- 入境指南专区 -->
+        <div style="margin-top:40px;padding:28px;background:linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%);border-radius:16px;">
+          <h2 style="font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+            <span style="background:#2d9b5c;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">🛬</span>
+            马来西亚入境完整指南
+          </h2>
+          
+          <!-- 入境流程时间线 -->
+          <div style="background:#fff;border-radius:12px;padding:24px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <h3 style="font-size:16px;margin-bottom:20px;color:#333;">📍 入境全流程（以吉隆坡KLIA为例）</h3>
+            <div style="display:grid;gap:16px;">
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>
+                <div>
+                  <div style="font-weight:600;color:#333;">飞机降落 → 跟随人群走</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">下飞机后跟着 "Arrivals/Immigration" 指示牌走，KLIA很大但标识很清楚，全程约10-15分钟走到海关</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>
+                <div>
+                  <div style="font-weight:600;color:#333;">填写入境卡（MDAC）</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">提前3天在官网 <a href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank" style="color:#1976d2;">imigresen-online.imi.gov.my/mdac</a> 填写，保存二维码截图。现场也有纸质表格但电子更快捷</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>
+                <div>
+                  <div style="font-weight:600;color:#333;">海关入境审查</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">走 "Foreign Passport" 通道，出示护照+MDAC二维码+往返机票+酒店订单。移民官可能会问：来马目的？停留多久？住哪里？</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">4</div>
+                <div>
+                  <div style="font-weight:600;color:#333;">取行李</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">看电子屏找到航班对应的行李转盘，KLIA行李通常20-40分钟出来。如果行李丢失，立即去 Baggage Service 柜台报备</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">5</div>
+                <div>
+                  <div style="font-weight:600;color:#333;"> customs 海关检查</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">绿色通道（无申报）直接过，红色通道需开箱检查。注意：香烟限200支，酒类限1公升，现金超1万美元需申报</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;align-items:flex-start;">
+                <div style="background:#2d9b5c;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">6</div>
+                <div>
+                  <div style="font-weight:600;color:#333;">出关！欢迎来到马来西亚</div>
+                  <div style="font-size:13px;color:#666;margin-top:4px;">出来后就是到达大厅，可以换钱、买电话卡、叫车。建议提前下载 Grab App，绑定支付宝或信用卡</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 入境常见问题 -->
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px;">
+            <div style="background:#fff3e0;border-left:4px solid #f57c00;padding:16px;border-radius:8px;">
+              <h4 style="font-size:14px;color:#e65100;margin-bottom:10px;">❓ 移民官问什么？怎么答？</h4>
+              <ul style="font-size:13px;color:#666;line-height:1.8;padding-left:16px;">
+                <li>"Purpose of visit?" → Tourism / Business / Visit friend</li>
+                <li>"How long stay?" → 直接说天数，如 "7 days"</li>
+                <li>"Where stay?" → 说酒店名或城市，如 "Kuala Lumpur, Hilton Hotel"</li>
+                <li>"How much money?" → 展示现金或银行卡，说 "Enough for my trip"</li>
+              </ul>
+            </div>
+            <div style="background:#e3f2fd;border-left:4px solid #1976d2;padding:16px;border-radius:8px;">
+              <h4 style="font-size:14px;color:#1565c0;margin-bottom:10px;">⚠️ 入境被拒的常见原因</h4>
+              <ul style="font-size:13px;color:#666;line-height:1.8;padding-left:16px;">
+                <li>护照有效期不足6个月</li>
+                <li>没有返程机票（会被怀疑滞留）</li>
+                <li>没有酒店预订或住宿证明</li>
+                <li>携带现金过少（建议每天至少RM200等值）</li>
+                <li>之前在马有逾期停留记录</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 入境小贴士 -->
+          <div style="background:#e8f5e9;border-radius:12px;padding:20px;">
+            <h4 style="font-size:15px;color:#1b5e20;margin-bottom:12px;">💡 老鸟入境小贴士</h4>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font-size:13px;color:#333;">
+              <div><strong>🕐 避开高峰：</strong>早上6-9点、晚上8-11点入境人最多，排队可能1小时+</div>
+              <div><strong>📱 提前准备：</strong>把机票、酒店、MDAC二维码截图保存在手机相册，网络不好也能出示</div>
+              <div><strong>💵 换钱建议：</strong>机场汇率差，先换100-200马币应急，到市区再换更多</div>
+              <div><strong>📞 电话卡：</strong>机场有Digi/Celcom/Hotlink柜台，买游客套餐约RM30-50含10-20GB流量</div>
+              <div><strong>🚗 交通：</strong>Grab打车到市区约RM65-80，机场快线KLIA Ekspres到KL Sentral要RM55</div>
+              <div><strong>🍜 吃饭：</strong>机场食物贵，出关后2楼有美食街，比到达大厅便宜30%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 签证类型全对比 -->
+        <div style="margin-top:40px;padding:28px;background:linear-gradient(135deg,#e3f2fd 0%,#f3e5f5 100%);border-radius:16px;">
+          <h2 style="font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+            <span style="background:#1976d2;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">📊</span>
+            马来西亚签证类型全对比
+          </h2>
+          
+          <div style="overflow-x:auto;">
+            <table style="width:100%;font-size:13px;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <thead>
+                <tr style="background:linear-gradient(135deg,#1976d2 0%,#1565c0 100%);color:#fff;">
+                  <th style="padding:14px 12px;text-align:left;">签证类型</th>
+                  <th style="padding:14px 12px;text-align:center;">停留期</th>
+                  <th style="padding:14px 12px;text-align:center;">可否工作</th>
+                  <th style="padding:14px 12px;text-align:center;">可否延期</th>
+                  <th style="padding:14px 12px;text-align:center;">资金要求</th>
+                  <th style="padding:14px 12px;text-align:center;">办理周期</th>
+                  <th style="padding:14px 12px;text-align:left;">适合人群</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#2d9b5c;">🌴 免签入境</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">30天</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#c62828;">✗ 禁止</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#f57c00;">△ 特殊申请</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">无</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">即时</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">短期旅游、商务考察</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#1976d2;">📋 旅游签(eVISA)</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">30天</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#c62828;">✗ 禁止</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可延2次</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">无</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">1-3工作日</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">需停留30-90天</td>
+                </tr>
+                <tr>
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#e91e63;">💼 EP工签I类</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">最长5年</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可以</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">月薪≥RM10K</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">4-8周</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">高管、专业人士</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#e91e63;">💼 EP工签II类</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">最长2年</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可以</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">月薪RM5K-10K</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">4-8周</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">中级技术人员</td>
+                </tr>
+                <tr>
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#9c27b0;">🎓 学生签证</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">随课程</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#f57c00;">△ 有限制</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">学费+生活费</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">2-4周</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">留学生</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#ff9800;">🏠 MM2H</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">最长20年</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#c62828;">✗ 禁止</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">存款RM150万</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">3-6月</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">退休、长期居住</td>
+                </tr>
+                <tr>
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#00bcd4;">💻 DE Rantau</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">12个月</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 远程工作</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">年薪≥$24K</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">2-4周</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">数字游民</td>
+                </tr>
+                <tr style="background:#f9f9f9;">
+                  <td style="padding:12px;border-bottom:1px solid #eee;"><strong style="color:#795548;">👨‍👩‍👧 家属签</strong></td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">随主申请人</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#c62828;">✗ 禁止</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;color:#2d9b5c;">✓ 可续</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">无</td>
+                  <td style="padding:12px;text-align:center;border-bottom:1px solid #eee;">2-4周</td>
+                  <td style="padding:12px;border-bottom:1px solid #eee;font-size:12px;">EP/MM2H持有人配偶子女</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:12px;color:#666;">
+            <div style="background:#fff;padding:12px;border-radius:8px;"><strong style="color:#2d9b5c;">✓ 可以</strong> = 允许该活动</div>
+            <div style="background:#fff;padding:12px;border-radius:8px;"><strong style="color:#f57c00;">△ 有限制</strong> = 需额外许可</div>
+            <div style="background:#fff;padding:12px;border-radius:8px;"><strong style="color:#c62828;">✗ 禁止</strong> = 不允许</div>
+          </div>
+        </div>
+
+        <!-- 政策更新日志 -->
+        <div style="margin-top:40px;padding:28px;background:linear-gradient(135deg,#fff8e1 0%,#ffecb3 100%);border-radius:16px;">
+          <h2 style="font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+            <span style="background:#f57c00;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">📰</span>
+            签证政策更新日志
+            <span style="font-size:13px;color:#666;font-weight:normal;margin-left:auto;background:#fff;padding:4px 12px;border-radius:20px;">最后更新：2025年3月</span>
+          </h2>
+          
+          <div style="display:grid;gap:16px;">
+            <!-- 更新项1 -->
+            <div style="background:#fff;border-radius:12px;padding:16px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #2d9b5c;">
+              <div style="flex-shrink:0;width:80px;text-align:center;">
+                <div style="font-size:24px;font-weight:900;color:#2d9b5c;">2025</div>
+                <div style="font-size:13px;color:#666;">3月15日</div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:#333;font-size:15px;">🇲🇾 马来西亚免签政策延续</div>
+                <div style="font-size:13px;color:#666;margin-top:6px;line-height:1.7;">马来西亚政府宣布继续对中国公民实施30天免签政策，有效期延长至2026年底。入境仍需填写MDAC电子入境卡，建议提前3天在线完成。</div>
+                <div style="margin-top:8px;font-size:12px;">
+                  <span style="background:#e8f5e9;color:#1b5e20;padding:2px 8px;border-radius:4px;">政策延续</span>
+                  <span style="color:#999;margin-left:8px;">来源：马来西亚移民局官网</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 更新项2 -->
+            <div style="background:#fff;border-radius:12px;padding:16px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #1976d2;">
+              <div style="flex-shrink:0;width:80px;text-align:center;">
+                <div style="font-size:24px;font-weight:900;color:#1976d2;">2025</div>
+                <div style="font-size:13px;color:#666;">1月20日</div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:#333;font-size:15px;">🇮🇩 印尼落地签费用上调</div>
+                <div style="font-size:13px;color:#666;margin-top:6px;line-height:1.7;">印尼移民局正式将落地签(VOA)费用从35万印尼盾上调至50万印尼盾（约¥230）。电子签(e-VOA)同步调整，建议提前在线申请避免机场排队。</div>
+                <div style="margin-top:8px;font-size:12px;">
+                  <span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:4px;">费用调整</span>
+                  <span style="color:#999;margin-left:8px;">来源：印尼移民局</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 更新项3 -->
+            <div style="background:#fff;border-radius:12px;padding:16px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #e91e63;">
+              <div style="flex-shrink:0;width:80px;text-align:center;">
+                <div style="font-size:24px;font-weight:900;color:#e91e63;">2024</div>
+                <div style="font-size:13px;color:#666;">12月1日</div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:#333;font-size:15px;">🇲🇾 MM2H第二家园新政实施</div>
+                <div style="font-size:13px;color:#666;margin-top:6px;line-height:1.7;">新版MM2H计划正式开放申请，铂金组存款要求降至RM150万（此前为RM200万），新增"购房要求"（价值RM200万以上房产）。申请周期缩短至3-6个月。</div>
+                <div style="margin-top:8px;font-size:12px;">
+                  <span style="background:#fce4ec;color:#c2185b;padding:2px 8px;border-radius:4px;">新政实施</span>
+                  <span style="color:#999;margin-left:8px;">来源：马来西亚旅游部</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 更新项4 -->
+            <div style="background:#fff;border-radius:12px;padding:16px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #9c27b0;">
+              <div style="flex-shrink:0;width:80px;text-align:center;">
+                <div style="font-size:24px;font-weight:900;color:#9c27b0;">2024</div>
+                <div style="font-size:13px;color:#666;">6月15日</div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:#333;font-size:15px;">🇲🇾 DE Rantau数字游民签开放</div>
+                <div style="font-size:13px;color:#666;margin-top:6px;line-height:1.7;">马来西亚正式推出DE Rantau数字游民签证，允许远程工作者在马来西亚居住12个月（可续签）。申请条件：年收入≥USD 24,000，需证明雇主/客户为海外公司。</div>
+                <div style="margin-top:8px;font-size:12px;">
+                  <span style="background:#f3e5f5;color:#7b1fa2;padding:2px 8px;border-radius:4px;">新签证</span>
+                  <span style="color:#999;margin-left:8px;">来源：MDEC马来西亚数字经济局</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 更新项5 -->
+            <div style="background:#fff;border-radius:12px;padding:16px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #00bcd4;">
+              <div style="flex-shrink:0;width:80px;text-align:center;">
+                <div style="font-size:24px;font-weight:900;color:#00bcd4;">2023</div>
+                <div style="font-size:13px;color:#666;">12月1日</div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:#333;font-size:15px;">🇲🇾 中马互免签证启动</div>
+                <div style="font-size:13px;color:#666;margin-top:6px;line-height:1.7;">马来西亚正式对中国公民实施30天免签入境政策，中国游客赴马旅游无需提前申请签证。同期中国对马来西亚公民实施15天免签。</div>
+                <div style="margin-top:8px;font-size:12px;">
+                  <span style="background:#e0f7fa;color:#00838f;padding:2px 8px;border-radius:4px;">历史节点</span>
+                  <span style="color:#999;margin-left:8px;">来源：中马外交部联合公告</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="margin-top:20px;padding:16px;background:#fff3e0;border-radius:8px;display:flex;align-items:center;gap:12px;">
+            <i class="fas fa-robot" style="font-size:24px;color:#f57c00;"></i>
+            <div>
+              <div style="font-weight:600;color:#e65100;">🤖 AI自动监控更新中</div>
+              <div style="font-size:13px;color:#666;margin-top:4px;">我们的系统每日自动监控马来西亚移民局、印尼移民局官网，发现政策变化会第一时间更新。您也可以关注下方微信公众号获取实时推送。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 常见问题FAQ -->
+        <div style="margin-top:40px;padding:28px;background:linear-gradient(135deg,#f3e5f5 0%,#e8eaf6 100%);border-radius:16px;">
+          <h2 style="font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+            <span style="background:#9c27b0;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">❓</span>
+            签证常见问题 FAQ
+          </h2>
+          
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 免签入境后可以延期吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 原则上免签不可延期。如有特殊情况（如生病、航班取消），可向移民局申请 Special Pass，最长延长30天，需付费RM100。建议提前规划好行程。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 旅游签可以转工签吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 可以，但需要离境申请。马来西亚不允许境内直接转换签证类型。建议先找到雇主，由雇主申请EP，获批后再入境。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 学生签证可以打工吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 可以，但有限制。学期中每周不超过20小时，假期可全职。需向学校国际处申请工作许可，仅限校内或特定合作企业。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: MM2H可以工作吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 不可以。MM2H是长期居留签证，不允许在马来西亚从事任何有偿工作。如需工作，需另外申请EP工作签证。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 签证被拒怎么办？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 首先查明拒签原因（可向移民局申请查询）。常见问题包括材料不全、资金证明不足、有逾期记录等。修正后可重新申请，建议间隔3个月以上。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 家属可以随行吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: EP I/II类、MM2H、DE Rantau都允许配偶和未成年子女申请Dependent Pass随行。学生签证家属需单独申请陪读签。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 护照快过期了还能入境吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 马来西亚要求护照有效期至少6个月。如果不足6个月，建议先换新护照再出行。印尼要求相同。</div>
+            </div>
+            <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <div style="font-weight:700;color:#333;margin-bottom:8px;">Q: 签证代办靠谱吗？</div>
+              <div style="font-size:13px;color:#666;line-height:1.7;">A: 选择有正规营业执照、可签订合同的机构。警惕"包过""不需要材料"等承诺。旅游签可自行官网申请，工签/MM2H建议找专业代理。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 经验分享社区 -->
+        <div style="margin-top:40px;">
+          <h2 style="font-size:22px;margin-bottom:24px;display:flex;align-items:center;gap:10px;">
+            <span style="background:#e91e63;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">💬</span>
+            经验分享社区
+            <span style="font-size:13px;color:#666;font-weight:normal;margin-left:auto;background:#fff;padding:4px 12px;border-radius:20px;">
+              <i class="fas fa-users"></i> <span id="community-stats">加载中...</span>
+            </span>
+          </h2>
+          
+          <!-- 社区帖子容器 -->
+          <div id="community-posts-container"></div>
+        </div>
+      </div>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <div class="sidebar-card" style="border-top:3px solid #2d9b5c;">
+          <h3>💬 <span data-i18n="visa.consult">免费咨询</span></h3>
+          <p style="font-size:13px;color:#666;margin-bottom:16px;">不确定办哪种签证？我们的专业顾问为你免费评估</p>
+          <a href="#" class="btn-apply" style="background:#07c160;"><i class="fab fa-weixin"></i> 微信咨询（免费）</a>
+          <a href="tel:400-888-2026" class="btn-consult"><i class="fas fa-phone"></i> <span data-i18n="footer.hotline">电话咨询</span></a>
+          <div style="text-align:center;font-size:12px;color:#999;margin-top:12px;"><span data-i18n="footer.hotline">7×24小时在线</span> · 平均响应3分钟</div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>💰 收费说明</h3>
+          <ul class="price-breakdown">
+            <li><span>旅游签（代办）</span><span style="color:#e74c3c;">¥299</span></li>
+            <li><span>工作签 EP</span><span style="color:#e74c3c;">¥1,500起</span></li>
+            <li><span>学生签</span><span style="color:#e74c3c;">¥800起</span></li>
+            <li><span>MM2H</span><span style="color:#e74c3c;">¥5,000起</span></li>
+            <li><span>含翻译公证</span><span>另计</span></li>
+            <li><span>拒签退款</span><span>✓ 100%</span></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card" style="border-top:3px solid #1565c0;">
+          <h3>🔗 官方签证申请入口</h3>
+          <div style="display:grid;gap:10px;margin-top:4px;">
+            <a href="https://malaysiavisa.imi.gov.my/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#e3f2fd;border-radius:10px;text-decoration:none;color:#1565c0;">
+              <span style="font-size:20px;">🇲🇾</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">马来西亚 eVISA 官网</div>
+                <div style="font-size:11px;color:#64b5f6;">malaysiavisa.imi.gov.my</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:11px;opacity:0.6;"></i>
+            </a>
+            <a href="https://evisa.imigrasi.go.id/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#e8f5e9;border-radius:10px;text-decoration:none;color:#1a6b3a;">
+              <span style="font-size:20px;">🇮🇩</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">印尼电子签证官网</div>
+                <div style="font-size:11px;color:#66bb6a;">evisa.imigrasi.go.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:11px;opacity:0.6;"></i>
+            </a>
+            <a href="https://id.china-embassy.gov.cn/lsfw/zytz_0/202406/t20240603_11375830.htm" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff3e0;border-radius:10px;text-decoration:none;color:#e65100;">
+              <span style="font-size:20px;">🏛️</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">中国驻印尼使馆指南</div>
+                <div style="font-size:11px;color:#ffb74d;">印尼e-VOA申请指引</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:11px;opacity:0.6;"></i>
+            </a>
+          </div>
+          <p style="font-size:11px;color:#999;margin:10px 0 0;">⚠️ 以上均为政府官方网站，请认准官网，谨防钓鱼链接</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>⚠️ 防骗提示</h3>
+          <div style="font-size:13px;color:#666;line-height:1.7;">
+            <p>❌ 不需要任何人担保就能办工签 = <strong style="color:red">骗局</strong></p>
+            <p style="margin-top:8px;">❌ 交钱后消失不见 = <strong style="color:red">诈骗</strong></p>
+            <p style="margin-top:8px;">✅ 正规机构有营业执照，先签合同后付款</p>
+          </div>
+          <a href="safety.html" style="display:block;text-align:center;color:#e74c3c;font-size:13px;margin-top:12px;font-weight:600;">查看完整防骗指南 →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="css/community.css" />
+<script src="js/i18n.js"></script>
+<script src="js/community.js"></script>
+<script>
+function switchVisa(target, btn) {
+  document.querySelectorAll('.visa-tab-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.visa-type-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + target).classList.remove('hidden');
+  btn.classList.add('active');
+}
+
+// ============ 社区帖子数据 ============
+window.NYT_POSTS = [
+  {
+    id: 'builtin_1',
+    author: '小雯_旅行博主',
+    avatarColor: 'linear-gradient(135deg,#667eea 0%,#764ba2 100%)',
+    content: '第一次用免签入境马来西亚，心里有点忐忑。提前3天填了MDAC，截图保存了二维码。\n\n下飞机后跟着人群走，大概走了15分钟到海关。排队大概20分钟，移民官就问了两句：来干嘛？待几天？我说旅游，5天。然后盖章，全程不到1分钟！\n\n💡 经验：一定要把返程机票和酒店订单准备好，我旁边有个大叔被问了很久，因为他只定了第一晚的酒店...',
+    category: '免签入境',
+    timestamp: new Date('2025-12-15').getTime(),
+    likes: 128
+  },
+  {
+    id: 'builtin_2',
+    author: 'Maggie妈妈',
+    avatarColor: 'linear-gradient(135deg,#f093fb 0%,#f5576c 100%)',
+    content: '带6岁娃去马来西亚过寒假，全家三口一起入境。儿童也需要填MDAC，我帮孩子填的，在"陪同人"那里写了自己的护照号。\n\n海关看到带孩子，直接让我们走了家庭通道，不用排大长队！移民官还逗了逗孩子，问"Are you excited?"，气氛很轻松。\n\n💡 经验：带孩子的一定要准备好出生证明复印件（虽然没看，但备着安心），还有疫苗本（黄热病疫苗证明）。',
+    category: '带娃入境',
+    timestamp: new Date('2025-11-20').getTime(),
+    likes: 96
+  },
+  {
+    id: 'builtin_3',
+    author: '陈总_跨境电商',
+    avatarColor: 'linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)',
+    content: '去吉隆坡参加展会，商务目的入境。移民官问得比较多：来干什么？待多久？住哪里？有没有邀请函？\n\n我出示了展会邀请函、公司名片、酒店订单。移民官还问"带了多少现金"，我说有信用卡和2000美金现金。他点点头就盖章了。\n\n💡 经验：商务入境最好准备邀请函！虽然免签，但证明你来是有正当理由的，不会被怀疑非法工作。',
+    category: '商务入境',
+    timestamp: new Date('2025-10-08').getTime(),
+    likes: 75
+  },
+  {
+    id: 'builtin_4',
+    author: '李同学_留学生',
+    avatarColor: 'linear-gradient(135deg,#fa709a 0%,#fee140 100%)',
+    content: '去马来西亚留学，但学生签还没下来，想先免签入境30天等签证。结果移民官看到我的Offer Letter，问我"你是来读书的吗？"\n\n我说是，他说学生不能用旅游签入境，让我提供反签信（VAL）。幸好我手机里存了VAL的PDF，给他看了才放行，还警告我下次必须有学生签。\n\n💡 教训：来留学的同学，千万不要侥幸心理用旅游签！一定要等反签信（VAL）下来，或者让学校出证明信！',
+    category: '留学入境',
+    timestamp: new Date('2025-09-12').getTime(),
+    likes: 156
+  },
+  {
+    id: 'builtin_5',
+    author: '背包客阿杰',
+    avatarColor: '#2d9b5c',
+    content: '刚从印尼巴厘岛回来，分享下落地签经验。\n\n雅加达机场落地签现在50万印尼盾（约¥230），可以现金也可以刷卡。我排了大概15分钟队，给了护照+机票+钱，2分钟就搞定了。\n\n💡 小贴士：\n1. 提前准备好离境机票（电子版就行）\n2. 酒店地址要背下来，移民官会问\n3. 机场汇率很差，先换100块应急就行\n4. Grab打车到库塔要150k，建议提前下载好App',
+    category: '印尼落地签',
+    timestamp: new Date('2026-01-05').getTime(),
+    likes: 89
+  }
+];
+
+// 初始化社区模块
+document.addEventListener('DOMContentLoaded', function() {
+  CommunityApp.init('community-posts-container', window.NYT_POSTS);
+  
+  // 更新统计
+  const allPosts = CommunityData.getAllPosts();
+  document.getElementById('community-stats').textContent = `${allPosts.length} 篇分享`;
+});
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

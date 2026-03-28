@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>本地服务 - 南洋通 | Local Services - NanYangTong</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">本地优质服务商入驻中，欢迎认证机构联系我们！</span></span><div class="top-bar-right"><a href="login.html"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="register.html"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">南洋通</span><span class="logo-sub">NanYangTong</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索翻译、律师、医院、搬家..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="#" class="btn-publish"><i class="fas fa-store"></i> <span data-i18n="prov.join.link">商家入驻</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li class="active"><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#795548,#4e342e);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.services">本地服务</span></div>
+    <h1><i class="fas fa-concierge-bell"></i> <span data-i18n="services.page.title">本地服务中心</span></h1>
+    <p data-i18n="services.page.sub">翻译·律师·医疗·搬家·快递·家政·餐饮·教育培训</p>
+  </div>
+</div>
+
+<!-- 服务分类快速入口 -->
+<section style="background:#fff;padding:20px 0;border-bottom:1px solid #eee;">
+  <div class="container">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <button class="svc-cat-btn active" onclick="filterService('all',this)"><i class="fas fa-th"></i> <span data-i18n="services.filter.all">全部</span></button>
+      <button class="svc-cat-btn" onclick="filterService('translate',this)"><i class="fas fa-language"></i> 翻译公证</button>
+      <button class="svc-cat-btn" onclick="filterService('legal',this)"><i class="fas fa-gavel"></i> 法律律师</button>
+      <button class="svc-cat-btn" onclick="filterService('medical',this)"><i class="fas fa-hospital"></i> 医疗导诊</button>
+      <button class="svc-cat-btn" onclick="filterService('move',this)"><i class="fas fa-truck"></i> 搬家物流</button>
+      <button class="svc-cat-btn" onclick="filterService('edu',this)"><i class="fas fa-book"></i> 教育培训</button>
+      <button class="svc-cat-btn" onclick="filterService('food',this)"><i class="fas fa-utensils"></i> 中餐外卖</button>
+      <button class="svc-cat-btn" onclick="filterService('life',this)"><i class="fas fa-tools"></i> 生活杂务</button>
+    </div>
+  </div>
+</section>
+
+<div class="page-content">
+  <div class="container">
+
+    <!-- 翻译公证 -->
+    <div class="svc-group" data-cat="translate">
+      <h2 class="svc-group-title"><i class="fas fa-language" style="color:#2d9b5c;"></i> 翻译 &amp; 公证服务</h2>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 官方认证</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a)">译</div>
+          <h4>KL中马翻译中心</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 Chow Kit</p>
+          <div class="prov-tags"><span>中马翻译</span><span>公证认证</span><span>急件加急</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.9</span><span>3,100+客户</span></div>
+          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> <span data-i18n="prov.badge.certified">官方认证</span></div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#1976d2,#0d47a1)">公</div>
+          <h4>槟城华人公证翻译所</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 槟城 George Town</p>
+          <div class="prov-tags"><span>学历认证</span><span>驾照翻译</span><span>合同翻译</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>1,560+客户</span></div>
+          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge partner"><i class="fas fa-handshake"></i> <span data-i18n="prov.badge.partner">合作机构</span></div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#f9a825,#e65100)">印</div>
+          <h4>雅加达华语翻译服务</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达</p>
+          <div class="prov-tags"><span>中印翻译</span><span>合同公证</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>890+客户</span></div>
+          <a href="#" class="btn-contact" data-i18n="services.contact">立即联系</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 律师法律 -->
+    <div class="svc-group" data-cat="legal">
+      <h2 class="svc-group-title"><i class="fas fa-gavel" style="color:#3f51b5;"></i> 法律 &amp; 律师</h2>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 官方认证</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#3f51b5,#1a237e)">律</div>
+          <h4>KL华人律师事务所</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 KLCC</p>
+          <div class="prov-tags"><span>劳工纠纷</span><span>租房合同</span><span>移民法</span><span>公司注册</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.9</span><span>2,200+咨询</span><span>15年经验</span></div>
+          <a href="#" class="btn-contact">免费初咨</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 官方认证</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#9c27b0,#6a1b9a)">法</div>
+          <h4>新山边境法律咨询</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 新山 Johor Bahru</p>
+          <div class="prov-tags"><span>出入境法</span><span>房产纠纷</span><span>签证上诉</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>1,100+咨询</span></div>
+          <a href="#" class="btn-contact">立即联系</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作机构</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#00838f,#004d40)">法</div>
+          <h4>雅加达中文法律顾问</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达</p>
+          <div class="prov-tags"><span>劳工法</span><span>投资法</span><span>公证</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>680+咨询</span></div>
+          <a href="#" class="btn-contact">立即联系</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 医疗导诊 -->
+    <div class="svc-group" data-cat="medical">
+      <h2 class="svc-group-title"><i class="fas fa-hospital" style="color:#e91e63;"></i> 医疗 &amp; 导诊</h2>
+      <div class="alert-box info" style="margin-bottom:16px;">
+        <i class="fas fa-info-circle"></i>
+        <div>马来西亚医疗水平亚洲领先，且拥有大量中文医生。我们为您提供：中文预约、翻译陪同、报销协助全套服务。</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div class="info-card" style="border-left:4px solid #e91e63;">
+          <h4><i class="fas fa-hospital" style="color:#e91e63;"></i> 推荐医院（吉隆坡）</h4>
+          <ul style="font-size:13px;color:#555;line-height:2.2;margin-top:10px;">
+            <li>🏥 Pantai Hospital KL — 中文医生多</li>
+            <li>🏥 Gleneagles KL — 国际标准</li>
+            <li>🏥 Sunway Medical — 近大学城</li>
+            <li>🏥 KLCC Specialist Centre</li>
+          </ul>
+        </div>
+        <div class="info-card" style="border-left:4px solid #f57c00;">
+          <h4><i class="fas fa-hospital" style="color:#f57c00;"></i> 推荐医院（槟城）</h4>
+          <ul style="font-size:13px;color:#555;line-height:2.2;margin-top:10px;">
+            <li>🏥 Penang Adventist Hospital</li>
+            <li>🏥 Island Hospital Penang</li>
+            <li>🏥 Loh Guan Lye Specialist</li>
+            <li>🏥 Gleneagles Penang</li>
+          </ul>
+        </div>
+      </div>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 官方认证</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#e91e63,#880e4f)">医</div>
+          <h4>中文医疗陪诊服务</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 全市</p>
+          <div class="prov-tags"><span>预约挂号</span><span>陪诊翻译</span><span>取药协助</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.9</span><span>4,500+服务</span></div>
+          <a href="#" class="btn-contact">预约服务</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 搬家物流 -->
+    <div class="svc-group" data-cat="move">
+      <h2 class="svc-group-title"><i class="fas fa-truck" style="color:#ff9800;"></i> 搬家 &amp; 物流</h2>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 官方认证</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#ff9800,#e65100)">搬</div>
+          <h4>KL中国搬家服务</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 全马服务</p>
+          <div class="prov-tags"><span>本地搬家</span><span>国际运输</span><span>行李托运</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>2,100+订单</span></div>
+          <a href="#" class="btn-contact">获取报价</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作机构</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#795548,#4e342e)">运</div>
+          <h4>中马跨境寄件服务</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 全马 → 中国</p>
+          <div class="prov-tags"><span>快递寄件</span><span>代购转运</span><span>行李打包</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>6,800+包裹</span></div>
+          <a href="#" class="btn-contact">立即下单</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 教育培训 -->
+    <div class="svc-group" data-cat="edu">
+      <h2 class="svc-group-title"><i class="fas fa-book" style="color:#00838f;"></i> 教育培训</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="info-card" style="border-top:3px solid #00838f;">
+          <div class="info-card-icon" style="background:#e0f7fa;color:#00838f;"><i class="fas fa-language"></i></div>
+          <h4>马来语速成班</h4>
+          <p style="font-size:13px;color:#666;margin-top:8px;">2个月掌握生活马来语，帮助融入本地生活</p>
+          <div style="font-size:13px;color:#00838f;font-weight:700;margin-top:10px;">RM 800/期</div>
+        </div>
+        <div class="info-card" style="border-top:3px solid #1976d2;">
+          <div class="info-card-icon" style="background:#e3f2fd;color:#1976d2;"><i class="fas fa-graduation-cap"></i></div>
+          <h4>英语提升课程</h4>
+          <p style="font-size:13px;color:#666;margin-top:8px;">商务英语/日常英语，小班教学，外籍教师</p>
+          <div style="font-size:13px;color:#1976d2;font-weight:700;margin-top:10px;">RM 600/月</div>
+        </div>
+        <div class="info-card" style="border-top:3px solid #9c27b0;">
+          <div class="info-card-icon" style="background:#f3e5f5;color:#9c27b0;"><i class="fas fa-child"></i></div>
+          <h4>子女入学辅导</h4>
+          <p style="font-size:13px;color:#666;margin-top:8px;">帮助孩子办理入学手续，课程衔接辅导</p>
+          <div style="font-size:13px;color:#9c27b0;font-weight:700;margin-top:10px;">免费咨询</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 中餐外卖 -->
+    <div class="svc-group" data-cat="food">
+      <h2 class="svc-group-title"><i class="fas fa-utensils" style="color:#f57c00;"></i> 中餐 &amp; 外卖推荐</h2>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 认证商家</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#f57c00,#e64a19)">川</div>
+          <h4>老成都川菜馆（KL）</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 吉隆坡 Imbi</p>
+          <div class="prov-tags"><span>川菜</span><span>火锅</span><span>外卖配送</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.9</span><span>月售3,500+</span></div>
+          <a href="#" class="btn-contact">点餐/外卖</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge certified"><i class="fas fa-check-circle"></i> 认证商家</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#e91e63,#880e4f)">粤</div>
+          <h4>顺德粤菜楼（槟城）</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 槟城 Gurney</p>
+          <div class="prov-tags"><span>粤菜</span><span>早茶</span><span>家宴预订</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.8</span><span>月售1,800+</span></div>
+          <a href="#" class="btn-contact">预订/外卖</a>
+        </div>
+        <div class="provider-card">
+          <div class="prov-badge partner"><i class="fas fa-handshake"></i> 合作商家</div>
+          <div class="prov-avatar" style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a)">湘</div>
+          <h4>湘西土匪鱼（雅加达）</h4>
+          <p class="prov-location"><i class="fas fa-map-marker-alt"></i> 印尼 雅加达 CBD</p>
+          <div class="prov-tags"><span>湘菜</span><span>外卖</span></div>
+          <div class="prov-stats"><span><i class="fas fa-star"></i> 4.7</span><span>月售900+</span></div>
+          <a href="#" class="btn-contact">点餐/外卖</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 生活杂务 -->
+    <div class="svc-group" data-cat="life">
+      <h2 class="svc-group-title"><i class="fas fa-tools" style="color:#795548;"></i> 生活服务</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <div class="life-svc-card"><i class="fas fa-broom"></i><span>家政保洁</span><small>RM 80起/次</small></div>
+        <div class="life-svc-card"><i class="fas fa-wrench"></i><span>水电维修</span><small>RM 100起</small></div>
+        <div class="life-svc-card"><i class="fas fa-sim-card"></i><span>手机卡办理</span><small>Maxis/Celcom</small></div>
+        <div class="life-svc-card"><i class="fas fa-car"></i><span>接送机服务</span><small>RM 60起</small></div>
+        <div class="life-svc-card"><i class="fas fa-cut"></i><span>中文美发</span><small>全市推荐</small></div>
+        <div class="life-svc-card"><i class="fas fa-shopping-bag"></i><span>代购代办</span><small>按需定价</small></div>
+        <div class="life-svc-card"><i class="fas fa-dog"></i><span>宠物寄养</span><small>RM 50/天</small></div>
+        <div class="life-svc-card"><i class="fas fa-baby"></i><span>保姆月嫂</span><small>RM 2500/月</small></div>
+      </div>
+    </div>
+
+    <!-- 服务商入驻 -->
+    <div style="background:linear-gradient(135deg,#2d9b5c,#1a6b3a);border-radius:16px;padding:32px;text-align:center;margin-top:30px;color:#fff;">
+      <h2 style="font-size:24px;margin-bottom:12px;">📢 <span data-i18n="prov.join.text">服务商入驻招募</span></h2>
+      <p style="opacity:0.9;margin-bottom:20px;">您是本地服务提供商？加入南洋通，每月触达数万中国用户</p>
+      <div style="display:flex;justify-content:center;gap:32px;margin-bottom:24px;font-size:14px;">
+        <span>✅ 免费入驻</span><span>✅ 严格审核</span><span>✅ 中文推广</span><span>✅ 流量保障</span>
+      </div>
+      <a href="#" class="btn-primary" style="display:inline-block;padding:14px 40px;font-size:16px;"><span data-i18n="prov.join.link">立即申请入驻 →</span></a>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 南洋通 NanYangTong</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small data-i18n="footer.hotline">7×24小时服务热线</small><strong>400-888-2026</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 南洋通 NanYangTong · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script>
+function filterService(cat, btn) {
+  document.querySelectorAll('.svc-cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.svc-group').forEach(g => {
+    if (cat === 'all' || g.dataset.cat === cat) {
+      g.style.display = '';
+    } else {
+      g.style.display = 'none';
+    }
+  });
+}
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,777 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>金融银行 - 一路向南 | Banking - 一路向南，阳光灿烂</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/user.css"/>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">Maybank、CIMB银行现支持中文柜台服务，持护照+工签即可开户！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索银行、开户、汇款..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="#" class="btn-publish"><i class="fas fa-plus-circle"></i> <span data-i18n="bank.open">预约陪同开户</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li class="active"><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#f9a825,#e65100);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.bank">金融银行</span></div>
+    <h1><i class="fas fa-university"></i> <span data-i18n="bank.page.title">金融 &amp; 银行</span></h1>
+    <p data-i18n="bank.page.sub">银行开户 · 人民币换汇 · 国际汇款 · 保险 · 税务咨询</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <!-- 功能导航 -->
+    <div class="visa-type-tabs">
+      <button class="visa-type-tab active" onclick="switchBank('open',this)"><i class="fas fa-credit-card"></i> <span data-i18n="bank.tab.account">银行开户</span></button>
+      <button class="visa-type-tab" onclick="switchBank('exchange',this)"><i class="fas fa-exchange-alt"></i> <span data-i18n="bank.tab.remit">换汇汇款</span></button>
+      <button class="visa-type-tab" onclick="switchBank('insurance',this)"><i class="fas fa-shield-alt"></i> <span data-i18n="bank.tab.insurance">保险推荐</span></button>
+      <button class="visa-type-tab" onclick="switchBank('tax',this)"><i class="fas fa-file-invoice-dollar"></i> <span data-i18n="bank.tab.tax">税务指南</span></button>
+    </div>
+
+    <div class="listings-layout">
+      <div class="listings-main">
+
+        <!-- 银行开户 -->
+        <div id="bank-open">
+          <!-- 国家切换标签 -->
+          <div class="country-tabs-bar" style="display:flex;gap:10px;margin-bottom:18px;">
+            <button class="country-tab active" data-country="my" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#f9a825;color:#fff;">🇲🇾 马来西亚</button>
+            <button class="country-tab" data-country="id" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#e0e0e0;color:#555;">🇮🇩 印度尼西亚</button>
+          </div>
+
+          <!-- 马来西亚：银行开户 -->
+          <div data-country-panel="my">
+            <div class="alert-box info" style="margin-bottom:20px;">
+              <i class="fas fa-info-circle"></i>
+              <div><strong>开户提示：</strong>外籍人士在马来西亚开银行账户，一般需要护照+工签/学签/MM2H签证。旅游签通常<strong>无法开户</strong>，部分银行要求有地址证明。我们提供陪同开户服务，全程中文指引。</div>
+            </div>
+
+            <!-- 银行对比 -->
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;"><i class="fas fa-balance-scale" style="color:#f9a825;"></i> 主流银行开户对比</h3>
+            <div style="overflow-x:auto;margin-bottom:24px;">
+              <table class="bank-table">
+                <thead>
+                  <tr><th>银行</th><th>开户要求</th><th>开户时间</th><th>最低存款</th><th>网银/APP</th><th>中文服务</th><th>推荐指数</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>🏦 Maybank</strong><br/><small>马来亚银行</small></td>
+                    <td>护照+工签/学签</td>
+                    <td>当天</td>
+                    <td>RM 0</td>
+                    <td>✅ M2U APP</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td><span style="color:#2d9b5c;font-weight:700;">★★★★★</span></td>
+                  </tr>
+                  <tr style="background:#f8f8f8;">
+                    <td><strong>🏦 CIMB Bank</strong></td>
+                    <td>护照+工签</td>
+                    <td>当天</td>
+                    <td>RM 1,000</td>
+                    <td>✅ CIMB Clicks</td>
+                    <td>⭐⭐⭐⭐</td>
+                    <td><span style="color:#2d9b5c;font-weight:700;">★★★★☆</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🏦 RHB Bank</strong></td>
+                    <td>护照+签证+地址证明</td>
+                    <td>1–3天</td>
+                    <td>RM 500</td>
+                    <td>✅ RHB Now</td>
+                    <td>⭐⭐⭐</td>
+                    <td><span style="color:#f9a825;font-weight:700;">★★★★☆</span></td>
+                  </tr>
+                  <tr style="background:#f8f8f8;">
+                    <td><strong>🏦 Public Bank</strong></td>
+                    <td>护照+工签+地址证明</td>
+                    <td>1天</td>
+                    <td>RM 500</td>
+                    <td>✅ PB engage</td>
+                    <td>⭐⭐⭐⭐⭐</td>
+                    <td><span style="color:#2d9b5c;font-weight:700;">★★★★★</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🏦 Hong Leong</strong></td>
+                    <td>护照+工签</td>
+                    <td>当天</td>
+                    <td>RM 500</td>
+                    <td>✅ HLB Connect</td>
+                    <td>⭐⭐⭐</td>
+                    <td><span style="color:#f9a825;font-weight:700;">★★★☆☆</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 开户步骤 -->
+            <div class="steps-section">
+              <h3>📋 银行开户完整流程</h3>
+              <div class="steps-flow">
+                <div class="step-item"><div class="step-num">1</div><div class="step-title">准备材料</div><div class="step-desc">护照+签证+地址证明</div></div>
+                <div class="step-item"><div class="step-num">2</div><div class="step-title">选择银行</div><div class="step-desc">就近网点或预约</div></div>
+                <div class="step-item"><div class="step-num">3</div><div class="step-title">填写申请</div><div class="step-desc">柜台领取表格</div></div>
+                <div class="step-item"><div class="step-num">4</div><div class="step-title">存入初始金</div><div class="step-desc">现金或转账均可</div></div>
+                <div class="step-item"><div class="step-num">5</div><div class="step-title">激活网银</div><div class="step-desc">下载APP绑定</div></div>
+              </div>
+            </div>
+
+            <!-- 开户材料清单 -->
+            <div class="visa-detail-card" style="margin-top:20px;">
+              <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;"><i class="fas fa-list-check" style="color:#f9a825;"></i> 开户所需材料清单</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div>
+                  <h4 style="font-size:14px;margin-bottom:8px;">✅ 必备材料</h4>
+                  <ul class="req-list">
+                    <li><i class="fas fa-check-circle"></i> 护照原件（及复印件）</li>
+                    <li><i class="fas fa-check-circle"></i> 有效签证（工签/学签/MM2H）</li>
+                    <li><i class="fas fa-check-circle"></i> 初始存款（RM0–1000不等）</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 style="font-size:14px;margin-bottom:8px;">📎 部分银行额外要求</h4>
+                  <ul class="req-list">
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> 地址证明（水电账单/房租合同）</li>
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> 雇主证明信</li>
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> 收入证明（工资单）</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="my" -->
+
+          <!-- 印尼：银行开户 -->
+          <div data-country-panel="id" class="hidden">
+            <div class="alert-box info" style="margin-bottom:20px;">
+              <i class="fas fa-info-circle"></i>
+              <div><strong>开户提示：</strong>外籍人士在印度尼西亚开银行账户，需要护照+KITAS（临时居留证）或KITAP（永久居留证）。部分银行还要求提供NPWP（税号）及地址证明。建议选择BCA或Mandiri，柜台服务体验较好。</div>
+            </div>
+
+            <!-- 印尼银行对比 -->
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;"><i class="fas fa-balance-scale" style="color:#e53935;"></i> 印尼主流银行开户对比</h3>
+            <div style="overflow-x:auto;margin-bottom:24px;">
+              <table class="bank-table">
+                <thead>
+                  <tr><th>银行</th><th>开户要求</th><th>开户时间</th><th>最低存款</th><th>网银/APP</th><th>推荐指数</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>🏦 BCA</strong><br/><small>Bank Central Asia</small></td>
+                    <td>护照+KITAS/KITAP</td>
+                    <td>当天</td>
+                    <td>IDR 500,000</td>
+                    <td>✅ myBCA APP</td>
+                    <td><span style="color:#2d9b5c;font-weight:700;">★★★★★</span></td>
+                  </tr>
+                  <tr style="background:#f8f8f8;">
+                    <td><strong>🏦 Bank Mandiri</strong><br/><small>国营银行</small></td>
+                    <td>护照+KITAS+NPWP</td>
+                    <td>1–2天</td>
+                    <td>IDR 500,000</td>
+                    <td>✅ Livin by Mandiri</td>
+                    <td><span style="color:#2d9b5c;font-weight:700;">★★★★☆</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🏦 BNI</strong><br/><small>Bank Negara Indonesia</small></td>
+                    <td>护照+KITAS+NPWP</td>
+                    <td>1–2天</td>
+                    <td>IDR 500,000</td>
+                    <td>✅ BNI Mobile</td>
+                    <td><span style="color:#f9a825;font-weight:700;">★★★★☆</span></td>
+                  </tr>
+                  <tr style="background:#f8f8f8;">
+                    <td><strong>🏦 BRI</strong><br/><small>Bank Rakyat Indonesia</small></td>
+                    <td>护照+KITAS</td>
+                    <td>当天</td>
+                    <td>IDR 250,000</td>
+                    <td>✅ BRImo APP</td>
+                    <td><span style="color:#f9a825;font-weight:700;">★★★☆☆</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>🏦 CIMB Niaga</strong><br/><small>CIMB印尼子公司</small></td>
+                    <td>护照+KITAS</td>
+                    <td>当天</td>
+                    <td>IDR 500,000</td>
+                    <td>✅ OCTO Mobile</td>
+                    <td><span style="color:#f9a825;font-weight:700;">★★★★☆</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 开户步骤 -->
+            <div class="steps-section">
+              <h3>📋 印尼银行开户完整流程</h3>
+              <div class="steps-flow">
+                <div class="step-item"><div class="step-num">1</div><div class="step-title">准备材料</div><div class="step-desc">护照+KITAS+NPWP</div></div>
+                <div class="step-item"><div class="step-num">2</div><div class="step-title">选择网点</div><div class="step-desc">就近银行网点前往</div></div>
+                <div class="step-item"><div class="step-num">3</div><div class="step-title">填写表格</div><div class="step-desc">柜台领取申请表</div></div>
+                <div class="step-item"><div class="step-num">4</div><div class="step-title">存入初始金</div><div class="step-desc">最低IDR 250,000起</div></div>
+                <div class="step-item"><div class="step-num">5</div><div class="step-title">激活网银</div><div class="step-desc">下载APP完成绑定</div></div>
+              </div>
+            </div>
+
+            <!-- 开户材料清单 -->
+            <div class="visa-detail-card" style="margin-top:20px;">
+              <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;"><i class="fas fa-list-check" style="color:#e53935;"></i> 印尼开户所需材料清单</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div>
+                  <h4 style="font-size:14px;margin-bottom:8px;">✅ 必备材料</h4>
+                  <ul class="req-list">
+                    <li><i class="fas fa-check-circle"></i> 护照原件（及复印件）</li>
+                    <li><i class="fas fa-check-circle"></i> KITAS（临时居留证）或 KITAP</li>
+                    <li><i class="fas fa-check-circle"></i> 初始存款（IDR 250,000 起）</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 style="font-size:14px;margin-bottom:8px;">📎 部分银行额外要求</h4>
+                  <ul class="req-list">
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> NPWP（税号，强烈建议办理）</li>
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> 地址证明（租房合同/水电账单）</li>
+                    <li><i class="fas fa-info-circle" style="color:#1976d2;"></i> 雇主担保信或工作合同</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="alert-box warning" style="margin-top:14px;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div><strong>NPWP（税号）小贴士：</strong>办理NPWP可在税务局（Kantor Pajak）申请，免费且无硬性条件。拥有NPWP可享受银行更优质服务，且部分转账功能需要NPWP解锁。</div>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="id" -->
+        </div>
+
+        <!-- 换汇汇款 -->
+        <div id="bank-exchange" class="hidden">
+          <!-- 国家切换标签 -->
+          <div class="country-tabs-bar" style="display:flex;gap:10px;margin-bottom:18px;">
+            <button class="country-tab active" data-country="my" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#f9a825;color:#fff;">🇲🇾 马来西亚</button>
+            <button class="country-tab" data-country="id" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#e0e0e0;color:#555;">🇮🇩 印度尼西亚</button>
+          </div>
+
+          <!-- 马来西亚：换汇汇款 -->
+          <div data-country-panel="my">
+            <div class="alert-box warning" style="margin-bottom:20px;">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div><strong>汇率提醒：</strong>实时汇率波动较大，建议通过正规渠道换汇，避免"黑市换汇"造成损失。银行渠道安全但手续费较高，推荐使用Wise/Remitly等平台。</div>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">主流汇款方式对比（马来西亚令吉 RM）</h3>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+              <div class="info-card" style="border-top:3px solid #2d9b5c;">
+                <div class="info-card-icon" style="background:#e8f5e9;color:#2d9b5c;font-size:24px;">W</div>
+                <h4>Wise（推荐）</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：~0.5%<br/>到账时间：1–2个工作日<br/>汇率：接近中间汇率<br/>
+                  <span style="color:#2d9b5c;font-weight:700;">✅ 最推荐</span>
+                </div>
+              </div>
+              <div class="info-card" style="border-top:3px solid #1976d2;">
+                <div class="info-card-icon" style="background:#e3f2fd;color:#1976d2;"><i class="fas fa-university"></i></div>
+                <h4>银行电汇 T/T</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：RM30–50<br/>到账时间：3–5个工作日<br/>汇率：银行中间价<br/>
+                  <span style="color:#f57c00;font-weight:700;">适合大额汇款</span>
+                </div>
+              </div>
+              <div class="info-card" style="border-top:3px solid #f9a825;">
+                <div class="info-card-icon" style="background:#fff8e1;color:#f9a825;"><i class="fab fa-weixin"></i></div>
+                <h4>微信/支付宝</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：约1–2%<br/>到账时间：即时<br/>汇率：实时报价<br/>
+                  <span style="color:#f57c00;font-weight:700;">小额便捷</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:20px;background:#f0faf5;border-radius:12px;padding:20px;">
+              <h4 style="font-size:15px;font-weight:700;margin-bottom:12px;">💱 今日参考汇率（仅供参考）</h4>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;font-size:14px;text-align:center;">
+                <div><div style="font-weight:700;font-size:18px;color:#e74c3c;">1 CNY</div><div style="color:#666;">= RM 0.625</div></div>
+                <div><div style="font-weight:700;font-size:18px;color:#1976d2;">1 USD</div><div style="color:#666;">= RM 4.48</div></div>
+                <div><div style="font-weight:700;font-size:18px;color:#f9a825;">1 CNY</div><div style="color:#666;">= IDR 2,200</div></div>
+                <div><div style="font-weight:700;font-size:18px;color:#2d9b5c;">1 SGD</div><div style="color:#666;">= RM 3.32</div></div>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="my" -->
+
+          <!-- 印尼：换汇汇款 -->
+          <div data-country-panel="id" class="hidden">
+            <div class="alert-box warning" style="margin-bottom:20px;">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div><strong>汇率提醒：</strong>印尼盾（IDR）汇率波动较大，建议使用正规渠道换汇。推荐使用支付宝+或银行电汇，请避免街边"money changer"，以防假币或欺诈。</div>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">主流汇款方式对比（印尼盾 IDR）</h3>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+              <div class="info-card" style="border-top:3px solid #2d9b5c;">
+                <div class="info-card-icon" style="background:#e8f5e9;color:#2d9b5c;font-size:22px;">支</div>
+                <h4>支付宝+（推荐）</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：约1%<br/>到账时间：即时–1小时<br/>汇率：实时报价<br/>
+                  <span style="color:#2d9b5c;font-weight:700;">✅ 最推荐</span>
+                </div>
+              </div>
+              <div class="info-card" style="border-top:3px solid #1976d2;">
+                <div class="info-card-icon" style="background:#e3f2fd;color:#1976d2;"><i class="fas fa-university"></i></div>
+                <h4>银行电汇 T/T</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：约IDR 50,000–150,000<br/>到账时间：3–5个工作日<br/>汇率：银行中间价<br/>
+                  <span style="color:#f57c00;font-weight:700;">适合大额汇款</span>
+                </div>
+              </div>
+              <div class="info-card" style="border-top:3px solid #e53935;">
+                <div class="info-card-icon" style="background:#ffebee;color:#e53935;"><i class="fas fa-globe"></i></div>
+                <h4>西联汇款</h4>
+                <div style="font-size:13px;color:#666;line-height:1.8;margin-top:8px;">
+                  手续费：约2–3%<br/>到账时间：即时<br/>汇率：参考报价<br/>
+                  <span style="color:#f57c00;font-weight:700;">紧急用途</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 印尼本地电子钱包 -->
+            <div style="margin-top:20px;background:#fff3e0;border-radius:12px;padding:20px;">
+              <h4 style="font-size:15px;font-weight:700;margin-bottom:14px;">📱 印尼常用电子钱包（E-Wallet）</h4>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                <div style="background:#fff;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:12px;border:1px solid #ffe0b2;">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#00a86b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">Go</div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;">GoPay</div>
+                    <div style="font-size:12px;color:#666;margin-top:3px;">Gojek平台钱包，支持日常消费、外卖、打车付款，需印尼手机号注册。</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:12px;border:1px solid #ffe0b2;">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#4c3c9e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">OVO</div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;">OVO</div>
+                    <div style="font-size:12px;color:#666;margin-top:3px;">与Grab合作，支持线上线下付款，Tokopedia购物优选，可绑定银行卡充值。</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:12px;border:1px solid #ffe0b2;">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#118eea;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;">DANA</div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;">DANA</div>
+                    <div style="font-size:12px;color:#666;margin-top:3px;">阿里巴巴旗下，支持转账、缴费、购物，充值方便，适合中国用户使用。</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:12px;border:1px solid #ffe0b2;">
+                  <div style="width:36px;height:36px;border-radius:50%;background:#ee4d2d;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;flex-shrink:0;">SPay</div>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;">ShopeePay</div>
+                    <div style="font-size:12px;color:#666;margin-top:3px;">Shopee平台钱包，网购首选，在印尼电商生态中使用极为普遍，优惠券多。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;background:#fce4ec;border-radius:12px;padding:20px;">
+              <h4 style="font-size:15px;font-weight:700;margin-bottom:12px;">💱 今日参考汇率（仅供参考）</h4>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:14px;text-align:center;">
+                <div><div style="font-weight:700;font-size:18px;color:#e74c3c;">1 CNY</div><div style="color:#666;">≈ IDR 2,200</div></div>
+                <div><div style="font-weight:700;font-size:18px;color:#1976d2;">1 USD</div><div style="color:#666;">≈ IDR 15,800</div></div>
+                <div><div style="font-weight:700;font-size:18px;color:#f9a825;">1 SGD</div><div style="color:#666;">≈ IDR 11,700</div></div>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="id" -->
+        </div>
+
+        <!-- 保险 -->
+        <div id="bank-insurance" class="hidden">
+          <!-- 国家切换标签 -->
+          <div class="country-tabs-bar" style="display:flex;gap:10px;margin-bottom:18px;">
+            <button class="country-tab active" data-country="my" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#f9a825;color:#fff;">🇲🇾 马来西亚</button>
+            <button class="country-tab" data-country="id" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#e0e0e0;color:#555;">🇮🇩 印度尼西亚</button>
+          </div>
+
+          <!-- 马来西亚：保险 -->
+          <div data-country-panel="my">
+            <div class="alert-box success" style="margin-bottom:20px;">
+              <i class="fas fa-lightbulb"></i>
+              <div><strong>重要提示：</strong>持工签或学签在马来西亚，雇主必须为员工购买社险(SOCSO)及EPF公积金。建议另外购买医疗保险，马来西亚私立医院费用较高。</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div class="info-card" style="border-top:3px solid #e91e63;">
+                <div class="info-card-icon" style="background:#fce4ec;color:#e91e63;"><i class="fas fa-heartbeat"></i></div>
+                <h4>医疗保险（必备）</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">马来西亚私立医院费用高昂，一次手术可能花费数万令吉。推荐购买AIA、大东方（Great Eastern）等医疗险，每年约RM1,200–3,000。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #9c27b0;">
+                <div class="info-card-icon" style="background:#f3e5f5;color:#9c27b0;"><i class="fas fa-car-crash"></i></div>
+                <h4>汽车保险（有车必备）</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">马来西亚法律规定车辆必须购买第三者险（Pihak Ketiga）。建议加购综合险（Comprehensive），每年约RM1,000–3,000视车价而定。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #3f51b5;">
+                <div class="info-card-icon" style="background:#e8eaf6;color:#3f51b5;"><i class="fas fa-home"></i></div>
+                <h4>家居财产险</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">保障租住房屋内的财物，水灾/火灾/盗窃均可理赔。每年约RM200–500，性价比极高，强烈推荐。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #00838f;">
+                <div class="info-card-icon" style="background:#e0f7fa;color:#00838f;"><i class="fas fa-plane"></i></div>
+                <h4>旅行险</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">每次出行购买，覆盖航班延误、行李丢失、紧急医疗等。单次约RM30–80，可在微信/支付宝直接购买。</p>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="my" -->
+
+          <!-- 印尼：保险 -->
+          <div data-country-panel="id" class="hidden">
+            <div class="alert-box success" style="margin-bottom:20px;">
+              <i class="fas fa-lightbulb"></i>
+              <div><strong>重要提示：</strong>在印度尼西亚工作，雇主有义务为员工购买BPJS Ketenagakerjaan（劳工社保）。外籍人士同样建议购买BPJS Kesehatan（健康保险）或商业医疗险，以应对医疗费用。</div>
+            </div>
+
+            <!-- BPJS 专区 -->
+            <div style="background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-radius:14px;padding:20px;margin-bottom:20px;border:1px solid #c8e6c9;">
+              <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;color:#2e7d32;">🏥 BPJS Kesehatan — 印尼国民健康保险</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:13px;">
+                <div>
+                  <h4 style="font-size:13px;font-weight:700;margin-bottom:8px;color:#388e3c;">📋 基本信息</h4>
+                  <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+                    <li>🏛️ 主管机构：印尼政府（BPJS Kesehatan）</li>
+                    <li>💰 月保费：约IDR 42,000–150,000/人</li>
+                    <li>🏥 覆盖：门诊、住院、手术、急救</li>
+                    <li>📍 报名：就近 BPJS 服务中心或官网</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 style="font-size:13px;font-weight:700;margin-bottom:8px;color:#388e3c;">✅ 外籍人士参保条件</h4>
+                  <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+                    <li>📄 持有效KITAS或KITAP</li>
+                    <li>🧾 需要NPWP（税号）</li>
+                    <li>🤝 雇主注册或个人自愿参保均可</li>
+                    <li>💊 参保后可在全国医院/诊所使用</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div class="info-card" style="border-top:3px solid #e53935;">
+                <div class="info-card-icon" style="background:#ffebee;color:#e53935;"><i class="fas fa-heartbeat"></i></div>
+                <h4>AXA Mandiri</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">AXA与Mandiri银行合作的保险品牌，提供人寿险、医疗险、重疾险，可在Mandiri银行网点或APP购买，适合在印尼工作的外籍人士。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #1565c0;">
+                <div class="info-card-icon" style="background:#e3f2fd;color:#1565c0;"><i class="fas fa-shield-alt"></i></div>
+                <h4>Allianz Indonesia</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">德国安联在印尼的子公司，提供医疗险、寿险、旅行险，服务网络覆盖广，理赔流程相对规范，推荐外籍人士购买高端医疗险。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #6a1b9a;">
+                <div class="info-card-icon" style="background:#f3e5f5;color:#6a1b9a;"><i class="fas fa-umbrella"></i></div>
+                <h4>Prudential Indonesia</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">英国保诚在印尼的业务，提供投连险、寿险、医疗险，在华人社区中口碑较好，可通过华人代理人购买。</p>
+              </div>
+              <div class="info-card" style="border-top:3px solid #00838f;">
+                <div class="info-card-icon" style="background:#e0f7fa;color:#00838f;"><i class="fas fa-car-crash"></i></div>
+                <h4>汽车 & 摩托车保险</h4>
+                <p style="font-size:13px;color:#666;line-height:1.7;margin-top:8px;">印尼法律要求机动车购买第三者险。推荐购买 Garda Oto（ASTRA集团）或 Sinar Mas 综合险，每年约IDR 1,500,000–4,000,000。</p>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="id" -->
+        </div>
+
+        <!-- 税务 -->
+        <div id="bank-tax" class="hidden">
+          <!-- 国家切换标签 -->
+          <div class="country-tabs-bar" style="display:flex;gap:10px;margin-bottom:18px;">
+            <button class="country-tab active" data-country="my" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#f9a825;color:#fff;">🇲🇾 马来西亚</button>
+            <button class="country-tab" data-country="id" style="padding:8px 22px;border:none;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;background:#e0e0e0;color:#555;">🇮🇩 印度尼西亚</button>
+          </div>
+
+          <!-- 马来西亚：税务 -->
+          <div data-country-panel="my">
+            <div class="visa-detail-card">
+              <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;"><i class="fas fa-file-invoice-dollar" style="color:#f9a825;"></i> 马来西亚个人所得税指南</h3>
+              <div class="info-grid">
+                <div class="info-item"><div class="label">报税门槛</div><div class="value highlight">RM 34,000/年</div></div>
+                <div class="info-item"><div class="label">税率范围</div><div class="value">0% – 30%</div></div>
+                <div class="info-item"><div class="label">报税截止</div><div class="value">每年4月30日</div></div>
+              </div>
+              <h4 style="margin:16px 0 10px;">个人所得税税率表</h4>
+              <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                <thead><tr style="background:#fff8e1;"><th style="padding:8px;text-align:left;">年收入</th><th style="padding:8px;text-align:right;">税率</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:8px;">RM 0 – 5,000</td><td style="padding:8px;text-align:right;">0%</td></tr>
+                  <tr style="background:#f9f9f9;"><td style="padding:8px;">RM 5,001 – 20,000</td><td style="padding:8px;text-align:right;">1%</td></tr>
+                  <tr><td style="padding:8px;">RM 20,001 – 35,000</td><td style="padding:8px;text-align:right;">3%</td></tr>
+                  <tr style="background:#f9f9f9;"><td style="padding:8px;">RM 35,001 – 50,000</td><td style="padding:8px;text-align:right;">8%</td></tr>
+                  <tr><td style="padding:8px;">RM 50,001 – 70,000</td><td style="padding:8px;text-align:right;">13%</td></tr>
+                  <tr style="background:#f9f9f9;"><td style="padding:8px;">RM 70,001 – 100,000</td><td style="padding:8px;text-align:right;">21%</td></tr>
+                  <tr><td style="padding:8px;">RM 100,001 以上</td><td style="padding:8px;text-align:right;">24%–30%</td></tr>
+                </tbody>
+              </table>
+              <div class="alert-box info" style="margin-top:16px;">
+                <i class="fas fa-info-circle"></i>
+                <div>在马来西亚居住≥182天即为税务居民，享受较低税率及各类减免。居住不足182天按非居民税率26%征税。</div>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="my" -->
+
+          <!-- 印尼：税务 -->
+          <div data-country-panel="id" class="hidden">
+            <div class="visa-detail-card">
+              <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;"><i class="fas fa-file-invoice-dollar" style="color:#e53935;"></i> 印度尼西亚个人所得税指南</h3>
+              <div class="info-grid">
+                <div class="info-item"><div class="label">报税门槛</div><div class="value highlight">IDR 60,000,000/年</div></div>
+                <div class="info-item"><div class="label">税率范围</div><div class="value">5% – 35%</div></div>
+                <div class="info-item"><div class="label">报税截止</div><div class="value">每年3月31日</div></div>
+              </div>
+
+              <h4 style="margin:16px 0 10px;">个人所得税税率表（2024年）</h4>
+              <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                <thead><tr style="background:#ffebee;"><th style="padding:8px;text-align:left;">年收入（IDR）</th><th style="padding:8px;text-align:right;">税率</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:8px;">0 – 60,000,000</td><td style="padding:8px;text-align:right;">5%</td></tr>
+                  <tr style="background:#f9f9f9;"><td style="padding:8px;">60,000,001 – 250,000,000</td><td style="padding:8px;text-align:right;">15%</td></tr>
+                  <tr><td style="padding:8px;">250,000,001 – 500,000,000</td><td style="padding:8px;text-align:right;">25%</td></tr>
+                  <tr style="background:#f9f9f9;"><td style="padding:8px;">500,000,001 – 5,000,000,000</td><td style="padding:8px;text-align:right;">30%</td></tr>
+                  <tr><td style="padding:8px;">5,000,000,001 以上</td><td style="padding:8px;text-align:right;">35%</td></tr>
+                </tbody>
+              </table>
+
+              <div class="alert-box info" style="margin-top:16px;">
+                <i class="fas fa-info-circle"></i>
+                <div>在印度尼西亚居住≥183天即为税务居民，须就全球收入纳税（分居民和非居民两类处理方式）。非居民一般按20%固定税率就印尼来源收入征税。</div>
+              </div>
+
+              <!-- NPWP 专区 -->
+              <div style="background:#fff3e0;border-radius:12px;padding:18px;margin-top:18px;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:14px;color:#e65100;">🪪 NPWP（税号）办理指南</h4>
+                <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:12px;">NPWP（Nomor Pokok Wajib Pajak）是印度尼西亚税务标识号，类似于中国的税号。在印尼工作、开立银行账户、购车、购房等均可能需要提供。</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:13px;">
+                  <div>
+                    <h5 style="font-weight:700;margin-bottom:8px;color:#bf360c;">📋 办理条件</h5>
+                    <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+                      <li>✅ 持有效KITAS/KITAP</li>
+                      <li>✅ 护照原件</li>
+                      <li>✅ 地址证明</li>
+                      <li>✅ 雇主聘用证明（受雇人员）</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 style="font-weight:700;margin-bottom:8px;color:#bf360c;">🏢 办理方式</h5>
+                    <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+                      <li>🌐 官网：pajak.go.id</li>
+                      <li>🏛️ 就近税务局（Kantor Pajak）</li>
+                      <li>⏱️ 办理时间：约1–3个工作日</li>
+                      <li>💰 费用：<strong>免费</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 外国人税务注意事项 -->
+              <div style="background:#e8f5e9;border-radius:12px;padding:18px;margin-top:14px;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:12px;color:#1b5e20;">⚠️ 外国人在印尼税务注意事项</h4>
+                <ul style="font-size:13px;color:#555;line-height:2.2;padding-left:16px;">
+                  <li>持KITAS工作的外籍人士，雇主通常通过代扣代缴（PPh 21/26）方式处理薪资所得税</li>
+                  <li>如有印尼以外的境外收入，税务居民需申报全球收入</li>
+                  <li>每年3月31日前须提交年度税务申报表（SPT Tahunan）</li>
+                  <li>离开印尼时需办理税务清算证明（Surat Keterangan Fiskal），否则可能无法出境</li>
+                  <li>建议聘请印尼本地税务顾问协助，避免合规风险</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- end data-country-panel="id" -->
+        </div>
+
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-card" style="border-top:3px solid #f9a825;">
+          <h3>🏦 <span data-i18n="bank.open">预约陪同开户</span></h3>
+          <p style="font-size:13px;color:#666;margin-bottom:14px;">我们提供全程中文陪同开户服务，帮你准备材料、与银行沟通</p>
+          <a href="#" class="btn-apply" style="background:#f9a825;color:#333;"><i class="fas fa-calendar-check"></i> <span data-i18n="bank.open">立即预约</span></a>
+          <div style="text-align:center;font-size:12px;color:#999;margin-top:10px;" data-country-show="my">服务费：RM 200/次</div>
+          <div style="text-align:center;font-size:12px;color:#999;margin-top:10px;" data-country-show="id">服务费：IDR 400,000/次</div>
+        </div>
+
+        <!-- 银行官网直达 - 马来西亚 -->
+        <div class="sidebar-card" style="border-top:3px solid #f9a825;" data-country-panel="my">
+          <h3>🔗 🇲🇾 马来西亚银行官网</h3>
+          <div style="display:grid;gap:8px;margin-top:4px;">
+            <a href="https://www.maybank2u.com.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fff8e1;border-radius:10px;text-decoration:none;color:#f57c00;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">Maybank 马来亚银行</div>
+                <div style="font-size:11px;color:#ffca28;">maybank2u.com.my</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.cimb.com.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#e3f2fd;border-radius:10px;text-decoration:none;color:#1565c0;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">CIMB Bank</div>
+                <div style="font-size:11px;color:#64b5f6;">cimb.com.my</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.rhbgroup.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fce4ec;border-radius:10px;text-decoration:none;color:#c2185b;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">RHB Bank</div>
+                <div style="font-size:11px;color:#f48fb1;">rhbgroup.com</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.publicbank.com.my" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#e8f5e9;border-radius:10px;text-decoration:none;color:#1a6b3a;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">Public Bank</div>
+                <div style="font-size:11px;color:#66bb6a;">publicbank.com.my</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 银行官网直达 - 印尼 -->
+        <div class="sidebar-card" style="border-top:3px solid #e53935;" data-country-panel="id">
+          <h3>🔗 🇮🇩 印尼银行官网</h3>
+          <div style="display:grid;gap:8px;margin-top:4px;">
+            <a href="https://www.bca.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#ede7f6;border-radius:10px;text-decoration:none;color:#4527a0;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">BCA Bank Central Asia</div>
+                <div style="font-size:11px;color:#9575cd;">bca.co.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.bankmandiri.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fff8e1;border-radius:10px;text-decoration:none;color:#e65100;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">Bank Mandiri</div>
+                <div style="font-size:11px;color:#ffca28;">bankmandiri.co.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.bni.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#e3f2fd;border-radius:10px;text-decoration:none;color:#1565c0;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">BNI Bank Negara Indonesia</div>
+                <div style="font-size:11px;color:#64b5f6;">bni.co.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.bri.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#e8f5e9;border-radius:10px;text-decoration:none;color:#1b5e20;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">BRI Bank Rakyat Indonesia</div>
+                <div style="font-size:11px;color:#66bb6a;">bri.co.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+            <a href="https://www.cimbniaga.co.id" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fce4ec;border-radius:10px;text-decoration:none;color:#c2185b;">
+              <span style="font-size:18px;">🏦</span>
+              <div>
+                <div style="font-size:12px;font-weight:700;">CIMB Niaga</div>
+                <div style="font-size:11px;color:#f48fb1;">cimbniaga.co.id</div>
+              </div>
+              <i class="fas fa-external-link-alt" style="margin-left:auto;font-size:10px;opacity:0.5;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 紧急联系 - 马来西亚 -->
+        <div class="sidebar-card" data-country-panel="my">
+          <h3>📞 <span data-i18n="safety.hotline">紧急联系</span>（马来西亚）</h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;">
+            <li>Maybank热线：1300-88-6688</li>
+            <li>CIMB热线：1300-88-1900</li>
+            <li>金融投诉：1300-88-5465</li>
+            <li>中文协助：关注微信公众号"一路向南阳光灿烂"</li>
+          </ul>
+        </div>
+
+        <!-- 紧急联系 - 印尼 -->
+        <div class="sidebar-card" data-country-panel="id">
+          <h3>📞 <span data-i18n="safety.hotline">紧急联系</span>（印度尼西亚）</h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;">
+            <li>BCA热线：1500-888</li>
+            <li>Bank Mandiri热线：14000</li>
+            <li>BNI热线：1500-046</li>
+            <li>OJK金融监管：157</li>
+            <li>中文协助：关注微信公众号"一路向南阳光灿烂"</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 一路向南 一路向南，阳光灿烂</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small>联系客服</small><strong>关注微信公众号"一路向南阳光灿烂"</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 一路向南 一路向南，阳光灿烂 · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script>
+function switchBank(tab, btn) {
+  ['open','exchange','insurance','tax'].forEach(t => {
+    const el = document.getElementById('bank-' + t);
+    if(el) el.classList.add('hidden');
+  });
+  document.querySelectorAll('.visa-type-tab').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('bank-' + tab);
+  if(el) el.classList.remove('hidden');
+  btn.classList.add('active');
+}
+</script>
+<script src="js/country.js"></script>
+<script src="js/main.js"></script>
+  <script src="js/user.js"></script>
+</body>
+</html>

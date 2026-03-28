@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>机票预订 - 一路向南 | Flights - 一路向南，阳光灿烂</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="stylesheet" href="css/lang.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .flight-platform-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+    .platform-card { background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,.07); text-align:center; border-top:3px solid; transition:transform .2s; }
+    .platform-card:hover { transform:translateY(-4px); }
+    .platform-logo { font-size:36px; margin-bottom:10px; }
+    .platform-name { font-size:15px; font-weight:700; margin-bottom:6px; }
+    .platform-desc { font-size:12px; color:#666; line-height:1.7; margin-bottom:12px; }
+    .platform-tag { display:inline-block; font-size:11px; padding:2px 8px; border-radius:20px; margin:2px; }
+    .tip-card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.07); border-left:4px solid; }
+    .tip-card h4 { font-size:14px; font-weight:700; margin-bottom:10px; }
+    .tip-card p, .tip-card li { font-size:13px; color:#555; line-height:1.8; }
+    .share-card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.07); margin-bottom:14px; }
+    .share-card .share-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .share-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#fff; flex-shrink:0; }
+    .share-platform { font-size:11px; color:#999; background:#f5f5f5; padding:2px 8px; border-radius:10px; }
+    .share-content { font-size:13px; color:#444; line-height:1.9; }
+    .share-content .highlight { color:#e74c3c; font-weight:600; }
+    .share-stats { display:flex; gap:16px; margin-top:10px; font-size:12px; color:#999; }
+    .airline-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .airline-table th { background:#f0f7ff; padding:10px 14px; text-align:left; font-weight:600; color:#1976d2; }
+    .airline-table td { padding:10px 14px; border-bottom:1px solid #f0f0f0; }
+    .airline-table tr:last-child td { border-bottom:none; }
+    .airline-table tr:hover td { background:#f9f9f9; }
+    @media(max-width:768px) {
+      .flight-platform-grid { grid-template-columns:1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="css/user.css"/>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">中国→东南亚机票攻略，查看最新航班和价格信息</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索出发城市、目的地..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="#" class="btn-publish"><i class="fas fa-bell"></i> <span data-i18n="flight.lowprice.alert">低价提醒</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li class="active"><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#1976d2,#0d47a1);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.flight">机票预订</span></div>
+    <h1><i class="fas fa-plane"></i> <span data-i18n="flight.page.title">机票预订</span></h1>
+    <p data-i18n="flight.page.sub">中国直飞马来西亚·印尼 · 特价机票实时比价 · 退改签协助</p>
+  </div>
+</div>
+
+      <!-- 搜索框 -->
+<section style="background:#fff;padding:28px 0;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+  <div class="container">
+    <div style="background:#f0f7ff;border-radius:16px;padding:24px;">
+    <div style="display:flex;gap:10px;margin-bottom:16px;">
+      <button class="filter-tab active" data-i18n="flight.oneway">单程</button>
+      <button class="filter-tab" data-i18n="flight.roundtrip">往返</button>
+      <button class="filter-tab" data-i18n="flight.multicity">多程</button>
+    </div>
+
+    <!-- 马来西亚版本 -->
+    <div data-country-panel="my" class="active">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:12px;align-items:end;">
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.from">出发城市</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-plane-departure" style="color:#1976d2;margin-right:8px;"></i>北京/上海/广州
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.to">目的城市</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-plane-arrival" style="color:#2d9b5c;margin-right:8px;"></i>吉隆坡 (KUL)
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.date">出发日期</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-calendar" style="color:#f9a825;margin-right:8px;"></i>2026-03-20
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.passenger">乘客</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-user" style="color:#9c27b0;margin-right:8px;"></i><span data-i18n="flight.1adult">1位成人</span>
+          </div>
+        </div>
+        <button class="search-btn" style="border-radius:8px;padding:10px 28px;height:42px;"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
+      </div>
+    </div>
+
+    <!-- 印尼版本 -->
+    <div data-country-panel="id">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:12px;align-items:end;">
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.from">出发城市</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-plane-departure" style="color:#1976d2;margin-right:8px;"></i>北京/上海/广州
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.to">目的城市</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-plane-arrival" style="color:#2d9b5c;margin-right:8px;"></i>雅加达(CGK)/巴厘岛(DPS)/泗水(SUB)
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.search.date">出发日期</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-calendar" style="color:#f9a825;margin-right:8px;"></i>2026-03-20
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;" data-i18n="flight.passenger">乘客</label>
+          <div style="border:1px solid #ddd;border-radius:8px;padding:10px 14px;background:#fff;font-size:14px;">
+            <i class="fas fa-user" style="color:#9c27b0;margin-right:8px;"></i><span data-i18n="flight.1adult">1位成人</span>
+          </div>
+        </div>
+        <button class="search-btn" style="border-radius:8px;padding:10px 28px;height:42px;"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-content">
+  <div class="container">
+    <div class="listings-layout">
+      <div class="listings-main">
+
+        <!-- 热门航线特价 -->
+        <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-fire" style="color:#e74c3c;"></i> <span data-i18n="flight.hotroutes">热门航线特价</span></h2>
+
+        <!-- 马来西亚版本 -->
+        <div data-country-panel="my" class="active" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;">
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">PEK</div><div class="flight-name">北京</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 5h30m</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#e74c3c;"></i> 中国国际航空</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 1,280</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每天2班 · CA837/CA839</div>
+            <a href="https://www.airchina.com.cn" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card" style="border-color:#e74c3c;">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">SHA</div><div class="flight-name">上海</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 5h</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#e74c3c;"></i> AirAsia X</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 680</span>
+            </div>
+            <div style="font-size:11px;color:#e74c3c;font-weight:700;margin-top:4px;">💡 价格仅供参考，请以航司官网为准</div>
+            <a href="https://www.airasia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:8px;">立即抢票</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">CAN</div><div class="flight-name">广州</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 4h</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#f57c00;"></i> Batik Air / MH</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 920</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">马航每日直飞</div>
+            <a href="https://www.malaysiaairlines.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">PVG</div><div class="flight-name">上海浦东</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 5h30m</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#9c27b0;"></i> AirAsia X</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 950</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每周5班直飞</div>
+            <a href="https://www.airasia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">SZX</div><div class="flight-name">深圳</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 3h30m</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#2d9b5c;"></i> Batik Air</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 850</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每日直飞</div>
+            <a href="https://www.batikair.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">CTU</div><div class="flight-name">成都</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 4h30m</div></div>
+              <div class="flight-city"><div class="flight-code">KUL</div><div class="flight-name">吉隆坡</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#9c27b0;"></i> AirAsia X</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 1,050</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每周5班直飞</div>
+            <a href="https://www.airasia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+        </div>
+
+        <!-- 印尼版本 -->
+        <div data-country-panel="id" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;">
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">PEK</div><div class="flight-name">北京</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 7h</div></div>
+              <div class="flight-city"><div class="flight-code">CGK</div><div class="flight-name">雅加达</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#e91e63;"></i> 印尼鹰航 GA</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 2,200</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">GA890 每周4班</div>
+            <a href="https://www.garuda-indonesia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">PVG</div><div class="flight-name">上海</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 6h</div></div>
+              <div class="flight-city"><div class="flight-code">CGK</div><div class="flight-name">雅加达</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#e91e63;"></i> 印尼鹰航 GA</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 1,580</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">GA892 每周4班</div>
+            <a href="https://www.garuda-indonesia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">CAN</div><div class="flight-name">广州</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 4h30m</div></div>
+              <div class="flight-city"><div class="flight-code">CGK</div><div class="flight-name">雅加达</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#1976d2;"></i> 南方航空 CZ</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 1,350</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">每日直飞</div>
+            <a href="https://www.csair.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card" style="border-color:#e74c3c;">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">PEK</div><div class="flight-name">北京</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 7h30m</div></div>
+              <div class="flight-city"><div class="flight-code">DPS</div><div class="flight-name">巴厘岛</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#2d9b5c;"></i> 厦门航空 MF</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 2,500</span>
+            </div>
+            <div style="font-size:11px;color:#e74c3c;font-weight:700;margin-top:4px;">🔥 巴厘岛直飞</div>
+            <a href="https://www.xiamenair.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:8px;">立即抢票</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">SHA</div><div class="flight-name">上海</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 6h30m</div></div>
+              <div class="flight-city"><div class="flight-code">DPS</div><div class="flight-name">巴厘岛</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#2d9b5c;"></i> 印尼鹰航 GA</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 2,100</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">GA884 每周3班</div>
+            <a href="https://www.garuda-indonesia.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-route">
+              <div class="flight-city"><div class="flight-code">XMN</div><div class="flight-name">厦门</div></div>
+              <div class="flight-arrow"><i class="fas fa-long-arrow-alt-right"></i><div style="font-size:11px;color:#999;">直飞 5h30m</div></div>
+              <div class="flight-city"><div class="flight-code">DPS</div><div class="flight-name">巴厘岛</div></div>
+            </div>
+            <div class="flight-info">
+              <span><i class="fas fa-plane" style="color:#f57c00;"></i> 厦门航空 MF</span>
+              <span style="color:#e74c3c;font-weight:700;font-size:18px;">¥ 1,800</span>
+            </div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">MF869 每周4班</div>
+            <a href="https://www.xiamenair.com" target="_blank" class="btn-sm" style="display:block;text-align:center;margin-top:10px;">查看航班</a>
+          </div>
+
+        </div>
+
+        <!-- 航司对比表 -->
+        <h2 class="section-h2" style="margin-bottom:14px;"><i class="fas fa-table" style="color:#1976d2;"></i> <span data-i18n="flight.airline.compare">中国飞马来西亚主要航空公司对比</span></h2>
+        <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:30px;">
+          <table class="airline-table">
+            <thead>
+              <tr>
+                <th data-i18n="flight.airline.name">航空公司</th>
+                <th data-i18n="flight.airline.type">类型</th>
+                <th data-i18n="flight.airline.route">主要航线</th>
+                <th data-i18n="flight.airline.baggage">行李政策</th>
+                <th data-i18n="flight.airline.pros">优缺点</th>
+                <th data-i18n="flight.airline.book">官网订票</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>✈️ 马来西亚航空 MH</strong></td>
+                <td><span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.fullservice">全服务</span></td>
+                <td>北京、上海、广州、成都</td>
+                <td>免费30kg托运</td>
+                <td>✅ 服务好 ✅ 可退改 ❌ 价格略高</td>
+                <td><a href="https://www.malaysiaairlines.com" target="_blank" style="color:#1976d2;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+              <tr>
+                <td><strong>✈️ AirAsia X D7</strong></td>
+                <td><span style="background:#fff3e0;color:#e65100;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.lcc">低成本</span></td>
+                <td>上海、北京、杭州、武汉</td>
+                <td>需额外购买</td>
+                <td>✅ 价格最低 ❌ 不含行李 ❌ 难退改</td>
+                <td><a href="https://www.airasia.com" target="_blank" style="color:#e74c3c;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+              <tr>
+                <td><strong>✈️ 中国国际航空 CA</strong></td>
+                <td><span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.fullservice">全服务</span></td>
+                <td>北京出发为主</td>
+                <td>免费20kg托运</td>
+                <td>✅ 稳定可靠 ✅ 中文服务 ❌ 价格中等</td>
+                <td><a href="https://www.airchina.com.cn" target="_blank" style="color:#1976d2;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+              <tr>
+                <td><strong>✈️ 中国南方航空 CZ</strong></td>
+                <td><span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.fullservice">全服务</span></td>
+                <td>广州、深圳出发</td>
+                <td>免费23kg托运</td>
+                <td>✅ 广东出发方便 ✅ 航班密度高</td>
+                <td><a href="https://www.csair.com" target="_blank" style="color:#1976d2;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+              <tr>
+                <td><strong>✈️ Batik Air 马印航空</strong></td>
+                <td><span style="background:#e8f5e9;color:#1b5e20;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.midrange">中端</span></td>
+                <td>广州、深圳→吉隆坡</td>
+                <td>免费25kg托运</td>
+                <td>✅ 性价比高 ✅ 广州直飞 ❌ 知名度低</td>
+                <td><a href="https://www.batikair.com" target="_blank" style="color:#1976d2;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+              <tr>
+                <td><strong>✈️ 印尼鹰航 GA</strong></td>
+                <td><span style="background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:10px;font-size:12px;" data-i18n="flight.airline.fullservice">全服务</span></td>
+                <td>上海、北京→雅加达</td>
+                <td>免费30kg托运</td>
+                <td>✅ 印尼国家航空 ✅ 服务佳 ❌ 班次少</td>
+                <td><a href="https://www.garuda-indonesia.com" target="_blank" style="color:#1976d2;"><span data-i18n="flight.airline.book">官网</span> →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 推荐订票平台 -->
+        <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-mobile-alt" style="color:#9c27b0;"></i> <span data-i18n="flight.platforms">推荐订票平台（中国用户适用）</span></h2>
+        <div class="flight-platform-grid">
+          <div class="platform-card" style="border-color:#1976d2;">
+            <div class="platform-logo">✈️</div>
+            <div class="platform-name" style="color:#1976d2;">携程旅行</div>
+            <div class="platform-desc">中国最大在线旅行平台，支持微信/支付宝付款，中文客服，可出电子签证</div>
+            <div>
+              <span class="platform-tag" style="background:#e3f2fd;color:#1565c0;">中文界面</span>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">支付宝</span>
+              <span class="platform-tag" style="background:#fff3e0;color:#e65100;">7×24客服</span>
+            </div>
+            <a href="https://www.ctrip.com" target="_blank" style="display:block;margin-top:12px;color:#1976d2;font-weight:600;font-size:13px;">访问 ctrip.com →</a>
+          </div>
+          <div class="platform-card" style="border-color:#e74c3c;">
+            <div class="platform-logo">🌏</div>
+            <div class="platform-name" style="color:#e74c3c;">去哪儿 Qunar</div>
+            <div class="platform-desc">价格比较引擎，聚合多家航司价格，适合找最低价，支持国内各种支付方式</div>
+            <div>
+              <span class="platform-tag" style="background:#fff5f5;color:#c62828;">比价引擎</span>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">微信支付</span>
+              <span class="platform-tag" style="background:#e3f2fd;color:#1565c0;">最低价保障</span>
+            </div>
+            <a href="https://www.qunar.com" target="_blank" style="display:block;margin-top:12px;color:#e74c3c;font-weight:600;font-size:13px;">访问 qunar.com →</a>
+          </div>
+          <div class="platform-card" style="border-color:#f9a825;">
+            <div class="platform-logo">🎫</div>
+            <div class="platform-name" style="color:#f9a825;">飞猪旅行</div>
+            <div class="platform-desc">阿里巴巴旗下，支持花呗分期，国际机票+酒店套餐性价比高，淘宝账号通用</div>
+            <div>
+              <span class="platform-tag" style="background:#fff8e1;color:#f57f17;">花呗分期</span>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">机票+酒店</span>
+              <span class="platform-tag" style="background:#e3f2fd;color:#1565c0;">退改有保障</span>
+            </div>
+            <a href="https://www.fliggy.com" target="_blank" style="display:block;margin-top:12px;color:#f9a825;font-weight:600;font-size:13px;">访问 fliggy.com →</a>
+          </div>
+          <div class="platform-card" style="border-color:#2d9b5c;">
+            <div class="platform-logo">🛫</div>
+            <div class="platform-name" style="color:#2d9b5c;">AirAsia 官网</div>
+            <div class="platform-desc">亚洲最大低成本航空，直接官网购买最便宜，可选行李、餐食，提前购买最划算</div>
+            <div>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">低价票</span>
+              <span class="platform-tag" style="background:#fff3e0;color:#e65100;">信用卡付款</span>
+              <span class="platform-tag" style="background:#f3e5f5;color:#7b1fa2;">自助选座</span>
+            </div>
+            <a href="https://www.airasia.com" target="_blank" style="display:block;margin-top:12px;color:#2d9b5c;font-weight:600;font-size:13px;">访问 airasia.com →</a>
+          </div>
+          <div class="platform-card" style="border-color:#9c27b0;">
+            <div class="platform-logo">🔍</div>
+            <div class="platform-name" style="color:#9c27b0;">Skyscanner</div>
+            <div class="platform-desc">国际价格比较平台，可查询全球机票价格走势图，找到历史最低价时段</div>
+            <div>
+              <span class="platform-tag" style="background:#f3e5f5;color:#7b1fa2;">价格日历</span>
+              <span class="platform-tag" style="background:#e3f2fd;color:#1565c0;">全球搜索</span>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">中文版</span>
+            </div>
+            <a href="https://www.skyscanner.com.cn" target="_blank" style="display:block;margin-top:12px;color:#9c27b0;font-weight:600;font-size:13px;">访问 skyscanner.com →</a>
+          </div>
+          <div class="platform-card" style="border-color:#00838f;">
+            <div class="platform-logo">🏷️</div>
+            <div class="platform-name" style="color:#00838f;">Klook 客路</div>
+            <div class="platform-desc">亚洲体验预订平台，除机票外，可一并预订机场接送、景点门票、当地活动</div>
+            <div>
+              <span class="platform-tag" style="background:#e0f7fa;color:#006064;">活动套餐</span>
+              <span class="platform-tag" style="background:#e8f5e9;color:#1b5e20;">接机服务</span>
+              <span class="platform-tag" style="background:#fff3e0;color:#e65100;">中文客服</span>
+            </div>
+            <a href="https://www.klook.com/zh-CN" target="_blank" style="display:block;margin-top:12px;color:#00838f;font-weight:600;font-size:13px;">访问 klook.com →</a>
+          </div>
+        </div>
+
+        <!-- 行李攻略 -->
+        <!-- 马来西亚版本 -->
+        <div data-country-panel="my" class="active">
+          <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-suitcase" style="color:#f57c00;"></i> <span data-i18n="flight.baggage.title">行李攻略：带什么最划算</span></h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px;">
+            <div class="tip-card" style="border-color:#2d9b5c;">
+              <h4><i class="fas fa-check-circle" style="color:#2d9b5c;"></i> <span data-i18n="flight.baggage.must">必带清单</span></h4>
+              <ul style="padding-left:16px;">
+                <li>护照（有效期至少6个月以上）</li>
+                <li>签证/入境许可文件</li>
+                <li>当地SIM卡或提前购买流量</li>
+                <li>常用药品（马来西亚药贵）</li>
+                <li>防晒霜（热带紫外线强）</li>
+                <li>雨伞/雨衣（常有暴雨）</li>
+                <li>少量现金（马币/美元）</li>
+              </ul>
+            </div>
+            <div class="tip-card" style="border-color:#e74c3c;">
+              <h4><i class="fas fa-times-circle" style="color:#e74c3c;"></i> <span data-i18n="flight.baggage.banned">禁止/限制携带</span></h4>
+              <ul style="padding-left:16px;">
+                <li>🚫 毒品（马来西亚死刑！）</li>
+                <li>⚠️ 液体超100ml不可手提</li>
+                <li>⚠️ 充电宝必须放手提</li>
+                <li>⚠️ 超过1万美元现金须申报</li>
+                <li>⚠️ 某些中成药含违禁成分</li>
+                <li>⚠️ 电子烟（马来西亚需申报）</li>
+              </ul>
+            </div>
+            <div class="tip-card" style="border-color:#1976d2;">
+              <h4><i class="fas fa-info-circle" style="color:#1976d2;"></i> <span data-i18n="flight.baggage.policy">退改签须知</span></h4>
+              <p><strong>低价票（AirAsia等LCC）</strong><br/>一般不退票，改期收费RM100–200，建议买旅游险</p>
+              <br/>
+              <p><strong>普通舱（国航、南航等）</strong><br/>退票手续费10–15%，改期需补差价，可通过携程申请</p>
+              <br/>
+              <p><strong>全价/商务舱</strong><br/>可免费退改，积分累积，建议商务出行选择</p>
+            </div>
+            <div class="tip-card" style="border-color:#9c27b0;">
+              <h4><i class="fas fa-lightbulb" style="color:#9c27b0;"></i> <span data-i18n="flight.baggage.tips">省钱小技巧</span></h4>
+              <ul style="padding-left:16px;">
+                <li>提前45-60天购买，价格通常最低</li>
+                <li>周二、周三出发往往比周末便宜20-30%</li>
+                <li>AirAsia每年多次"0元机票"大促</li>
+                <li>用Skyscanner看价格日历选最低日</li>
+                <li>马航会员卡积分兑换免费机票</li>
+                <li>学生证可享AirAsia学生优惠</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 印尼版本 -->
+        <div data-country-panel="id">
+          <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-suitcase" style="color:#e91e63;"></i> 行李攻略：带什么最划算</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px;">
+            <div class="tip-card" style="border-color:#2d9b5c;">
+              <h4><i class="fas fa-check-circle" style="color:#2d9b5c;"></i> 必带清单</h4>
+              <ul style="padding-left:16px;">
+                <li>护照（有效期至少6个月以上）</li>
+                <li>e-VOA落地签或签证</li>
+                <li>当地SIM卡（Telkomsel/Indosat）</li>
+                <li>常用药品（印尼药贵）</li>
+                <li>防晒霜（热带紫外线强）</li>
+                <li>雨伞（雨季11-4月）</li>
+                <li>少量现金（印尼盾/美元）</li>
+              </ul>
+            </div>
+            <div class="tip-card" style="border-color:#e74c3c;">
+              <h4><i class="fas fa-times-circle" style="color:#e74c3c;"></i> 禁止/限制携带</h4>
+              <ul style="padding-left:16px;">
+                <li>🚫 毒品（印尼死刑！）</li>
+                <li>🚫 肉类/水果/种子</li>
+                <li>⚠️ 液体超100ml不可手提</li>
+                <li>⚠️ 充电宝必须放手提</li>
+                <li>⚠️ 超过1万美元现金须申报</li>
+                <li>⚠️ 某些中成药含违禁成分</li>
+              </ul>
+            </div>
+            <div class="tip-card" style="border-color:#1976d2;">
+              <h4><i class="fas fa-info-circle" style="color:#1976d2;"></i> 退改签须知</h4>
+              <p><strong>低价票（Scoot/AirAsia等LCC）</strong><br/>一般不退票，改期收费$50–100，建议买旅游险</p>
+              <br/>
+              <p><strong>普通舱（厦航、南航等）</strong><br/>退票手续费10–15%，改期需补差价，可通过携程申请</p>
+              <br/>
+              <p><strong>全价/商务舱</strong><br/>可免费退改，积分累积，建议商务出行选择</p>
+            </div>
+            <div class="tip-card" style="border-color:#9c27b0;">
+              <h4><i class="fas fa-lightbulb" style="color:#9c27b0;"></i> 省钱小技巧</h4>
+              <ul style="padding-left:16px;">
+                <li>提前45-60天购买，价格通常最低</li>
+                <li>周二、周三出发往往比周末便宜20-30%</li>
+                <li>Scoot每年多次促销</li>
+                <li>用Skyscanner看价格日历选最低日</li>
+                <li>印尼鹰航会员卡积分兑换免费机票</li>
+                <li>学生证可享部分航司学生优惠</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 真实经验分享 -->
+        <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-comments" style="color:#e91e63;"></i> <span data-i18n="flight.share.title">网友飞马来西亚真实经验分享</span></h2>
+        <div id="flight-community-container" style="margin-bottom:32px;"></div>
+
+      </div>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <!-- 马来西亚版本 -->
+        <div data-country-panel="my" class="active">
+          <div class="sidebar-card" style="border-top:3px solid #1976d2;">
+            <h3>✈️ <span data-i18n="flight.sidebar.compare">快速比价</span></h3>
+            <p style="font-size:13px;color:#666;margin-bottom:12px;" data-i18n="flight.sidebar.compare.desc">推荐平台，一键比最低价</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="https://www.ctrip.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#f0f7ff;border-radius:8px;text-decoration:none;color:#1976d2;font-weight:600;font-size:13px;"><i class="fas fa-plane"></i> 携程旅行</a>
+              <a href="https://www.qunar.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff5f5;border-radius:8px;text-decoration:none;color:#e74c3c;font-weight:600;font-size:13px;"><i class="fas fa-search"></i> 去哪儿网</a>
+              <a href="https://www.fliggy.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff8e1;border-radius:8px;text-decoration:none;color:#f9a825;font-weight:600;font-size:13px;"><i class="fas fa-tag"></i> 飞猪旅行</a>
+              <a href="https://www.airasia.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff5f5;border-radius:8px;text-decoration:none;color:#e74c3c;font-weight:600;font-size:13px;"><i class="fas fa-plane"></i> AirAsia 官网</a>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>🛬 <span data-i18n="flight.sidebar.arrival">抵达吉隆坡后</span></h3>
+            <div style="font-size:13px;color:#555;line-height:2;">
+              <p><strong>KLIA → 市区</strong></p>
+              <p>🚄 机场快铁 RM 55（28分钟）</p>
+              <p>🚌 巴士 RM 12–18（1小时）</p>
+              <p>🚗 Grab打车 RM 80–120</p>
+              <br/>
+              <p><strong>KLIA2 → 市区</strong></p>
+              <p>🚄 机场快铁 RM 55（33分钟）</p>
+              <p>🚌 巴士 RM 10–15</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>📱 <span data-i18n="flight.sidebar.checklist">落地必做3件事</span></h3>
+            <div style="font-size:13px;color:#555;line-height:2.2;">
+              <p>1️⃣ 换汇（机场汇率差，建议市区再换）</p>
+              <p>2️⃣ 买当地SIM卡（Maxis/Digi/Celcom）</p>
+              <p>3️⃣ 下载Grab（东南亚版滴滴，必备）</p>
+            </div>
+          </div>
+          <div class="sidebar-card" style="background:#e8f5e9;">
+            <h3>🆘 <span data-i18n="flight.sidebar.emergency">紧急联系</span></h3>
+            <div style="font-size:13px;color:#555;line-height:2;">
+              <p>🇲🇾 马来西亚报警：<strong>999</strong></p>
+              <p>🇨🇳 中国驻马使馆：<strong>+60-3-21688860</strong></p>
+              <p>一路向南协助：请关注微信公众号"一路向南阳光灿烂"</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 印尼版本 -->
+        <div data-country-panel="id">
+          <div class="sidebar-card" style="border-top:3px solid #1976d2;">
+            <h3>✈️ 快速比价</h3>
+            <p style="font-size:13px;color:#666;margin-bottom:12px;">推荐平台，一键比最低价</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="https://www.ctrip.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#f0f7ff;border-radius:8px;text-decoration:none;color:#1976d2;font-weight:600;font-size:13px;"><i class="fas fa-plane"></i> 携程旅行</a>
+              <a href="https://www.qunar.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff5f5;border-radius:8px;text-decoration:none;color:#e74c3c;font-weight:600;font-size:13px;"><i class="fas fa-search"></i> 去哪儿网</a>
+              <a href="https://www.fliggy.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff8e1;border-radius:8px;text-decoration:none;color:#f9a825;font-weight:600;font-size:13px;"><i class="fas fa-tag"></i> 飞猪旅行</a>
+              <a href="https://www.flyscoot.com" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px;background:#fff5f5;border-radius:8px;text-decoration:none;color:#e74c3c;font-weight:600;font-size:13px;"><i class="fas fa-plane"></i> Scoot 官网</a>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>🛬 抵达雅加达/巴厘岛后</h3>
+            <div style="font-size:13px;color:#555;line-height:2;">
+              <p><strong>雅加达 CGK → 市区</strong></p>
+              <p>🚄 机场快线 IDR 150,000（45分钟）</p>
+              <p>🚌 巴士 IDR 20,000-30,000</p>
+              <p>🚗 Grab/Gojek 打车 IDR 100,000-200,000</p>
+              <br/>
+              <p><strong>巴厘岛 DPS → 库塔/水明漾</strong></p>
+              <p>🚗 Grab/Gojek 打车 IDR 80,000-150,000</p>
+              <p>🚌 巴士 IDR 20,000</p>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3>📱 落地必做3件事</h3>
+            <div style="font-size:13px;color:#555;line-height:2.2;">
+              <p>1️⃣ 换汇（机场汇率差，建议市区再换）</p>
+              <p>2️⃣ 买当地SIM卡（Telkomsel/Indosat）</p>
+              <p>3️⃣ 下载Grab/Gojek（印尼版滴滴，必备）</p>
+            </div>
+          </div>
+          <div class="sidebar-card" style="background:#e8f5e9;">
+            <h3>🆘 紧急联系</h3>
+            <div style="font-size:13px;color:#555;line-height:2;">
+              <p>🇮🇩 印尼报警：<strong>110</strong></p>
+              <p>🇨🇳 中国驻印尼使馆：<strong>+62-21-5764135</strong></p>
+              <p>一路向南协助：请关注微信公众号"一路向南阳光灿烂"</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 一路向南 一路向南，阳光灿烂</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small>联系客服</small><strong>关注微信公众号"一路向南阳光灿烂"</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 一路向南 一路向南，阳光灿烂 · All Rights Reserved</p></div>
+  </div>
+</footer>
+<script src="js/i18n.js"></script>
+<script src="js/country.js"></script>
+<script src="js/main.js"></script>
+<link rel="stylesheet" href="css/community.css">
+<script src="js/community.js"></script>
+<script>
+// flight.html 社区帖子数据 - 马来西亚版
+window.NYT_POSTS_MY = [
+  {
+    id: 'flight_my_1',
+    author: '南下的小熊猫',
+    avatarColor: 'linear-gradient(135deg,#e74c3c,#c62828)',
+    content: '跟大家分享一下我的飞马来西亚省钱经验！从广州飞吉隆坡，Batik Air现在挺划算的，含30kg行李只要¥800左右，比国航南航便宜不少。整个飞行时间大概4小时，飞机上有中文广播，还不错。\n\n强烈推荐用携程比价+再去AirAsia官网下单这个方法。携程方便找时间段，但有时候官网会有独家特价。另外AirAsia有个"Big会员"计划，频繁往返可以办一个，积分换票特别划算。',
+    category: '马来西亚飞行',
+    timestamp: new Date('2026-01-10').getTime(),
+    likes: 234
+  },
+  {
+    id: 'flight_my_2',
+    author: 'KL码农打工人',
+    avatarColor: 'linear-gradient(135deg,#1976d2,#0d47a1)',
+    content: '在马来西亚工作两年了，每年回国几次，积累了不少飞行经验。说几个实用的：\n\n1. 马航的学生票和Y类舱可以免费退改，在KL工作的话很重要，因为项目deadline经常变\n2. KLIA2（AirAsia专用）和KLIA（马航等）是两个不同的航站楼，之间坐巴士要45分钟，别搞混了！\n3. 落地吉隆坡后，机场快铁KLIA Ekspres RM55直达市区，比打车便宜且不堵\n4. 带零食回国要注意，牛肉干有量限制，猫山王榴莲是违禁品不能上飞机',
+    category: '马来西亚飞行',
+    timestamp: new Date('2025-11-25').getTime(),
+    likes: 412
+  },
+  {
+    id: 'flight_my_3',
+    author: '空中飞人小明',
+    avatarColor: 'linear-gradient(135deg,#f9a825,#e65100)',
+    content: '分享一个行李超重省钱技巧：从马来西亚回国时，可以在机场的Luggage Storage服务暂存行李，然后下次回来再取，省了超重费！我上次超重5kg，要补RM300，后来发现可以存行李（每天RM20），存3天只要RM60，下次飞来再取，省了一大笔。',
+    category: '马来西亚飞行',
+    timestamp: new Date('2025-09-20').getTime(),
+    likes: 156
+  }
+];
+
+// flight.html 社区帖子数据 - 印尼版
+window.NYT_POSTS_ID = [
+  {
+    id: 'flight_id_1',
+    author: '巴厘岛蜜月记',
+    avatarColor: 'linear-gradient(135deg,#2d9b5c,#1a6b3a)',
+    content: '刚从巴厘岛回来！深圳飞巴厘岛直飞只要3.5小时，比我想象的近多了！AirAsia买了往返含行李总共¥2,800两个人，性价比超级高✨\n\n入境印尼落地签e-VOA，在国内网上提前申请35美元，到机场直接刷脸+扫码过闸机，5分钟搞定，不用像以前排队1-2小时了。推荐大家提前申请，省时省力！',
+    category: '印尼飞行',
+    timestamp: new Date('2025-10-15').getTime(),
+    likes: 892
+  },
+  {
+    id: 'flight_id_2',
+    author: '雅加达创业者',
+    avatarColor: 'linear-gradient(135deg,#e91e63,#880e4f)',
+    content: '从上海直飞雅加达，印尼鹰航GA892的体验超预期！飞机是新型的波音777-300ER，座位宽敞，餐食也不错，全程有中文空乘。经济舱含30kg行李，¥1,580的价格比我想象的便宜。\n\n雅加达苏加诺哈达机场比较大，落地后跟着指示牌走e-VOA通道，提前在国内网站申请的话，几分钟就能过闸机。Grab从机场到市区大概要30-40分钟，费用约IDR 150,000。',
+    category: '印尼飞行',
+    timestamp: new Date('2025-08-22').getTime(),
+    likes: 321
+  },
+  {
+    id: 'flight_id_3',
+    author: '巴厘岛自由行',
+    avatarColor: 'linear-gradient(135deg,#9c27b0,#6a1b9a)',
+    content: '广州飞巴厘岛，Scoot狮航的特价票真的很便宜！提前3个月买的单程只要¥1,200，但是要注意这是不含行李的票价。我在官网加了20kg行李，又补了¥400，总共¥1,600。\n\n飞机是波音787，座位间距确实有点挤，建议买机上餐食（¥35），不然要饿着飞6小时。另外巴厘岛机场出来Grab比较难打，建议提前在酒店安排接机服务。',
+    category: '印尼飞行',
+    timestamp: new Date('2025-07-10').getTime(),
+    likes: 278
+  }
+];
+
+// 初始化社区模块
+document.addEventListener('DOMContentLoaded', function() {
+  CommunityApp.init('flight-community-container-my', window.NYT_POSTS_MY);
+  CommunityApp.init('flight-community-container-id', window.NYT_POSTS_ID);
+});
+</script>
+  <script src="js/user.js"></script>
+</body>
+</html>

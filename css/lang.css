@@ -1,0 +1,251 @@
+/* =====================================================
+   南洋通 NanYangTong — Language Switcher CSS
+   lang.css
+===================================================== */
+
+/* ── Language Switcher Container ── */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  z-index: 1200;          /* must sit above .top-bar (1100) and .main-header (1000) */
+}
+
+/* Toggle button */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+.lang-toggle:hover {
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.55);
+}
+.lang-toggle .fa-globe {
+  font-size: 13px;
+  opacity: 0.9;
+}
+.lang-current {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  min-width: 24px;
+  text-align: center;
+}
+.lang-arrow {
+  font-size: 9px;
+  opacity: 0.75;
+  transition: transform 0.2s;
+}
+.lang-switcher.open .lang-arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel ── */
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 36px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  min-width: 168px;
+  border: 1px solid rgba(0,0,0,0.07);
+  animation: langDropIn 0.18s ease;
+  /* must sit above .main-header sticky nav (z-index:1000) */
+  z-index: 9999;
+}
+.lang-switcher.open .lang-dropdown {
+  display: block;
+}
+@keyframes langDropIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* small arrow pointer at top of dropdown */
+.lang-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 18px;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border-left: 1px solid rgba(0,0,0,0.07);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+/* dropdown header label */
+.lang-dropdown-label {
+  padding: 10px 16px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 4px;
+}
+
+/* Individual language buttons */
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 13.5px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+}
+.lang-btn:last-child {
+  margin-bottom: 4px;
+}
+.lang-btn:hover {
+  background: #f0faf5;
+  color: #1a6b3a;
+}
+.lang-btn.active {
+  background: #e8f5e9;
+  color: #1a6b3a;
+  font-weight: 700;
+}
+.lang-btn.active::after {
+  content: '✓';
+  margin-left: auto;
+  font-size: 13px;
+  color: #2d9b5c;
+  font-weight: 700;
+}
+.lang-flag {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.lang-name {
+  flex: 1;
+}
+.lang-native {
+  font-size: 11px;
+  color: #999;
+  margin-left: auto;
+  padding-left: 6px;
+  white-space: nowrap;
+}
+.lang-btn.active .lang-native {
+  display: none; /* replaced by checkmark */
+}
+
+/* ── Placement inside .top-bar-right ── */
+.top-bar-right .lang-switcher {
+  margin-right: 0;
+  margin-left: 6px;
+}
+.top-bar-right .lang-switcher + .divider {
+  display: none;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .lang-switcher {
+    margin-right: 4px;
+  }
+  .lang-toggle {
+    padding: 3px 9px;
+    font-size: 12px;
+  }
+  .lang-dropdown {
+    right: -8px;
+    min-width: 150px;
+  }
+  .lang-btn {
+    padding: 9px 13px;
+    font-size: 13px;
+  }
+}
+
+/* ── RTL safeguard ── */
+[dir="rtl"] .lang-dropdown {
+  right: auto;
+  left: 0;
+}
+[dir="rtl"] .lang-dropdown::before {
+  right: auto;
+  left: 18px;
+}
+
+/* ── Active language indicator in top bar ── */
+.top-bar .lang-switcher .lang-toggle {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+  font-size: 12px;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .lang-dropdown {
+    background: #1e2030;
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.5);
+  }
+  .lang-dropdown::before {
+    background: #1e2030;
+    border-color: rgba(255,255,255,0.1);
+  }
+  .lang-dropdown-label {
+    color: #666;
+    border-bottom-color: rgba(255,255,255,0.07);
+  }
+  .lang-btn {
+    color: #ddd;
+  }
+  .lang-btn:hover {
+    background: rgba(45,155,92,0.13);
+    color: #6fcf97;
+  }
+  .lang-btn.active {
+    background: rgba(45,155,92,0.2);
+    color: #6fcf97;
+  }
+  .lang-native {
+    color: #555;
+  }
+}
+
+/* ── Text transition on language switch ── */
+[data-i18n] {
+  transition: opacity 0.12s ease;
+}
+.lang-transitioning [data-i18n] {
+  opacity: 0.3;
+}
+
+/* ── Language change feedback animation ── */
+@keyframes langFeedbackIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes langFeedbackOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(20px); }
+}

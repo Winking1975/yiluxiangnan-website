@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>回国伴手礼推荐 - 一路向南 | Souvenirs - 一路向南，阳光灿烂</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/lang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/user.css"/>
+</head>
+<body>
+<div class="top-bar"><div class="container"><span><i class="fas fa-bullhorn"></i> <span data-i18n="topbar.notice">回国伴手礼选购攻略，价格透明，品质保障！</span></span><div class="top-bar-right"><a href="#" onclick="UserApp.showLogin();return false;"><i class="fas fa-user"></i> <span data-i18n="topbar.login">登录</span></a><span class="divider">|</span><a href="#" onclick="UserApp.showRegister();return false;"><i class="fas fa-user-plus"></i> <span data-i18n="topbar.register">注册</span></a></div></div></div>
+<header class="main-header">
+  <div class="container">
+    <div class="logo"><a href="index.html"><span class="logo-icon">🌴</span><span class="logo-text">一路向南</span><span class="logo-sub">一路向南，阳光灿烂</span></a></div>
+    <div class="search-bar"><div class="search-location"><i class="fas fa-map-marker-alt"></i><select><option data-i18n="country.my">马来西亚</option><option data-i18n="country.id">印度尼西亚</option></select></div><input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜索伴手礼、品牌、商场..."/><button class="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">搜索</span></button></div>
+    <div class="header-actions"><a href="community.html" class="btn-publish"><i class="fas fa-comment-dots"></i> <span data-i18n="header.share">分享经验</span></a></div>
+  </div>
+  <nav class="sub-nav"><div class="container"><ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav.home">首页</span></a></li>
+    <li><a href="visa.html"><i class="fas fa-passport"></i> <span data-i18n="nav.visa">签证办理</span></a></li>
+    <li><a href="flight.html"><i class="fas fa-plane"></i> <span data-i18n="nav.flight">机票预订</span></a></li>
+    <li><a href="hotel.html"><i class="fas fa-hotel"></i> <span data-i18n="nav.hotel">酒店住宿</span></a></li>
+    <li><a href="rent.html"><i class="fas fa-building"></i> <span data-i18n="nav.rent">租房租车</span></a></li>
+    <li><a href="work.html"><i class="fas fa-briefcase"></i> <span data-i18n="nav.work">工作就业</span></a></li>
+    <li><a href="study.html"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav.study">留学教育</span></a></li>
+    <li><a href="bank.html"><i class="fas fa-university"></i> <span data-i18n="nav.bank">金融银行</span></a></li>
+    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> <span data-i18n="nav.services">本地服务</span></a></li>
+    <li><a href="community.html"><i class="fas fa-users"></i> <span data-i18n="nav.community">华人社区</span></a></li>
+    <li><a href="medical.html"><i class="fas fa-hospital"></i> <span data-i18n="nav.medical">医疗就医</span></a></li>
+  </ul></div></nav>
+</header>
+
+<div class="page-hero" style="background:linear-gradient(135deg,#ff6b6b,#ee5a5a);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">首页</a><span>›</span><span data-i18n="nav.souvenirs">回国伴手礼</span></div>
+    <h1><i class="fas fa-gift"></i> 回国伴手礼精选</h1>
+    <p>马来西亚·印尼 优质伴手礼推荐，价格透明，品质保障</p>
+  </div>
+</div>
+
+<div class="container main-content" style="padding-top:40px;padding-bottom:60px;">
+  <div class="listings-layout">
+    <div class="listings-main">
+      
+      <!-- 快速分类 -->
+      <div class="filter-section" style="margin-bottom:30px;">
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="switchCategory('all',this)"><i class="fas fa-th-large"></i> 全部</button>
+            <button class="filter-tab" onclick="switchCategory('food',this)"><i class="fas fa-cookie-bite"></i> 食品零食</button>
+            <button class="filter-tab" onclick="switchCategory('beauty',this)"><i class="fas fa-spa"></i> 美妆护肤</button>
+            <button class="filter-tab" onclick="switchCategory('supplements',this)"><i class="fas fa-pills"></i> 保健药品</button>
+            <button class="filter-tab" onclick="switchCategory('textile',this)"><i class="fas fa-tshirt"></i> 纺织品</button>
+            <button class="filter-tab" onclick="switchCategory('crafts',this)"><i class="fas fa-palette"></i> 工艺品</button>
+          </div>
+          <div class="filter-tags" style="margin-top:16px;">
+            <span class="filter-tag active">推荐</span>
+            <span class="filter-tag">爆款</span>
+            <span class="filter-tag">平价</span>
+            <span class="filter-tag">高端</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 马来西亚特产 -->
+      <div id="category-my" data-country-panel="my">
+        <h2 class="section-h2" style="margin-bottom:20px;"><i class="fas fa-map-marker-alt" style="color:#f39c12;"></i> 🇲🇾 马来西亚必买清单</h2>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px;">
+          
+          <!-- 白咖啡 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#8d6e63,#5d4037);padding:40px;text-align:center;">
+              <i class="fas fa-mug-hot" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">平价</span></div>
+              <h3 class="product-title">旧街场白咖啡</h3>
+              <p class="product-desc">马来西亚国民级咖啡，香滑浓郁，不苦不涩。有多种口味可选（原味、二合一、三合一）。</p>
+              <div class="product-price">
+                <span class="price-current">RM 12-18</span>
+                <span class="price-unit">/盒（15包）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 超市</span>
+                <span class="location-tag"><i class="fas fa-plane"></i> 机场免税店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 莱特坊商场</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>推荐"旧街场"或"益昌"品牌，原味最经典。二合一含奶，三合一含奶含糖。大包装更划算！
+              </div>
+            </div>
+          </div>
+
+          <!-- 榴莲干/榴莲糖 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#ffd54f,#ffca28);padding:40px;text-align:center;">
+              <i class="fas fa-lemon" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">爆款</span></div>
+              <h3 class="product-title">猫山王榴莲干/榴莲糖</h3>
+              <p class="product-desc">猫山王榴莲制品，香气浓郁，口感绝佳。有榴莲干、榴莲糖、榴莲饼干等多种选择。</p>
+              <div class="product-price">
+                <span class="price-current">RM 25-45</span>
+                <span class="price-unit">/袋（200g-500g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 超市</span>
+                <span class="location-tag"><i class="fas fa-plane"></i> 机场免税店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 榴莲专卖店</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>一定要买"猫山王"品种，口感最佳。榴莲干比榴莲糖更原味。建议密封包装，防漏味！
+              </div>
+            </div>
+          </div>
+
+          <!-- 豆蔻膏 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#e91e63,#c2185b);padding:40px;text-align:center;">
+              <i class="fas fa-heartbeat" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">豆蔻膏（Balsam）</h3>
+              <p class="product-desc">传统草药配方，缓解肌肉酸痛、蚊虫叮咬、风湿关节痛。家庭常备药。</p>
+              <div class="product-price">
+                <span class="price-current">RM 15-25</span>
+                <span class="price-unit">/瓶</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 药店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 大众药房</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 百盛商场</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>推荐"虎标"、"豆蔻王"等知名品牌。注意查看生产日期，越新鲜效果越好。可带空瓶过海关。
+              </div>
+            </div>
+          </div>
+
+          <!-- 鱼肝油 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#2196f3,#1976d2);padding:40px;text-align:center;">
+              <i class="fas fa-capsules" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">深海鱼肝油</h3>
+              <p class="product-desc">富含Omega-3和DHA，促进大脑发育、保护视力、增强免疫力。适合全家老小。</p>
+              <div class="product-price">
+                <span class="price-current">RM 45-80</span>
+                <span class="price-unit">/瓶（100-200粒）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 药店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> Watson</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> Guardian</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>推荐"Bio-Life"、"Blackmores"澳洲品牌。选择高浓度DHA版本。成人建议1000mg以上。
+              </div>
+            </div>
+          </div>
+
+          <!-- 巧克力 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#795548,#5d4037);padding:40px;text-align:center;">
+              <i class="fas fa-cookie" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">推荐</span><span class="product-tag">平价</span></div>
+              <h3 class="product-title">马来西亚巧克力</h3>
+              <p class="product-desc">以可可豆为原料，口感纯正。有Beryl's、Vochelle、Munchy's等知名品牌。</p>
+              <div class="product-price">
+                <span class="price-current">RM 8-25</span>
+                <span class="price-unit">/盒（100g-500g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 超市</span>
+                <span class="location-tag"><i class="fas fa-plane"></i> 机场免税店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 7-Eleven</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>Beryl's是老字号，品质稳定。榴莲巧克力是特色！注意夏季温度，避免融化。
+              </div>
+            </div>
+          </div>
+
+          <!-- 燕窝 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#fff9c4,#fff176);padding:40px;text-align:center;">
+              <i class="fas fa-feather" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">高端</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">燕窝</h3>
+              <p class="product-desc">滋补圣品，美容养颜。马来西亚燕窝品质优良，价格比国内便宜30-50%。</p>
+              <div class="product-price">
+                <span class="price-current">RM 80-300</span>
+                <span class="price-unit">/盒（50g-100g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 燕窝专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 百盛商场</span>
+                <span class="location-tag"><i class="fas fa-store"></i> 中药店</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择正规店铺，认准溯源二维码。白燕盏品质最好，血燕谨慎购买。需申报入境。
+              </div>
+            </div>
+          </div>
+
+          <!-- 沙爹酱 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#ff5722,#e64a19);padding:40px;text-align:center;">
+              <i class="fas fa-utensils" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">平价</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">沙爹酱（Satay Sauce）</h3>
+              <p class="product-desc">马来西亚特色调味酱，香辣可口。适合做沙爹、蘸料、炒菜。</p>
+              <div class="product-price">
+                <span class="price-current">RM 6-12</span>
+                <span class="price-unit">/瓶（200g-500g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 超市</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 巴刹（市场）</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 7-Eleven</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>推荐"阿牛"、"沙爹王"等本地品牌。花生含量高的更香！注意保质期，冷藏保存。
+              </div>
+            </div>
+          </div>
+
+          <!-- 锡器 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#90a4ae,#607d8b);padding:40px;text-align:center;">
+              <i class="fas fa-wine-glass" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">高端</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">马来西亚锡器</h3>
+              <p class="product-desc">马来西亚锡器工艺精湛，造型精美。有茶具、餐具、摆件等多种选择。</p>
+              <div class="product-price">
+                <span class="price-current">RM 100-500</span>
+                <span class="price-unit">/件</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 锡器专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 机场免税店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 中央市场</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择"皇家雪兰莪"（Royal Selangor）知名品牌。可定制刻字。注意包装，防止损坏。
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 印尼特产 -->
+      <div id="category-id" data-country-panel="id">
+        <h2 class="section-h2" style="margin-bottom:20px;"><i class="fas fa-map-marker-alt" style="color:#e74c3c;"></i> 🇮🇩 印度尼西亚必买清单</h2>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px;">
+          
+          <!-- 巴厘岛猫屎咖啡 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#5d4037,#3e2723);padding:40px;text-align:center;">
+              <i class="fas fa-coffee" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">高端</span></div>
+              <h3 class="product-title">猫屎咖啡</h3>
+              <p class="product-desc">世界顶级咖啡，经过麝香猫消化后发酵，口感醇厚独特。巴厘岛猫屎咖啡享誉全球。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 500k-2M</span>
+                <span class="price-unit">/袋（100g-500g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 咖啡专卖店</span>
+                <span class="location-tag"><i class="fas fa-plane"></i> 机场免税店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 乌布咖啡园</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择"金爪"（Golden Paw）品牌。认准100%正宗证书。注意价格过低可能是假货！
+              </div>
+            </div>
+          </div>
+
+          <!-- 巴迪布 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#e91e63,#c2185b);padding:40px;text-align:center;">
+              <i class="fas fa-tshirt" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">必买</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">巴迪布</h3>
+              <p class="product-desc">印尼传统蜡染布，图案精美，色彩鲜艳。可做围巾、桌布、服饰。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 50k-300k</span>
+                <span class="price-unit">/块</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 巴迪布专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 传统市场</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 爪哇村落</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>手绘巴迪布更有价值，价格较高。机织巴迪布价格实惠。注意洗护说明。
+              </div>
+            </div>
+          </div>
+
+          <!-- 燕窝 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#fff9c4,#fff176);padding:40px;text-align:center;">
+              <i class="fas fa-feather" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">高端</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">印尼燕窝</h3>
+              <p class="product-desc">印尼是世界最大燕窝产地，品质优良，价格实惠。适合送礼和自用。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 800k-3M</span>
+                <span class="price-unit">/盒（50g-100g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 燕窝专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 药店</span>
+                <span class="location-tag"><i class="fas fa-store"></i> 中药店</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择正规店铺，认准印尼原产地标志。白燕盏品质最好。需申报入境。
+              </div>
+            </div>
+          </div>
+
+          <!-- 檀香油 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#d4a373,#a98467);padding:40px;text-align:center;">
+              <i class="fas fa-spa" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">推荐</span><span class="product-tag">高端</span></div>
+              <h3 class="product-title">檀香油</h3>
+              <p class="product-desc">印尼檀香精油，香气悠长，有助舒缓神经、促进睡眠。适合熏香和按摩。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 150k-600k</span>
+                <span class="price-unit">/瓶（10ml-100ml）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 香精油专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> SPA会所</span>
+                <span class="location-tag"><i class="fas fa-plane"></i> 机场免税店</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择100%纯天然檀香油。注意包装密封，防止挥发。小瓶装更实用。
+              </div>
+            </div>
+          </div>
+
+          <!-- 咖啡豆 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#6d4c41,#4e342e);padding:40px;text-align:center;">
+              <i class="fas fa-bean" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">推荐</span><span class="product-tag">平价</span></div>
+              <h3 class="product-title">印尼咖啡豆</h3>
+              <p class="product-desc">苏门答腊、爪哇咖啡豆享誉世界。有曼特宁、爪哇等多种品种，口感醇厚。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 50k-200k</span>
+                <span class="price-unit">/袋（250g-1kg）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 咖啡专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 传统市场</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 咖啡园</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>苏门答腊曼特宁最知名。选择烘焙日期新鲜的咖啡豆。可现场试喝。
+              </div>
+            </div>
+          </div>
+
+          <!-- 香料 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#ff6f00,#e65100);padding:40px;text-align:center;">
+              <i class="fas fa-pepper-hot" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">平价</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">印尼香料</h3>
+              <p class="product-desc">世界香料王国，有肉豆蔻、丁香、胡椒等优质香料。适合烹饪和健康。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 15k-100k</span>
+                <span class="price-unit">/包（50g-500g）</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 香料市场</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 传统市场</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 超市</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择新鲜干燥的香料。推荐班达群岛的肉豆蔻。注意保存防潮。
+              </div>
+            </div>
+          </div>
+
+          <!-- 蜡染围巾 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#9c27b0,#7b1fa2);padding:40px;text-align:center;">
+              <i class="fas fa-ribbon" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">推荐</span><span class="product-tag">平价</span></div>
+              <h3 class="product-title">蜡染围巾</h3>
+              <p class="product-desc">印尼蜡染围巾，图案精美，色彩鲜艳。适合送女性朋友，实用又美观。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 50k-150k</span>
+                <span class="price-unit">/条</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 蜡染专卖店</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 传统市场</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 巴厘岛夜市</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>手绘图案更有价值。注意面料质感，丝绸或棉质最佳。可定制图案。
+              </div>
+            </div>
+          </div>
+
+          <!-- 木雕 -->
+          <div class="product-card">
+            <div class="product-img" style="background:linear-gradient(135deg,#8d6e63,#5d4037);padding:40px;text-align:center;">
+              <i class="fas fa-paw" style="font-size:48px;color:#fff;opacity:0.9;"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-tags"><span class="product-tag hot">高端</span><span class="product-tag">推荐</span></div>
+              <h3 class="product-title">印尼木雕</h3>
+              <p class="product-desc">巴厘岛木雕工艺精湛，造型生动。有宗教人物、动物、摆件等多种选择。</p>
+              <div class="product-price">
+                <span class="price-current">IDR 200k-2M</span>
+                <span class="price-unit">/件</span>
+              </div>
+              <div class="product-locations">
+                <span class="location-tag"><i class="fas fa-store"></i> 木雕工坊</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 乌布艺术区</span>
+                <span class="location-tag"><i class="fas fa-shopping-cart"></i> 巴厘岛手工艺品店</span>
+              </div>
+              <div class="product-tips">
+                <strong>💡 选购建议：</strong>选择名贵木材（檀木、红木）。注意雕刻细节和工艺。注意包装，防止损坏。
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 购物地点推荐 -->
+      <div style="margin-top:60px;">
+        <h2 class="section-h2" style="margin-bottom:20px;"><i class="fas fa-store" style="color:#e91e63;"></i> 热门购物地点推荐</h2>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px;">
+          
+          <!-- KLCC -->
+          <div class="sidebar-card" style="border-top:3px solid #e74c3c;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#ffebee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🏢</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">KLCC 吉隆坡城中城</h4>
+                <span style="font-size:12px;color:#e74c3c;font-weight:600;">⭐ 高端购物中心</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">吉隆坡地标性购物中心，汇集全球奢侈品牌。推荐购买燕窝、锡器、高端礼品。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Jalan Ampang, 50450 Kuala Lumpur</div>
+              <div>⏰ 营业时间：10:00-22:00</div>
+              <div>💡 特色：双峰塔观光+购物</div>
+            </div>
+          </div>
+
+          <!-- Central Market -->
+          <div class="sidebar-card" style="border-top:3px solid #f39c12;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#fff8e1;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎨</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">中央市场（Central Market）</h4>
+                <span style="font-size:12px;color:#f39c12;font-weight:600;">⭐ 文化艺术中心</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">马来西亚文化地标，传统手工艺品集中地。推荐购买巴迪布、木雕、工艺品。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Jalan Tun Tan Cheng Lock, 50000 Kuala Lumpur</div>
+              <div>⏰ 营业时间：10:00-22:00</div>
+              <div>💡 特色：文化表演+手工艺品</div>
+            </div>
+          </div>
+
+          <!-- Pavilion KL -->
+          <div class="sidebar-card" style="border-top:3px solid #2196f3;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#e3f2fd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🛍️</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">Pavilion KL 百盛商场</h4>
+                <span style="font-size:12px;color:#2196f3;font-weight:600;">⭐ 购物天堂</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">吉隆坡最大购物中心之一，品牌齐全。推荐购买化妆品、巧克力、咖啡。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Jalan Bukit Bintang, 55100 Kuala Lumpur</div>
+              <div>⏰ 营业时间：10:00-22:00</div>
+              <div>💡 特色：品牌折扣+美食广场</div>
+            </div>
+          </div>
+
+          <!-- Ubud Art Market -->
+          <div class="sidebar-card" style="border-top:3px solid #e91e63;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#ffebee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎭</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">乌布艺术市场（Ubud Art Market）</h4>
+                <span style="font-size:12px;color:#e91e63;font-weight:600;">⭐ 艺术手工艺品</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">巴厘岛最著名艺术市场，汇集当地艺术家作品。推荐购买蜡染、木雕、工艺品。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Jalan Raya Ubud, Ubud, Bali</div>
+              <div>⏰ 营业时间：6:00-18:00</div>
+              <div>💡 特色：艺术家工作室+现场创作</div>
+            </div>
+          </div>
+
+          <!-- Changi Airport -->
+          <div class="sidebar-card" style="border-top:3px solid #4caf50;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#e8f5e9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">✈️</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">樟宜机场免税店</h4>
+                <span style="font-size:12px;color:#4caf50;font-weight:600;">⭐ 转机购物天堂</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">世界最佳机场，免税店品牌齐全。推荐购买化妆品、巧克力、烟酒。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Singapore Changi Airport（转机可购物）</div>
+              <div>⏰ 营业时间：24小时</div>
+              <div>💡 特色：免税价格+品牌折扣</div>
+            </div>
+          </div>
+
+          <!-- KLIA2 -->
+          <div class="sidebar-card" style="border-top:3px solid #9c27b0;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:48px;height:48px;background:#f3e5f5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">✈️</div>
+              <div>
+                <h4 style="margin:0;font-size:15px;">吉隆坡国际机场（KLIA/KLIA2）</h4>
+                <span style="font-size:12px;color:#9c27b0;font-weight:600;">⭐ 机场免税店</span>
+              </div>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;">马来西亚主要机场，免税店价格优惠。推荐购买白咖啡、巧克力、烟酒。</p>
+            <div style="font-size:12px;color:#666;margin-bottom:8px;">
+              <div>📍 地址：Sepang, Selangor（KLIA/KLIA2）</div>
+              <div>⏰ 营业时间：24小时</div>
+              <div>💡 特色：马来西亚特产集中</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 海关须知 -->
+      <div style="margin-top:60px;">
+        <h2 class="section-h2" style="margin-bottom:20px;"><i class="fas fa-exclamation-triangle" style="color:#e74c3c;"></i> 中国海关入境须知</h2>
+        
+        <div class="sidebar-card" style="background:#fff5f5;border:1px solid #ffcdd2;padding:20px;margin-bottom:20px;">
+          <h3 style="color:#e74c3c;margin:0 0 12px;">🚫 禁止携带入境物品</h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+            <li>❌ 新鲜水果、蔬菜</li>
+            <li>❌ 肉类制品（香肠、腊肉等）</li>
+            <li>❌ 活体动植物</li>
+            <li>❌ 毒品及违禁药品</li>
+            <li>❌ 假冒伪劣商品</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card" style="background:#e3f2fd;border:1px solid #90caf9;padding:20px;margin-bottom:20px;">
+          <h3 style="color:#1976d2;margin:0 0 12px;">✅ 限制携带物品</h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+            <li>✅ 烟草：香烟400支或雪茄100支或烟丝500克</li>
+            <li>✅ 酒精：12°以上酒精饮料2瓶（1.5升以下）</li>
+            <li>✅ 黄金：50克以下</li>
+            <li>✅ 现金：人民币20,000元或外币5,000美元以下</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card" style="background:#fff8e1;border:1px solid #ffe082;padding:20px;">
+          <h3 style="color:#f9a825;margin:0 0 12px;">⚠️ 特殊物品需申报</h3>
+          <ul style="font-size:13px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+            <li>⚠️ 燕窝：需申报，限量携带（具体金额需咨询海关）</li>
+            <li>⚠️ 药品：处方药需携带处方</li>
+            <li>⚠️ 高价值物品：超过5,000元人民币需申报</li>
+            <li>⚠️ 药用植物、保健品：需申报并出示证明</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 社区分享 -->
+      <div style="margin-top:60px;">
+        <h2 class="section-h2" style="margin-bottom:16px;"><i class="fas fa-comments" style="color:#e91e63;"></i> 伴手礼选购经验分享</h2>
+        <div id="souvenirs-community-container" style="margin-bottom:32px;"></div>
+      </div>
+
+    </div>
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-card" style="border-top:3px solid #e74c3c;">
+        <h3>💰 购物预算参考</h3>
+        <table style="width:100%;font-size:12px;border-collapse:collapse;">
+          <tr style="background:#ffebee;"><th style="padding:6px;text-align:left;">预算</th><th style="padding:6px;text-align:right;">推荐品类</th></tr>
+          <tr><td style="padding:6px;">¥200以下</td><td style="padding:6px;text-align:right;">白咖啡、巧克力、沙爹酱</td></tr>
+          <tr style="background:#f8f8f8;"><td style="padding:6px;">¥200-500</td><td style="padding:6px;text-align:right;">榴莲干、豆蔻膏、鱼肝油</td></tr>
+          <tr><td style="padding:6px;">¥500-1000</td><td style="padding:6px;text-align:right;">咖啡豆、巴迪布、檀香油</td></tr>
+          <tr style="background:#f8f8f8;"><td style="padding:6px;">¥1000-2000</td><td style="padding:6px;text-align:right;">燕窝（小份）、锡器、猫屎咖啡</td></tr>
+          <tr><td style="padding:6px;">¥2000以上</td><td style="padding:6px;text-align:right;">燕窝（大份）、高端木雕、檀香油</td></tr>
+        </table>
+      </div>
+
+      <div class="sidebar-card" style="background:#fff8e1;border:1px solid #ffe082;">
+        <h3>⚠️ 购物注意事项</h3>
+        <ul style="font-size:12px;color:#555;line-height:2.2;margin:0;padding-left:16px;">
+          <li>✅ 保留购物小票，以备退税</li>
+          <li>✅ 比价：机场 vs 商场 vs 市场</li>
+          <li>✅ 检查保质期，临期不买</li>
+          <li>✅ 包装完好，避免破损</li>
+          <li>✅ 了解入境海关规定</li>
+          <li>❌ 不要买来路不明的药品</li>
+          <li>❌ 谨慎购买高价工艺品</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>🎁 送礼建议</h3>
+        <div style="font-size:13px;color:#333;line-height:2;">
+          <div><strong>送长辈</strong>：燕窝、鱼肝油、檀香油</div>
+          <div><strong>送朋友</strong>：白咖啡、巧克力、巴迪布</div>
+          <div><strong>送孩子</strong>：巧克力、榴莲糖、玩具</div>
+          <div><strong>送同事</strong>：白咖啡、沙爹酱、燕窝（小份）</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>📱 实用工具</h3>
+        <div style="font-size:13px;color:#333;line-height:2.2;">
+          <div><strong>汇率查询</strong>：XE Currency App</div>
+          <div><strong>购物清单</strong>：自带记录本</div>
+          <div><strong>退税计算</strong>：Tax Free App</div>
+          <div><strong>导航定位</strong>：Google Maps</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">🌴 一路向南 一路向南，阳光灿烂</div>
+        <p data-i18n="footer.brand.desc">专注为中国人提供东南亚生活服务，让出行更安心，生活更便利。</p>
+        <div class="hotline"><i class="fas fa-headset"></i><div><small>联系客服</small><strong>关注微信公众号"一路向南阳光灿烂"</strong></div></div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.visa.title">签证服务</h4>
+        <ul>
+          <li><a href="visa.html#tourist" data-i18n="footer.visa.tourist">旅游签证</a></li>
+          <li><a href="visa.html#work" data-i18n="footer.visa.work">工作签证</a></li>
+          <li><a href="visa.html#student" data-i18n="footer.visa.student">学生签证</a></li>
+          <li><a href="visa.html#mm2h" data-i18n="footer.visa.mm2h">MM2H第二家园</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.life.title">生活服务</h4>
+        <ul>
+          <li><a href="rent.html" data-i18n="footer.life.rent">租房租车</a></li>
+          <li><a href="hotel.html" data-i18n="footer.life.hotel">酒店预订</a></li>
+          <li><a href="work.html" data-i18n="footer.life.work">找工作</a></li>
+          <li><a href="bank.html" data-i18n="footer.life.bank">银行开户</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.guide.title">攻略指南</h4>
+        <ul>
+          <li><a href="safety.html" data-i18n="footer.guide.safety">防骗安全指南</a></li>
+          <li><a href="medical.html" data-i18n="nav.medical">医疗就医</a></li>
+          <li><a href="community.html" data-i18n="nav.community">华人社区</a></li>
+          <li><a href="study.html" data-i18n="nav.study">留学教育</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 一路向南 一路向南，阳光灿烂 · All Rights Reserved</p></div>
+  </div>
+</footer>
+<link rel="stylesheet" href="css/community.css">
+<script src="js/i18n.js"></script>
+<script src="js/community.js"></script>
+<script>
+function switchCategory(category, btn) {
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // 可以添加筛选逻辑
+}
+
+// souvenirs.html 社区帖子数据
+window.NYT_POSTS = [
+  {
+    id: 'souvenirs_1',
+    author: '小雯回国达人',
+    avatarColor: 'linear-gradient(135deg,#e74c3c,#c2185b)',
+    content: '回国伴手礼经验总结！\n\n1. 白咖啡一定要买旧街场，最经典。超市比机场便宜30%左右\n2. 榴莲干推荐猫山王，榴莲糖味道太甜\n3. 豆蔻膏必备！家里老人腿疼，用了效果很好\n4. 巧克力推荐Beryl\'s，榴莲巧克力一定要买！\n5. 燕窝送给妈妈，她超喜欢\n\n总花费RM 500（约¥800），搞定全家礼物！',
+    category: '伴手礼经验',
+    timestamp: new Date('2026-01-20').getTime(),
+    likes: 356
+  },
+  {
+    id: 'souvenirs_2',
+    author: '巴厘岛旅行者',
+    avatarColor: 'linear-gradient(135deg,#f39c12,#e67e22)',
+    content: '巴厘岛伴手礼推荐！\n\n✅ 必买：\n- 猫屎咖啡：机场免税店最划算，认准金爪品牌\n- 巴迪布：乌布艺术市场手绘款，价格200k-500k IDR\n- 蜡染围巾：送女性朋友最佳选择\n- 木雕：小件摆件很精致，注意包装\n\n⚠️ 注意：\n- 机场免税店价格比市内便宜20-30%\n- 猫屎咖啡价格差异很大，太便宜要警惕\n- 购物记得保留小票，回国可退税\n\n总花费IDR 1.5M（约¥450），超值！',
+    category: '印尼伴手礼',
+    timestamp: new Date('2025-12-15').getTime(),
+    likes: 423
+  },
+  {
+    id: 'souvenirs_3',
+    author: '资深购物达人',
+    avatarColor: 'linear-gradient(135deg,#2196f3,#1976d2)',
+    content: '分享几个购物省钱技巧！\n\n1. 机场免税店不是最便宜的！商场经常有折扣活动\n2. Pavilion KL的折扣季（每年1月、7月），全场3-7折\n3. Watson和Guardian的会员积分可兑换礼品\n4. 超市的临期商品（还有3个月以上）可半价\n5. Central Market可以砍价！砍到原价60%很正常\n\n这次回国，省了RM 200！',
+    category: '购物技巧',
+    timestamp: new Date('2025-11-08').getTime(),
+    likes: 289
+  },
+  {
+    id: 'souvenirs_4',
+    author: '留学生小李',
+    avatarColor: 'linear-gradient(135deg,#9c27b0,#7b1fa2)',
+    content: '留学生回国礼物清单参考：\n\n👴 给爷爷奶奶：豆蔻膏、鱼肝油\n👵 给外婆：燕窝（小份）、檀香油\n👨 给爸爸：咖啡豆、巧克力\n👩 给妈妈：燕窝、化妆品（机场免税店）\n👫 给朋友：白咖啡、榴莲糖、巴迪布\n🧒 给小孩：巧克力、玩具\n\n总花费RM 600（约¥1000），预算控制得不错！',
+    category: '伴手礼经验',
+    timestamp: new Date('2025-10-05').getTime(),
+    likes: 512
+  }
+];
+
+// 初始化社区模块
+document.addEventListener('DOMContentLoaded', function() {
+  CommunityApp.init('souvenirs-community-container', window.NYT_POSTS);
+});
+</script>
+  <script src="js/country.js"></script>
+  <script src="js/user.js"></script>
+</body>
+</html>

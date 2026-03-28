@@ -1,0 +1,91 @@
+name: 签证政策自动监控
+
+on:
+  schedule:
+    # 每天北京时间早上9点运行 (UTC 1:00)
+    - cron: '0 1 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      
+    - name: 设置 Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: 安装依赖
+      run: |
+        pip install requests beautifulsoup4
+        
+    - name: 运行监控脚本
+      run: |
+        python .workbuddy/scripts/visa_policy_monitor.py
+        
+    - name: 上传报告
+      uses: actions/upload-artifact@v4
+      with:
+        name: policy-reports-${{ github.run_id }}
+        path: .workbuddy/scripts/reports/
+        retention-days: 30
+        
+    - name: 检查是否有变化
+      id: check_changes
+      run: |
+        # 检查最新的报告文件是否包含"有变化"标记
+        LATEST_REPORT=$(ls -t .workbuddy/scripts/reports/report_*.md | head -1)
+        if grep -q "🔴 有变化" "$LATEST_REPORT"; then
+          echo "changes_detected=true" >> $GITHUB_OUTPUT
+          echo "report_file=$LATEST_REPORT" >> $GITHUB_OUTPUT
+        else
+          echo "changes_detected=false" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 创建 Issue（如发现变化）
+      if: steps.check_changes.outputs.changes_detected == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          // 读取最新报告
+          const reportsDir = '.workbuddy/scripts/reports';
+          const files = fs.readdirSync(reportsDir)
+            .filter(f => f.startsWith('report_') && f.endsWith('.md'))
+            .sort().reverse();
+          
+          if (files.length === 0) return;
+          
+          const latestReport = fs.readFileSync(
+            path.join(reportsDir, files[0]), 
+            'utf-8'
+          );
+          
+          // 创建 Issue
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `🚨 签证政策可能发生变化 - ${new Date().toLocaleDateString('zh-CN')}`,
+            body: `## 自动监控检测到变化
+
+监控脚本检测到以下官方渠道内容可能发生变化：
+
+${latestReport.substring(0, 3000)}...
+
+---
+
+**请人工核实后更新网站内容：**
+1. 访问上述官网确认具体变更
+2. 更新 visa.html 页面
+3. 添加政策更新日志条目
+
+> 完整报告已保存为 Artifacts
+`,
+            labels: ['policy-change', 'automated']
+          });

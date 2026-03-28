@@ -1,0 +1,8 @@
+# WorkBuddy 内部数据（不推送到 GitHub）
+.workbuddy/
+
+# 临时文件
+*.tmp
+*.log
+Thumbs.db
+.DS_Store

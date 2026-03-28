@@ -1,0 +1,494 @@
+/* =====================================================
+   一路向南 — 在线咨询 / 预约模块样式
+   表单弹窗 + 线索管理面板
+===================================================== */
+
+/* ---------- 弹窗遮罩层 ---------- */
+.inquiry-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+.inquiry-modal-overlay.show {
+  opacity: 1;
+}
+
+/* ---------- 咨询弹窗 ---------- */
+.inquiry-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  position: relative;
+  animation: inquirySlideUp 0.35s ease;
+}
+@keyframes inquirySlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.inquiry-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: all 0.2s;
+  z-index: 2;
+}
+.inquiry-modal-close:hover {
+  background: #eee;
+  color: #333;
+}
+
+/* ---------- 弹窗头部 ---------- */
+.inquiry-modal-header {
+  background: linear-gradient(135deg, #2d9b5c, #1a6b3a);
+  color: #fff;
+  padding: 28px 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px 16px 0 0;
+}
+.inquiry-merchant-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.inquiry-modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.inquiry-category {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ---------- 安全提示 ---------- */
+.inquiry-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #f0faf5;
+  color: #2d9b5c;
+  font-size: 12px;
+  border-bottom: 1px solid #e8f5e9;
+}
+.inquiry-tip i {
+  font-size: 14px;
+}
+
+/* ---------- 表单 ---------- */
+.inquiry-form {
+  padding: 20px 24px 8px;
+}
+.inquiry-form .form-group {
+  margin-bottom: 14px;
+}
+.inquiry-form .form-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+.inquiry-form .form-group label i {
+  color: #2d9b5c;
+  font-size: 13px;
+  width: 16px;
+  text-align: center;
+}
+.inquiry-form .form-group input,
+.inquiry-form .form-group select,
+.inquiry-form .form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.inquiry-form .form-group input:focus,
+.inquiry-form .form-group select:focus,
+.inquiry-form .form-group textarea:focus {
+  border-color: #2d9b5c;
+  box-shadow: 0 0 0 3px rgba(45,155,92,0.1);
+}
+.inquiry-form .form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+.inquiry-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.required {
+  color: #e53935;
+}
+.inquiry-optional {
+  font-size: 11px;
+  color: #999;
+  font-weight: 400;
+}
+.inquiry-char-count {
+  float: right;
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 2px;
+}
+
+/* ---------- 错误提示 ---------- */
+.inquiry-form-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- 提交按钮 ---------- */
+.inquiry-btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #2d9b5c, #1a6b3a);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.inquiry-btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(45,155,92,0.35);
+}
+.inquiry-btn-submit:active {
+  transform: translateY(0);
+}
+
+/* ---------- 底部提示 ---------- */
+.inquiry-footer-note {
+  text-align: center;
+  padding: 12px 24px 20px;
+  color: #999;
+  font-size: 12px;
+}
+.inquiry-footer-note i {
+  margin-right: 4px;
+}
+
+/* ---------- 成功提示卡片 ---------- */
+.inquiry-success-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  animation: inquirySlideUp 0.35s ease;
+}
+.inquiry-success-icon {
+  font-size: 56px;
+  color: #2d9b5c;
+  margin-bottom: 16px;
+}
+.inquiry-success-card h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 12px;
+}
+.inquiry-success-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.inquiry-success-sub {
+  color: #999 !important;
+  font-size: 13px !important;
+  margin-bottom: 24px !important;
+}
+.inquiry-success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.inquiry-btn-view {
+  padding: 10px 24px;
+  background: #f0faf5;
+  color: #2d9b5c;
+  border: 1.5px solid #2d9b5c;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.inquiry-btn-view:hover {
+  background: #2d9b5c;
+  color: #fff;
+}
+.inquiry-btn-close {
+  padding: 10px 24px;
+  background: #f5f5f5;
+  color: #666;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.inquiry-btn-close:hover {
+  background: #eee;
+}
+
+/* =====================================================
+   线索管理面板
+===================================================== */
+.inquiry-records-panel {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 960px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: inquirySlideUp 0.35s ease;
+}
+.inquiry-records-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2;
+  border-radius: 16px 16px 0 0;
+}
+.inquiry-records-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+.inquiry-records-header h2 i {
+  color: #2d9b5c;
+  margin-right: 8px;
+}
+.inquiry-stats-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.stat-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.stat-badge.total       { background: #f5f5f5; color: #666; }
+.stat-badge.new         { background: #e3f2fd; color: #1976d2; }
+.stat-badge.contacted   { background: #fff3e0; color: #e65100; }
+.stat-badge.merchants   { background: #f3e5f5; color: #7b1fa2; }
+
+.inquiry-btn-export {
+  padding: 8px 16px;
+  background: #2d9b5c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  margin-bottom: 24px;
+}
+.inquiry-btn-export:hover {
+  background: #1a6b3a;
+}
+
+/* ---------- 商户统计卡片 ---------- */
+.inquiry-merchant-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.inq-stat-card {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 14px;
+  border-left: 3px solid #2d9b5c;
+}
+.inq-stat-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2px;
+}
+.inq-stat-cat {
+  font-size: 11px;
+  color: #999;
+}
+.inq-stat-numbers {
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.inq-stat-total {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2d9b5c;
+}
+.inq-stat-numbers small {
+  font-size: 11px;
+  color: #999;
+}
+
+/* ---------- 线索表格 ---------- */
+.inquiry-table-wrap {
+  overflow-x: auto;
+  padding: 0 24px 24px;
+}
+.inquiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.inquiry-table thead {
+  position: sticky;
+  top: 0;
+}
+.inquiry-table th {
+  background: #f5f5f5;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #666;
+  font-size: 12px;
+  white-space: nowrap;
+  border-bottom: 2px solid #e0e0e0;
+}
+.inquiry-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+}
+.inquiry-table tr:hover td {
+  background: #fafafa;
+}
+.inq-msg-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+}
+
+/* ---------- 状态标签 ---------- */
+.inq-status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.inq-status.new        { background: #e3f2fd; color: #1565c0; }
+.inq-status.contacted  { background: #fff3e0; color: #e65100; }
+.inq-status.closed     { background: #e8f5e9; color: #2e7d32; }
+.inq-status.invalid    { background: #fce4ec; color: #c62828; }
+
+/* ---------- 空状态 ---------- */
+.inquiry-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: #ccc;
+}
+.inquiry-empty i {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.inquiry-empty p {
+  font-size: 14px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .inquiry-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .inquiry-modal-header {
+    padding: 24px 20px 16px;
+  }
+  .inquiry-form {
+    padding: 16px 20px 8px;
+  }
+  .inquiry-records-panel {
+    border-radius: 12px;
+  }
+  .inquiry-records-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+  .inquiry-merchant-stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 12px 20px;
+  }
+  .inquiry-table-wrap {
+    padding: 0 12px 16px;
+  }
+}

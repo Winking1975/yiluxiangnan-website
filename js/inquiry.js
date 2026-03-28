@@ -14,6 +14,8 @@
   'use strict';
 
   const STORAGE_KEY = 'ylxn_inquiries'; // 所有咨询记录
+  const WEB3FORMS_KEY = '413849ac-99a9-45c9-98ec-b3849a485cbc'; // Web3Forms access_key
+  const WEB3FORMS_API = 'https://api.web3forms.com/submit';
 
   // ============ 线索数据管理 ============
   const InquiryData = {
@@ -323,9 +325,9 @@
       if (!type) { this._showError('请选择咨询类型'); return; }
 
       // 组合咨询内容
-      const fullMessage = `[${type}] ${message || '无补充说明'}`;
+      const fullMessage = '[' + type + '] ' + (message || '无补充说明');
 
-      // 保存
+      // 保存到 localStorage（本地备份）
       const record = InquiryData.add({
         merchantId: merchant.id || merchant.name,
         merchantName: merchant.name,
@@ -338,9 +340,56 @@
 
       console.log('[Inquiry] 咨询已记录:', record.id, '→', merchant.name);
 
+      // 异步发送邮件通知（Web3Forms）
+      this._sendEmailNotification({
+        merchantName: merchant.name,
+        category: merchant.category || '',
+        contactName: name,
+        contactPhone: phone,
+        contactWechat: wechat,
+        inquiryType: type,
+        message: message || '无补充说明',
+        pageUrl: window.location.href,
+        recordId: record.id
+      });
+
       // 关闭弹窗，显示成功提示
       this.hideModal();
       this._showSuccess(merchant.name);
+    },
+
+    // 发送邮件通知给运营者
+    _sendEmailNotification(data) {
+      fetch(WEB3FORMS_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: '【一路向南】新咨询 - ' + data.merchantName + ' - ' + data.contactName,
+          from_name: '一路向南咨询系统',
+          // 表单字段
+          '商户名称': data.merchantName,
+          '服务类别': data.category,
+          '咨询类型': data.inquiryType,
+          '客户姓名': data.contactName,
+          '客户电话': data.contactPhone,
+          '客户微信': data.contactWechat || '未填写',
+          '详细需求': data.message,
+          '来源页面': data.pageUrl,
+          '记录ID': data.recordId,
+          '提交时间': new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Kuala_Lumpur' }),
+          // 蜜罐防垃圾
+          botcheck: ''
+        })
+      }).then(res => res.json()).then(result => {
+        if (result.success) {
+          console.log('[Inquiry] 邮件通知已发送');
+        } else {
+          console.warn('[Inquiry] 邮件通知发送失败:', result.message);
+        }
+      }).catch(err => {
+        console.warn('[Inquiry] 邮件通知请求出错:', err);
+      });
     },
 
     // 显示错误
